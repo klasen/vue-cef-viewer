@@ -160,7 +160,7 @@ new Vue({
     el: '#app',
     mounted: function () {
         this.$nextTick(function () {
-            this.$refs.message.$el.focus();
+            this.$refs.message.focus();
         })
     },
     data: {
