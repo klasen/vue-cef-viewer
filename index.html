@@ -1,12 +1,18 @@
 <html>
   <head>
     <title>Vue-cef-viewer</title>
-    <link rel="stylesheet" href="vue-cef-viewer.css">
+    <link rel="stylesheet" href="vue-cef-viewer.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script type="text/javascript" src="vue-cef-viewer.js" defer></script>
   </head>
   <body>
     <div id="app">
+      <textarea
+        ref="message"
+        v-model="message"
+        placeholder="paste CEF message here"
+        id="message"
+      ></textarea>
       <table>
         <tr class="header">
           <th>Field</th>
@@ -18,14 +24,7 @@
         </tr>
         <tr class="raw">
           <th>Raw</th>
-          <td>
-            <textarea
-              ref="message"
-              v-model="message"
-              placeholder="paste CEF message here"
-              id="message"
-            ></textarea>
-          </td>
+          <td>{{ message }}</td>
           <td></td>
         </tr>
         <tr class="section">
