@@ -5,17 +5,17 @@ body {
 #app {
   background: #fff;
   transition: all 0.2s;
-	padding: 4px;
+  padding: 4px;
 }
 
 textarea {
   width: 100%;
-  height: 10em;
-  background-color: #FCDB1F;
-	margin-bottom: 2em;
+  height: 15em;
+  background-color: #fcdb1f;
 }
 
 table {
+  margin-top: 2em;
   width: 100%;
   border-collapse: collapse;
 }
@@ -28,7 +28,7 @@ th {
   padding-top: 3px;
   padding-bottom: 3px;
   text-align: left;
-  vertical-align: middle; 
+  vertical-align: middle;
 }
 
 tr:hover {
@@ -38,14 +38,14 @@ tr:hover {
 tr.header th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #0079EF;
+  background-color: #0079ef;
   color: white;
 }
 
 tr.section th {
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: #29CDFE;
+  background-color: #29cdfe;
   color: white;
 }
 
