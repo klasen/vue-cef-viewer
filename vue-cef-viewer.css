@@ -1,0 +1,49 @@
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+#app {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+textarea {
+  width: 100%;
+  height: 15em;
+  background-color: #FCDB1F;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+tr.header th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0079EF;
+  color: white;
+}
+
+tr.section th {
+  background-color: #29CDFE;
+  color: white;
+}
+
+pre {
+  white-space: pre-wrap;
+}
