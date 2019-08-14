@@ -22,6 +22,8 @@ td,
 th {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: left;
+  vertical-align: middle; 
 }
 
 tr:hover {
@@ -31,7 +33,6 @@ tr:hover {
 tr.header th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
   background-color: #0079EF;
   color: white;
 }
