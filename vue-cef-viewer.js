@@ -1,6 +1,32 @@
+
+const cefHeaders = ['Version', 'DeviceVendor',
+    'DeviceProduct', 'DeviceVersion', 'SignatureID', 'Name', 'Severity'
+];
+
+const cefValueEscapeRegex = /\\(.)/g;
+const cefValueEscapeSequences = {
+    'n': '\n',
+    'r': '\r',
+    't': '\t'
+};
+
+/**
+ * Unescape string according to CEF Character Encoding rules
+ * @return {string}
+ */
+String.prototype.unescapeCefValue = function () {
+    return this.replace(cefValueEscapeRegex, (match, p1) => {
+        if (p1 in cefValueEscapeSequences) {
+            return cefValueEscapeSequences[p1];
+        } else {
+            return p1;
+        }
+    });
+}
+
 /**
 * The parseCEF() function converts a string in CEF format into a hash where
-* each value can be retrieved by its name. The following Prefix fields are
+* each value can be retrieved by its name. The following Header fields are
 * available: Version, DeviceVendor, DeviceProduct, DeviceVersion, SignatureID,
 * Name, and Severity. Key-value pairs from the Extension field of the message
 * are made available under the extensions property.
@@ -28,7 +54,7 @@
 * </pre>
 * 
 * @addon
-* @return {Hash} Map of names (attributes) to values
+* @return {Object} Map of names (attributes) to values
 */
 String.prototype.parseCEF = function () {
     var obj = {};
@@ -51,17 +77,17 @@ String.prototype.parseCEF = function () {
         switch (this[i]) {
             case "|": // field separator
                 if (quoted) {
-                    obj[String.prototype.parseCEF.prefix[field]] = this.substring(
+                    obj[cefHeaders[field]] = this.substring(
                         start, i).unescapeCefValue();
                     quoted = false;
                 } else {
-                    obj[String.prototype.parseCEF.prefix[field]] = this.substring(
+                    obj[cefHeaders[field]] = this.substring(
                         start, i);
                 }
                 i++;
                 start = i;
                 field++;
-                if (field == String.prototype.parseCEF.prefix.length)
+                if (field == cefHeaders.length)
                     // all header fields have been parsed
                     break Header;
                 break;
@@ -75,7 +101,7 @@ String.prototype.parseCEF = function () {
                 i++;
         }
     }
-    if (field != String.prototype.parseCEF.prefix.length) {
+    if (field != cefHeaders.length) {
         // not enough header fields
         return obj;
     }
@@ -144,26 +170,7 @@ String.prototype.parseCEF = function () {
     return obj;
 };
 
-const cefValueEscapeRegex = /\\(.)/g;
-const cefValueEscapeSequences = {
-    'n': '\n',
-    'r': '\r',
-    't': '\t'
-};
 
-String.prototype.unescapeCefValue = function () {
-    return this.replace(cefValueEscapeRegex, (match, p1) => {
-        if (p1 in cefValueEscapeSequences) {
-            return cefValueEscapeSequences[p1];
-        } else {
-            return p1;
-        }
-    });
-}
-
-String.prototype.parseCEF.prefix = ['Version', 'DeviceVendor',
-    'DeviceProduct', 'DeviceVersion', 'SignatureID', 'Name', 'Severity'
-];
 
 
 new Vue({
