@@ -24,7 +24,9 @@
         </tr>
         <tr class="raw">
           <th>Raw</th>
-          <td><pre>{{ message }}</pre></td>
+          <td>
+            <pre>{{ message }}</pre>
+          </td>
           <td></td>
         </tr>
         <tr class="section">
@@ -72,10 +74,21 @@
           </td>
           <td></td>
         </tr>
-        <tr class="section">
+        <tr class="section" v-if="cef.extensionsSorted.length > 0">
           <th colspan="3">CEF Extensions</th>
         </tr>
-        <tr class="cefextension" v-for="ext in extensions">
+        <tr class="cefextension" v-for="ext in cef.extensionsSorted">
+          <th>{{ ext.key }}</th>
+          <td>
+            <pre>{{ ext.value }}</pre>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="section" v-if="cef.extensionsByLabelSorted.length > 0">
+          <th colspan="3">CEF Extensions by Label</th>
+        </tr>
+        <tr class="cefextension" v-for="ext in cef.extensionsByLabelSorted">
           <th>{{ ext.key }}</th>
           <td>
             <pre>{{ ext.value }}</pre>

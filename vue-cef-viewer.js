@@ -159,19 +159,53 @@ String.prototype.parseCEF = function () {
         obj.extensions[key] = this.substring(value_start, i);
     }
 
-    // add keypair for c[ns]<i>Label with value c[ns]<i>
-    // for (key in obj.extensions) {
-    // if ( /^(cn|cs|c6a|flex(Number|Date|String))\d+$/.test(key) &&
-    // obj.extensions[key+"Label"]) {
-    // obj.extensions[obj.extensions[key+"Label"]] = obj.extensions[key];
-    // }
-    // }
-
     return obj;
 };
 
+function prepareCefDisplay(cef) {
+    cef.extensionsSorted = Object.entries(cef.extensions).
+        // object to array of objects
+        map(([k, v]) => ({ "key": k, "value": v })).
+        // sort by "key" property
+        sort((a, b) => {
+            if (a.key < b.key) {
+                return -1;
+            }
+            if (a.key > b.key) {
+                return 1;
+            }
+            return 0;
+        }
+        );
 
+    // add keypair for c[ns]<i>Label with value c[ns]<i>
+    cef.extensionsByLabel = {};
+    for (key in cef.extensions) {
+        if (/Label$/.test(key)) {
+            baseKey = key.slice(0, -5);
+            if (cef.extensions[baseKey]) {
+                cef.extensionsByLabel[cef.extensions[key]] = cef.extensions[baseKey];
+            }
+        }
+    }
 
+    cef.extensionsByLabelSorted = Object.entries(cef.extensionsByLabel).
+        // object to array of objects
+        map(([k, v]) => ({ "key": k, "value": v })).
+        // sort by "key" property
+        sort((a, b) => {
+            if (a.key < b.key) {
+                return -1;
+            }
+            if (a.key > b.key) {
+                return 1;
+            }
+            return 0;
+        }
+        );
+
+    return cef;
+}
 
 new Vue({
     el: '#app',
@@ -185,22 +219,7 @@ new Vue({
     },
     computed: {
         cef: function () {
-            return this.message.parseCEF();
-        },
-        extensions: function () {
-            // transform extentions object into array of objects sorted by "key" property
-            return Object.entries(this.message.parseCEF().extensions).
-                map(([k, v]) => ({ "key": k, "value": v })).
-                sort((a, b) => {
-                    if (a.key < b.key) {
-                        return -1;
-                    }
-                    if (a.key > b.key) {
-                        return 1;
-                    }
-                    return 0;
-                }
-                );
+            return prepareCefDisplay(this.message.parseCEF());
         }
     }
 })
