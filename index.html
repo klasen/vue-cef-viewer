@@ -83,6 +83,9 @@
             <pre>{{ ext.value }}</pre>
           </td>
           <td>
+            <div v-if="(ext.key == 'rt' || ext.key =='start' || ext.key =='end' || ext.key =='art' || ext.key =='deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
+              {{ (new Date(Number(ext.value))).toISOString() }}
+            </div>
           </td>
         </tr>
         <tr class="section" v-if="cef.extensionsByLabelSorted.length > 0">
