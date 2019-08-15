@@ -8,7 +8,7 @@
 * Example:
 * 
 * <pre>
-* var input='CEF:0|security|threatmanager|1.0|100|detected a equal = in message|10|src=10.0.0.1 act=blocked a equal \\= dst=1.1.1.1'
+* var input='CEF:0|security|threatmanager|1.0|100|detected an equal sign ("=") in extension value|10|src=10.0.0.1 act=blocked a equal \\= dst=1.1.1.1'
 * var cef = input.parseCEF();
 * //result:
 * {
