@@ -33,18 +33,21 @@
 String.prototype.parseCEF = function () {
     var obj = {};
     obj.extensions = {};
+
+    // search for start of a CEF message
     var i = this.search(/CEF:[0-9]/);
     if (i == -1) {
-        // no CEF
+        // CEF prefix not found
         return obj;
     } else {
-        i += 4; // skip tag
+        i += 4; // skip CEF prefix
     }
-    // Prefix
+
+    // Header
     var field = 0;
-    var start = i;
+    var start = i; // start of header value
     var quoted = false;
-    Prefix: while (i < this.length) {
+    Header: while (i < this.length) {
         switch (this[i]) {
             case "|": // field separator
                 if (quoted) {
@@ -59,41 +62,44 @@ String.prototype.parseCEF = function () {
                 start = i;
                 field++;
                 if (field == String.prototype.parseCEF.prefix.length)
-                    // all prefix fields have been parsed
-                    break Prefix;
+                    // all header fields have been parsed
+                    break Header;
                 break;
             case "\\": // quote char
                 // note that value contains quote chars and needs special treatment
                 quoted = true;
-                // skip over quote char
+                // skip over quoted char
                 i += 2;
                 break;
             default:
                 i++;
         }
     }
-    if (field != String.prototype.parseCEF.prefix.length)
+    if (field != String.prototype.parseCEF.prefix.length) {
+        // not enough header fields
         return obj;
+    }
 
     // Extensions
     var key = "";
-    // var start = i; // start position of key
+    // var start = i; // start position of key pair
     var value_start; // start position of value
-    var first_kp = true;
+    var first_kp = true; // are we looking for the first key pair
     while (i < this.length) {
         switch (this[i]) {
             case "\\": // quote char
-                // >99% of data has no quotes
+                // >99% of data has no quotes, so take a note and call unescape on the full value later
+                // this avoids having to reassemble string values without quotes in them
                 quoted = true;
                 i += 2;
                 break;
             case "=": // key-value separator
                 if (first_kp) {
-                    // first key-value separator, just note key
+                    // first key-value separator found, just note key
                     first_kp = false;
                 } else {
+                    // on subsequent key-value separators, we know where the previous value ended and add the previous key pair to extensions
                     if (quoted) {
-                        // TODO embedded new lines replace(/\\n/g, "\n")
                         obj.extensions[key] = this
                             .substring(value_start, start - 1).unescapeCefValue();
                         quoted = false;
@@ -102,22 +108,25 @@ String.prototype.parseCEF = function () {
                             .substring(value_start, start - 1);
                     }
                 }
+
                 key = this.substring(start, i);
                 // empty key
                 // if (key == "")
                 //     return null;
+
                 i++;
                 value_start = i;
                 break;
             case " ": // keypair separator
                 i++;
+                // note possible start of new key pair
                 start = i;
                 break;
             default:
                 i++;
         }
     }
-    // add last keypair
+    // add last key pair to extensions
     if (quoted) {
         obj.extensions[key] = this.substring(value_start, i).unescapeCefValue();
     } else {
@@ -145,7 +154,7 @@ const cefValueEscapeSequences = {
 String.prototype.unescapeCefValue = function () {
     return this.replace(cefValueEscapeRegex, (match, p1) => {
         if (p1 in cefValueEscapeSequences) {
-        return cefValueEscapeSequences[p1];
+            return cefValueEscapeSequences[p1];
         } else {
             return p1;
         }
@@ -172,6 +181,7 @@ new Vue({
             return this.message.parseCEF();
         },
         extensions: function () {
+            // transform extentions object into array of objects sorted by "key" property
             return Object.entries(this.message.parseCEF().extensions).
                 map(([k, v]) => ({ "key": k, "value": v })).
                 sort((a, b) => {
