@@ -103,8 +103,9 @@ String.prototype.parseCEF = function () {
                     }
                 }
                 key = this.substring(start, i);
-                if (key == "")
-                    return null;
+                // empty key
+                // if (key == "")
+                //     return null;
                 i++;
                 value_start = i;
                 break;
