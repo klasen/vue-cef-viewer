@@ -49,7 +49,7 @@ String.prototype.parseCEF = function () {
             case "|": // field separator
                 if (quoted) {
                     obj[String.prototype.parseCEF.prefix[field]] = this.substring(
-                        start, i).replace(/\\/g, "");
+                        start, i).unescapeCefValue();
                     quoted = false;
                 } else {
                     obj[String.prototype.parseCEF.prefix[field]] = this.substring(
@@ -134,21 +134,21 @@ String.prototype.parseCEF = function () {
     return obj;
 };
 
-const cefValueEscapeRegex = /\\([=nrt\\])/g;
+const cefValueEscapeRegex = /\\(.)/g;
 const cefValueEscapeSequences = {
-    '=': '=',
     'n': '\n',
     'r': '\r',
-    't': '\t',
-    '\\': '\\'
+    't': '\t'
 };
 
 String.prototype.unescapeCefValue = function () {
-
     return this.replace(cefValueEscapeRegex, (match, p1) => {
+        if (p1 in cefValueEscapeSequences) {
         return cefValueEscapeSequences[p1];
+        } else {
+            return p1;
+        }
     });
-
 }
 
 String.prototype.parseCEF.prefix = ['Version', 'DeviceVendor',
