@@ -87,11 +87,10 @@ String.prototype.parseCEF = function () {
     var first_kp = true; // are we looking for the first key pair
     while (i < this.length) {
         switch (this[i]) {
-            case "\\": // quote char
-                // >99% of data has no quotes, so take a note and call unescape on the full value later
-                // this avoids having to reassemble string values without quotes in them
-                quoted = true;
-                i += 2;
+            case " ": // keypair separator
+                i++;
+                // note possible start of new key pair
+                start = i;
                 break;
             case "=": // key-value separator
                 if (first_kp) {
@@ -117,10 +116,11 @@ String.prototype.parseCEF = function () {
                 i++;
                 value_start = i;
                 break;
-            case " ": // keypair separator
-                i++;
-                // note possible start of new key pair
-                start = i;
+            case "\\": // quote char
+                // >99% of data has no quotes, so take a note and call unescape on the full value later
+                // this avoids having to reassemble string values without quotes in them
+                quoted = true;
+                i += 2;
                 break;
             default:
                 i++;
