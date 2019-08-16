@@ -191,9 +191,9 @@ function prepareCefDisplay(cef) {
 
     // add keypair for c[ns]<i>Label with value c[ns]<i>
     cef.extensionsByLabel = {};
-    for (key in cef.extensions) {
+    for (var key in cef.extensions) {
         if (/Label$/.test(key)) {
-            baseKey = key.slice(0, -5);
+            var baseKey = key.slice(0, -5);
             if (cef.extensions[baseKey]) {
                 cef.extensionsByLabel[cef.extensions[key]] = cef.extensions[baseKey];
             }
