@@ -1,3 +1,4 @@
+/* global Vue */
 
 const cefHeaders = ['Version', 'DeviceVendor',
     'DeviceProduct', 'DeviceVersion', 'SignatureID', 'Name', 'Severity'
