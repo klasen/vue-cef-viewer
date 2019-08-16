@@ -60,7 +60,7 @@ String.prototype.parseCEF = function () {
     var obj = {};
     obj.extensions = {};
 
-    // search for start of a CEF message
+    // search for CEF message prefix
     var i = this.search(/CEF:[0-9]/);
     if (i == -1) {
         // CEF prefix not found
@@ -71,21 +71,21 @@ String.prototype.parseCEF = function () {
 
     // Header
     var field = 0;
-    var start = i; // start of header value
+    var startHeader = i; // start of header value
     var quoted = false;
     Header: while (i < this.length) {
         switch (this[i]) {
             case "|": // field separator
                 if (quoted) {
                     obj[cefHeaders[field]] = this.substring(
-                        start, i).unescapeCefValue();
+                        startHeader, i).unescapeCefValue();
                     quoted = false;
                 } else {
                     obj[cefHeaders[field]] = this.substring(
-                        start, i);
+                        startHeader, i);
                 }
                 i++;
-                start = i;
+                startHeader = i;
                 field++;
                 if (field == cefHeaders.length)
                     // all header fields have been parsed
@@ -103,6 +103,15 @@ String.prototype.parseCEF = function () {
     }
     if (field != cefHeaders.length) {
         // not enough header fields
+        if (quoted) {
+            obj[cefHeaders[field]] = this.substring(
+                startHeader, i).unescapeCefValue();
+            quoted = false;
+        } else {
+            obj[cefHeaders[field]] = this.substring(
+                startHeader, i);
+        }
+
         return obj;
     }
 
