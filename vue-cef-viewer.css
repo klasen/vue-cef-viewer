@@ -10,7 +10,7 @@ body {
 
 textarea {
   width: 100%;
-  height: 10em;
+  height: 8em;
   background-color: #fcdb1f;
 }
 
@@ -51,4 +51,5 @@ tr.section th {
 
 pre {
   white-space: pre-wrap;
+  margin: 2px;
 }
