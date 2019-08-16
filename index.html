@@ -1,5 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
     <title>Vue-cef-viewer</title>
     <link rel="stylesheet" href="vue-cef-viewer.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -7,6 +9,20 @@
   </head>
   <body>
     <div id="app">
+      <h1>Common Event Format (CEF) Viewer using Vue.js</h1>
+      <p>
+        This is a small <a href="https://vuejs.org/">Vue.js</a> App to display
+        <a
+          href="https://community.microfocus.com/t5/ArcSight-Connectors/ArcSight-Common-Event-Format-CEF-Implementation-Standard/ta-p/1645557"
+          >CEF</a
+        >
+        messages in a nice format. All parsing is done in JavaScript on the
+        client side. No CEF data is sent to the server.
+        <br />
+        If you encounter problems or have a comment, please create an issue in
+        the
+        <a href="https://github.com/klasen/vue-cef-viewer">GitHub project</a>.
+      </p>
       <textarea
         ref="message"
         v-model="message"
@@ -83,7 +99,9 @@
             <pre>{{ ext.value }}</pre>
           </td>
           <td>
-            <div v-if="(ext.key == 'rt' || ext.key =='start' || ext.key =='end' || ext.key =='art' || ext.key =='deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
+            <div
+              v-if="(ext.key == 'rt' || ext.key =='start' || ext.key =='end' || ext.key =='art' || ext.key =='deviceCustomDate1') && /^[0-9]+$/.test(ext.value)"
+            >
               {{ (new Date(Number(ext.value))).toISOString() }}
             </div>
           </td>
