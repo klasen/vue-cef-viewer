@@ -117,39 +117,39 @@ String.prototype.parseCEF = function () {
 
     // Extensions
     var key = "";
-    // var start = i; // start position of key pair
-    var value_start; // start position of value
-    var first_kp = true; // are we looking for the first key pair
+    var startKeyValuePair = i; // start position of a key-value pair
+    var startValue; // start position of a value
+    var foundfirstKeyValueSeparator = false; // are we looking for the first key-value pair
     while (i < this.length) {
         switch (this[i]) {
             case " ": // keypair separator
                 i++;
                 // note possible start of new key pair
-                start = i;
+                startKeyValuePair = i;
                 break;
             case "=": // key-value separator
-                if (first_kp) {
+                if (!foundfirstKeyValueSeparator) {
                     // first key-value separator found, just note key
-                    first_kp = false;
+                    foundfirstKeyValueSeparator = true;
                 } else {
-                    // on subsequent key-value separators, we know where the previous value ended and add the previous key pair to extensions
+                    // on subsequent key-value separators, we know where the previous value ended and add the previous key-value pair to extensions
                     if (quoted) {
                         obj.extensions[key] = this
-                            .substring(value_start, start - 1).unescapeCefValue();
+                            .substring(startValue, startKeyValuePair - 1).unescapeCefValue();
                         quoted = false;
                     } else {
                         obj.extensions[key] = this
-                            .substring(value_start, start - 1);
+                            .substring(startValue, startKeyValuePair - 1);
                     }
                 }
 
-                key = this.substring(start, i);
+                key = this.substring(startKeyValuePair, i);
                 // empty key
                 // if (key == "")
                 //     return null;
 
                 i++;
-                value_start = i;
+                startValue = i;
                 break;
             case "\\": // quote char
                 // >99% of data has no quotes, so take a note and call unescape on the full value later
@@ -162,10 +162,12 @@ String.prototype.parseCEF = function () {
         }
     }
     // add last key pair to extensions
-    if (quoted) {
-        obj.extensions[key] = this.substring(value_start, i).unescapeCefValue();
-    } else {
-        obj.extensions[key] = this.substring(value_start, i);
+    if (foundfirstKeyValueSeparator) {
+        if (quoted) {
+            obj.extensions[key] = this.substring(startValue, i).unescapeCefValue();
+        } else {
+            obj.extensions[key] = this.substring(startValue, i);
+        }
     }
 
     return obj;
