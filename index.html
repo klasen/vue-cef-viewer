@@ -29,7 +29,7 @@
         placeholder="paste CEF message here"
         id="message"
       ></textarea>
-      <table>
+      <table v-if="message">
         <tr class="header">
           <th>Field</th>
           <th>Value</th>
@@ -45,51 +45,60 @@
           </td>
           <td></td>
         </tr>
-        <tr class="section">
-          <th colspan="3">CEF Header</th>
-        </tr>
-        <tr class="cefheader">
-          <th>DeviceVendor</th>
-          <td>
-            <pre>{{ cef.DeviceVendor }}</pre>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="cefheader">
-          <th>DeviceProduct</th>
-          <td>
-            <pre>{{ cef.DeviceProduct }}</pre>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="cefheader">
-          <th>Version</th>
-          <td>
-            <pre>{{ cef.Version }}</pre>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="cefheader">
-          <th>SignatureID</th>
-          <td>
-            <pre>{{ cef.SignatureID }}</pre>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="cefheader">
-          <th>Name</th>
-          <td>
-            <pre>{{ cef.Name }}</pre>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="cefheader">
-          <th>Severity</th>
-          <td>
-            <pre>{{ cef.Severity }}</pre>
-          </td>
-          <td></td>
-        </tr>
+        <template v-if="cef.Version">
+          <tr class="section">
+            <th colspan="3">CEF Header</th>
+          </tr>
+          <tr class="cefheader">
+            <th>Version</th>
+            <td>
+              <pre>{{ cef.Version }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>DeviceVendor</th>
+            <td>
+              <pre>{{ cef.DeviceVendor }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>DeviceProduct</th>
+            <td>
+              <pre>{{ cef.DeviceProduct }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>DeviceVersion</th>
+            <td>
+              <pre>{{ cef.DeviceVersion }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>SignatureID</th>
+            <td>
+              <pre>{{ cef.SignatureID }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>Name</th>
+            <td>
+              <pre>{{ cef.Name }}</pre>
+            </td>
+            <td></td>
+          </tr>
+          <tr class="cefheader">
+            <th>Severity</th>
+            <td>
+              <pre>{{ cef.Severity }}</pre>
+            </td>
+            <td></td>
+          </tr>
+        </template>
         <tr class="section" v-if="cef.extensionsSorted.length > 0">
           <th colspan="3">CEF Extensions</th>
         </tr>
