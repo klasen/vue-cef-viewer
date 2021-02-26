@@ -1,3 +1,4 @@
+/* global Vue */
 
 const cefHeaders = ['Version', 'DeviceVendor',
     'DeviceProduct', 'DeviceVersion', 'SignatureID', 'Name', 'Severity'
@@ -61,7 +62,7 @@ String.prototype.parseCEF = function () {
     obj.extensions = {};
 
     // search for CEF message prefix
-    var i = this.search(/CEF:[0-9]/);
+    var i = this.search(/CEF:/);
     if (i == -1) {
         // CEF prefix not found
         return obj;
@@ -191,9 +192,9 @@ function prepareCefDisplay(cef) {
 
     // add keypair for c[ns]<i>Label with value c[ns]<i>
     cef.extensionsByLabel = {};
-    for (key in cef.extensions) {
+    for (var key in cef.extensions) {
         if (/Label$/.test(key)) {
-            baseKey = key.slice(0, -5);
+            var baseKey = key.slice(0, -5);
             if (cef.extensions[baseKey]) {
                 cef.extensionsByLabel[cef.extensions[key]] = cef.extensions[baseKey];
             }
