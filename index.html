@@ -105,7 +105,7 @@
         <tr class="cefextension" v-for="ext in cef.extensionsSorted">
           <th>{{ ext.key }}</th>
           <td>
-            <pre>{{ ext.value }}</pre>
+            <pre>{{ ext.value | pretty() }}</pre>
           </td>
           <td>
             <div
@@ -121,7 +121,7 @@
         <tr class="cefextension" v-for="ext in cef.extensionsByLabelSorted">
           <th>{{ ext.key }}</th>
           <td>
-            <pre>{{ ext.value }}</pre>
+            <pre>{{ ext.value | pretty() }}</pre>
           </td>
           <td></td>
         </tr>
