@@ -233,5 +233,28 @@ new Vue({
         cef: function () {
             return prepareCefDisplay(this.message.parseCEF());
         }
+    },
+    filters: {
+        // pretty print JSON
+        pretty: (val, indent = 2) => {
+            if (typeof val === "string") {
+                try {
+                    val = JSON.parse(val);
+                } catch (err) {
+                    return val;
+                }
+                // parse embedded JSON
+                if (typeof val === "string") {
+                    console.debug("Decoding dembedded JSON", val)
+                    try {
+                        val = JSON.parse(val);
+                    } catch (err) {
+                        console.warn("Failed to decode embedded JSON", err)
+                    }
+                }
+
+                return JSON.stringify(val, null, indent);
+            }
+        }
     }
 })
