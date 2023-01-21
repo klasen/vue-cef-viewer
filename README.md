@@ -10,6 +10,14 @@ Try it online at <https://klasen.github.io/vue-cef-viewer/>.
 npm install
 ```
 
+### Scrape CEF meta-data
+
+Scrape CEF implementation standard and save producer and consumer extension dictionaries as JSON and CSV.
+
+```sh
+node ./docs/scrape.js
+```
+
 ### Compiles and hot-reloads for development
 
 ```sh
