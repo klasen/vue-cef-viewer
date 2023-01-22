@@ -20,6 +20,7 @@ npm run serve
 
 ```sh
 npm run build
+git subtree push --prefix dist origin gh-pages
 ```
 
 ### Lints and fixes files
