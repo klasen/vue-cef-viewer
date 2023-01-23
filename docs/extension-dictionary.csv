@@ -1,4 +1,4 @@
-component,version,key,fullName,dataType,length,description
+dictionaryName,version,key,fullName,dataType,length,description
 producer,0.1,act,deviceAction,String,63,Action taken by the device.
 producer,0.1,app,applicationProtocol,String,31,"Application level protocol, example: HTTP, HTTPS, SSHv2, Telnet, POP, IMPA, IMAPS, and so on."
 producer,0.1,c6a1,deviceCustomIPv6Address1,IPv6 address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.

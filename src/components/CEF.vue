@@ -4,7 +4,7 @@
       <tr class="header">
         <th>Field</th>
         <th>Value</th>
-        <th>Comment</th>
+        <th class="comment">Comment</th>
       </tr>
       <tr class="section">
         <th colspan="3">Input</th>
@@ -74,15 +74,29 @@
         <th colspan="3">CEF Extensions</th>
       </tr>
       <tr class="cefextension" v-for="ext in cef.extensionsSorted" :key="ext.key">
-        <th>{{ ext.key }}</th>
-        <td>
+        <th :title="ext.meta.fullName" :class="ext.meta.invalidExtensionName && 'status_warning'">{{ ext.key }}</th>
+        <td :class="ext.meta.invalidValue && 'status_warning'">
           <pre>{{ ext.value | pretty() }}</pre>
         </td>
         <td>
-          <div
-            v-if="(ext.key == 'rt' || ext.key == 'start' || ext.key == 'end' || ext.key == 'art' || ext.key == 'deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
-            {{ (new Date(Number(ext.value))).toISOString() }}
-          </div>
+          <ul>
+            <li v-for="comment in ext.comments" :key="comment">
+              {{ comment }}
+            </li>
+            <li v-for="error in ext.errors" :key="error" class="status_error">
+              {{ error }}
+            </li>
+            <li v-for="warning in ext.warnings" :key="warning" class="status_warning">
+              {{ warning }}
+            </li>
+            <li v-for="notice in ext.notices" :key="notice" class="status_notice">
+              {{ notice }}
+            </li>
+            <li
+              v-if="(ext.key == 'rt' || ext.key == 'start' || ext.key == 'end' || ext.key == 'art' || ext.key == 'deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
+              {{ (new Date(Number(ext.value))).toISOString() }}
+            </li>
+          </ul>
         </td>
       </tr>
       <tr class="section" v-if="cef.extensionsByLabelSorted.length > 0">
@@ -91,7 +105,7 @@
       <tr class="cefextension" v-for="ext in cef.extensionsByLabelSorted" :key="ext.key">
         <th>{{ ext.key }}</th>
         <td>
-          <pre>{{ ext.value | pretty() }}</pre>
+          <pre>{{ ext.value }}</pre>
         </td>
         <td></td>
       </tr>
@@ -100,6 +114,10 @@
 </template>
 
 <script>
+
+// include extension dictionary at build time
+import DICTIONARY from './extension-dictionary.json'
+
 const cefHeaders = ['Version', 'DeviceVendor',
   'DeviceProduct', 'DeviceVersion', 'SignatureID', 'Name', 'Severity'
 ];
@@ -274,10 +292,107 @@ String.prototype.parseCEF = function () {
   return obj;
 };
 
-function prepareCefDisplay(cef) {
+function validateExtensionValue(dataType, length, value) {
+  switch (dataType) {
+    case "String":
+      if (value.length > length) {
+        return "Length of " + value.length + " exceeds limit of " + length;
+      }
+      break;
+    case "Time Stamp":
+      console.log("Unvalidated dataType: %s", dataType);
+      break;
+    case "MAC Address":
+      if (!/^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$/.test(value)) {
+        return "Invalid format";
+      }
+      break;
+    case "IPv4 Address":
+    case "IPv6 Address":
+    case "IP Address":
+      console.log("Unvalidated dataType: %s", dataType);
+      break;
+    case "Integer": {
+      const n = parseInt(value);
+      if (Number.isNaN(n) || n > 2147483647 || n < -2147483648) {
+        return "Invalid Integer";
+      }
+      break;
+    }
+    case "Long": {
+      try {
+        const n = BigInt(value);
+        if (n > 922337203685477580n || n < -9223372036854775808n) {
+          return "Invalid Long";
+        }
+      } catch (error) {
+        return "Invalid Long";
+      }
+      break;
+    }
+    default:
+      return ("Unknown dataType: " + dataType);
+  }
+  return true;
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function prepareCefDisplay(cef, dictionary) {
   cef.extensionsSorted = Object.entries(cef.extensions).
-    // object to array of objects
-    map(([k, v]) => ({ "key": k, "value": v })).
+    // convert object to sorted array of objects
+    map(([k, v]) => {
+      let obj = { "key": k, "meta": {}, "comments": [], "errors": [], "warnings": [], "notices": [] };
+
+      // mixin meta data from dictionary
+      if (k in dictionary) {
+        Object.assign(obj.meta, dictionary[k]);
+
+        obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        obj.comments.push(dictionary[k]["dataType"] + (dictionary[k]["length"] ? "[" + dictionary[k]["length"] + "]" : ""));
+        let validity = validateExtensionValue(dictionary[k]["dataType"], dictionary[k]["length"], v);
+        if (validity !== true) {
+          obj.meta["invalidValue"] = true;
+          obj.warnings.push(validity);
+        }
+        obj.comments.push(dictionary[k]["description"]);
+      } else {
+        obj.meta["userDefinedExtension"] = true;
+        obj.comments.push("User-Defined Extension");
+        if (!/^[A-Z][a-zA-Z0-9]*$/.test(k)) {
+          // https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/index.html#CEF/Chapter%204%20User%20Defined%20Extensions.htm#Limitations?TocPath=_____5
+          obj.meta["invalidExtensionName"] = true;
+          obj.warnings.push("Extension name does not adhere to VendornameProductnameExplanatoryKeyName format");
+        }
+      }
+
+      // try to parse value as JSON
+      if (typeof v === "string" && (v.startsWith('{') || v.startsWith('"'))) {
+        try {
+          v = JSON.parse(v);
+          obj.meta["contentType"] = "json";
+          // try to parse embedded JSON
+          if (typeof v === "string" && v.startsWith('{')) {
+            try {
+              v = JSON.parse(v);
+              obj.notices.push("Pretty print embedded JSON");
+              obj.meta["contentType"] = "embedded-json";
+            } catch (err) {
+              console.error("Failed to parse '%s' extension value as embedded JSON.", k, err)
+            }
+          } else {
+            obj.notices.push("Pretty print JSON");
+          }
+        } catch (err) {
+          console.error("Failed to parse '%s' extension value as JSON.", k, err)
+        }
+      }
+      obj["value"] = v;
+
+      return obj;
+    }).
     // sort by "key" property
     sort((a, b) => {
       if (a.key < b.key) {
@@ -295,14 +410,14 @@ function prepareCefDisplay(cef) {
   for (var key in cef.extensions) {
     if (/Label$/.test(key)) {
       var baseKey = key.slice(0, -5);
-      if (cef.extensions[baseKey]) {
+      if (baseKey in cef.extensions) {
         cef.extensionsByLabel[cef.extensions[key]] = cef.extensions[baseKey];
       }
     }
   }
 
+  // convert object to sorted array of objects
   cef.extensionsByLabelSorted = Object.entries(cef.extensionsByLabel).
-    // object to array of objects
     map(([k, v]) => ({ "key": k, "value": v })).
     // sort by "key" property
     sort((a, b) => {
@@ -326,29 +441,16 @@ export default {
   },
   computed: {
     cef: function () {
-      return prepareCefDisplay(this.message.parseCEF());
+      return prepareCefDisplay(this.message.parseCEF(), DICTIONARY);
     }
   },
   filters: {
-    // pretty print JSON
+    // pretty print objects
     pretty: (val, indent = 2) => {
-      if (typeof val === "string") {
-        try {
-          val = JSON.parse(val);
-        } catch (err) {
-          return val;
-        }
-        // parse embedded JSON
-        if (typeof val === "string") {
-          console.debug("Decoding dembedded JSON", val)
-          try {
-            val = JSON.parse(val);
-          } catch (err) {
-            console.warn("Failed to decode embedded JSON", err)
-          }
-        }
-
+      if (typeof val !== "string") {
         return JSON.stringify(val, null, indent);
+      } else {
+        return val;
       }
     }
   }
@@ -375,6 +477,21 @@ th {
   vertical-align: top;
 }
 
+.status_error {
+  font-weight: bold;
+  color: #E5004C;
+}
+
+.status_warning {
+  font-weight: bold;
+  color: #F48B34;
+}
+
+.status_notice {
+  font-weight: bold;
+  /* color: #FCDB1F; */
+}
+
 tr:hover {
   background-color: #ddd;
 }
@@ -384,6 +501,10 @@ tr.header th {
   padding-bottom: 12px;
   background-color: #0079ef;
   color: white;
+}
+
+tr.header th.comment {
+  width: 30%;
 }
 
 tr.section th {
@@ -396,5 +517,11 @@ tr.section th {
 pre {
   white-space: pre-wrap;
   margin: 2px;
+}
+
+ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 16px;
 }
 </style>
