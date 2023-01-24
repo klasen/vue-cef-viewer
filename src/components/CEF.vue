@@ -92,7 +92,7 @@
             <li v-for="notice in ext.notices" :key="notice" class="status_notice">
               {{ notice }}
             </li>
-            <li
+            <li class="status_notice"
               v-if="(ext.key == 'rt' || ext.key == 'start' || ext.key == 'end' || ext.key == 'art' || ext.key == 'deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
               {{ (new Date(Number(ext.value))).toISOString() }}
             </li>
