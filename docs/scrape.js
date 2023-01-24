@@ -9,7 +9,7 @@ const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/a
 
 let dictionary = [];
 
-function parseExtension(dict, component, $, element) {
+function parseExtension(dict, dictionaryName, $, element) {
     const tds = $(element).find('td');
 
     //Extracting the text out of each cell
@@ -40,7 +40,7 @@ function parseExtension(dict, component, $, element) {
     }
 
     let extension = {
-        'component': component,
+        'dictionaryName': dictionaryName,
         'version': version,
         'key': key,
         'fullName': fullName,
@@ -95,5 +95,5 @@ function saveJson(arr, fileName) {
     let csv = new ObjectsToCsv(dictionary);
     await csv.toDisk('docs/extension-dictionary.csv')
 
-    saveJson(dictionary, 'public/extension-dictionary.json');
+    saveJson(dictionary, 'src/components/extension-dictionary.json');
 })();
