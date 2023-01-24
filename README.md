@@ -28,7 +28,10 @@ npm run serve
 
 ```sh
 npm run build
+# initial
 git subtree push --prefix dist origin gh-pages
+# on updates
+git push origin :gh-pages && git subtree push --prefix dist origin gh-pages
 ```
 
 ### Lints and fixes files
