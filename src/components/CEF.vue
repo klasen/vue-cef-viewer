@@ -1,10 +1,12 @@
 <template>
   <div class="cef">
-    <table>
+    <table id="ceftable">
       <tr class="header">
         <th>Field</th>
         <th>Value</th>
-        <th class="comment">Comment</th>
+        <th class="comment">Comment<button class="right" v-on:click="copyToClipboard('ceftable')">Copy to
+            clipboard</button>
+        </th>
       </tr>
       <tr class="section">
         <th colspan="3">Input</th>
@@ -440,6 +442,18 @@ export default {
       return prepareCefDisplay(this.message.parseCEF(), DICTIONARY);
     }
   },
+  methods: {
+    copyToClipboard(containerid) {
+      const containerNode = document.getElementById(containerid);
+      const range = document.createRange();
+      range.selectNode(containerNode);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+      console.log("Table copied to clipboard");
+    }
+  },
   filters: {
     // pretty print objects
     pretty: (val, indent = 2) => {
@@ -508,6 +522,10 @@ tr.section th {
   padding-bottom: 8px;
   background-color: #29cdfe;
   color: white;
+}
+
+button.right {
+  float: right;
 }
 
 pre {
