@@ -128,3 +128,8 @@ out
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# keys
+*.p12
+*.pfx
+*.pem

@@ -1,10 +1,12 @@
 <template>
   <div class="cef">
-    <table>
+    <table id="ceftable">
       <tr class="header">
         <th>Field</th>
         <th>Value</th>
-        <th class="comment">Comment</th>
+        <th class="comment">Comment<button class="right" v-on:click="copyToClipboard('ceftable')">Copy to
+            clipboard</button>
+        </th>
       </tr>
       <tr class="section">
         <th colspan="3">Input</th>
@@ -80,22 +82,13 @@
         </td>
         <td>
           <ul>
-            <li v-for="comment in ext.comments" :key="comment">
-              {{ comment }}
-            </li>
-            <li v-for="error in ext.errors" :key="error" class="status_error">
-              {{ error }}
-            </li>
-            <li v-for="warning in ext.warnings" :key="warning" class="status_warning">
-              {{ warning }}
-            </li>
-            <li v-for="notice in ext.notices" :key="notice" class="status_notice">
-              {{ notice }}
-            </li>
-            <li
+            <li v-for="comment in ext.comments" :key="comment">{{ comment }}</li>
+            <li v-for="error in ext.errors" :key="error" class="status_error">{{ error }}</li>
+            <li v-for="warning in ext.warnings" :key="warning" class="status_warning">{{ warning }}</li>
+            <li v-for="notice in ext.notices" :key="notice" class="status_notice">{{ notice }}</li>
+            <li class="status_notice"
               v-if="(ext.key == 'rt' || ext.key == 'start' || ext.key == 'end' || ext.key == 'art' || ext.key == 'deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
-              {{ (new Date(Number(ext.value))).toISOString() }}
-            </li>
+              {{ (new Date(Number(ext.value))).toISOString() }}</li>
           </ul>
         </td>
       </tr>
@@ -350,7 +343,12 @@ function prepareCefDisplay(cef, dictionary) {
       if (k in dictionary) {
         Object.assign(obj.meta, dictionary[k]);
 
-        obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        obj.comments.push(dictionary[k]["fullName"]);
+        if (dictionary[k]["dictionaryName"] == "consumer") {
+          obj.notices.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        } else {
+          obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        }
         obj.comments.push(dictionary[k]["dataType"] + (dictionary[k]["length"] ? "[" + dictionary[k]["length"] + "]" : ""));
         let validity = validateExtensionValue(dictionary[k]["dataType"], dictionary[k]["length"], v);
         if (validity !== true) {
@@ -444,6 +442,18 @@ export default {
       return prepareCefDisplay(this.message.parseCEF(), DICTIONARY);
     }
   },
+  methods: {
+    copyToClipboard(containerid) {
+      const containerNode = document.getElementById(containerid);
+      const range = document.createRange();
+      range.selectNode(containerNode);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+      console.log("Table copied to clipboard");
+    }
+  },
   filters: {
     // pretty print objects
     pretty: (val, indent = 2) => {
@@ -512,6 +522,10 @@ tr.section th {
   padding-bottom: 8px;
   background-color: #29cdfe;
   color: white;
+}
+
+button.right {
+  float: right;
 }
 
 pre {

@@ -1,0 +1,8 @@
+{
+    "MD013": false,
+    "MD033": {
+        "allowed_elements": [
+            "table", "tr", "th", "td", "br", "pre", "ul", "li"
+        ]
+    }
+}

@@ -4,7 +4,7 @@
     <p>
       This is a small <a href="https://vuejs.org/">Vue.js</a> App to display
       <a
-        href="https://community.microfocus.com/t5/ArcSight-Connectors/ArcSight-Common-Event-Format-CEF-Implementation-Standard/ta-p/1645557">CEF</a>
+        href="https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard">CEF</a>
       messages in a nice format. All parsing is done in JavaScript on the
       client side. No CEF data is sent to the server.
       <br />
