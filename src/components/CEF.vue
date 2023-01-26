@@ -80,22 +80,13 @@
         </td>
         <td>
           <ul>
-            <li v-for="comment in ext.comments" :key="comment">
-              {{ comment }}
-            </li>
-            <li v-for="error in ext.errors" :key="error" class="status_error">
-              {{ error }}
-            </li>
-            <li v-for="warning in ext.warnings" :key="warning" class="status_warning">
-              {{ warning }}
-            </li>
-            <li v-for="notice in ext.notices" :key="notice" class="status_notice">
-              {{ notice }}
-            </li>
+            <li v-for="comment in ext.comments" :key="comment">{{ comment }}</li>
+            <li v-for="error in ext.errors" :key="error" class="status_error">{{ error }}</li>
+            <li v-for="warning in ext.warnings" :key="warning" class="status_warning">{{ warning }}</li>
+            <li v-for="notice in ext.notices" :key="notice" class="status_notice">{{ notice }}</li>
             <li class="status_notice"
               v-if="(ext.key == 'rt' || ext.key == 'start' || ext.key == 'end' || ext.key == 'art' || ext.key == 'deviceCustomDate1') && /^[0-9]+$/.test(ext.value)">
-              {{ (new Date(Number(ext.value))).toISOString() }}
-            </li>
+              {{ (new Date(Number(ext.value))).toISOString() }}</li>
           </ul>
         </td>
       </tr>
@@ -350,7 +341,12 @@ function prepareCefDisplay(cef, dictionary) {
       if (k in dictionary) {
         Object.assign(obj.meta, dictionary[k]);
 
-        obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        obj.comments.push(dictionary[k]["fullName"]);
+        if (dictionary[k]["dictionaryName"] == "consumer") {
+          obj.notices.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        } else {
+          obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
+        }
         obj.comments.push(dictionary[k]["dataType"] + (dictionary[k]["length"] ? "[" + dictionary[k]["length"] + "]" : ""));
         let validity = validateExtensionValue(dictionary[k]["dataType"], dictionary[k]["length"], v);
         if (validity !== true) {
