@@ -33,8 +33,13 @@ function parseExtension(dict, dictionaryName, $, element) {
         console.log('Invalid key "' + rawkey + '" -> ' + key);
     }
 
+    if (dataType=="IPv4 Address") {
+        console.log('Fix data type for key "' + rawkey + '": ' + dataType + "-> IP Address");
+        dataType = "IP Address";
+    }
+
     if (length.startsWith('64-bit') || rawkey == 'in' || rawkey == 'out') {
-        console.log('Fix data type for key "' + rawkey + '"');
+        console.log('Fix data type for key "' + rawkey + '": ' + dataType + "-> Long");
         dataType = 'Long';
         length = '';
     }

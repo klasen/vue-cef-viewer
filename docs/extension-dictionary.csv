@@ -37,7 +37,7 @@ producer,0.1,cs6,deviceCustomString6,String,4000,"One of six strings available t
 producer,0.1,cs6Label,deviceCustomString6Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,destinationDnsDomain,destinationDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
 producer,0.1,destinationServiceName,destinationServiceName,String,1023,The service targeted by this event. Example: “sshd”
-producer,0.1,destinationTranslatedAddress,destinationTranslated Address,IPv4 Address,,Identifies the translated destination that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,destinationTranslatedAddress,destinationTranslated Address,IP Address,,Identifies the translated destination that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,destinationTranslatedPort,destinationTranslatedPort,Integer,,"Port after it was translated; for example, a firewall. Valid port numbers are 0 to 65535."
 producer,0.1,deviceCustomDate1,deviceCustomDate1,TimeStamp,,"One of two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,deviceCustomDate1Label,deviceCustomDate1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
@@ -52,7 +52,7 @@ producer,0.1,deviceNtDomain,deviceNtDomain,String,255,The Windows domain name of
 producer,0.1,DeviceOutboundInterface,deviceOutboundInterface,String,128,Interface on which the packet or data left the device.
 producer,0.1,DevicePayloadId,devicePayloadId,String,128,Unique identifier for the payload associated with the event.
 producer,0.1,deviceProcessName,deviceProcessName,String,1023,Process name associated with the event. An example might be the process generating the syslog entry in UNIX.
-producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IPv4 Address,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IP Address,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dhost,destinationHostName,String,1023,"Identifies the destination that an event refers to in an IP network. The format must be a fully qualified domain name (FQDN) associated with the destination node, when a node is available. Examples: “host.domain.com” or “host”."
 producer,0.1,dmac,deviceMacAddress,MAC Address,,Six colon-seperated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dntdom,destinationNtDomain,String,255,The Windows domain name of the destination address.
@@ -60,11 +60,11 @@ producer,0.1,dpid,destinationProcessId,Integer,,"Provides the ID of the destinat
 producer,0.1,dpriv,destinationUserPrivileges,String,1023,"The typical values are “Administrator”, “User”, and “Guest”. This identifies the destination user’s privileges. In UNIX, for example, activity executed on the root user would be identified with destinationUser Privileges of “Administrator”."
 producer,0.1,dproc,destinationProcessName,String,1023,The name of the event’s destination process. Example:  “telnetd” or “sshd”.
 producer,0.1,dpt,destinationPort,Integer,,The valid port numbers are between 0 and 65535.
-producer,0.1,dst,destinationAddress,IPv4 Address,,Identifies the destination address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,dst,destinationAddress,IP Address,,Identifies the destination address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dtz,deviceTimeZone,String,255,The timezone for the device generating the event.
 producer,0.1,duid,destinationUserId,String,1023,"Identifies the destination user by ID. For example, in UNIX, the root user is generally associated with user ID 0."
 producer,0.1,duser,destinationUserName,String,1023,Identifies the destination user by name. This is the user associated with the event’s destination. Email addresses are often mapped into the UserName fields. The recipient is a candidate to put into this field.
-producer,0.1,dvc,deviceAddress,IPv4 Address,,Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,dvc,deviceAddress,IP Address,,Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,dvchost,deviceHostName,String,100,"The format should be a fully qualified domain name (FQDN) associated with the device node, when a node is available. Example: “host.domain.com” or “host”."
 producer,0.1,dmac,deviceMacAddress,MAC Address,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dvcpid,deviceProcessId,Integer,,Provides the ID of the process on the device generating the event.
@@ -111,13 +111,13 @@ producer,0.1,smac,sourceMacAddress,MAC address,,Six colon-separated hexadecimal 
 producer,0.1,sntdom,sourceNtDomain,String,255,The Windows domain name for the source address.
 producer,0.1,sourceDnsDomain,sourceDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
 producer,0.1,sourceServiceName,sourceServiceName,String,1023,The service that is responsible for generating this event.
-producer,0.1,sourceTranslatedAddress,sourceTranslatedAddress,IPv4 Address,,Identifies the translated source that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,sourceTranslatedAddress,sourceTranslatedAddress,IP Address,,Identifies the translated source that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,sourceTranslatedPort,sourceTranslatedPort,Integer,,"A port number after being translated by, for example, a firewall. Valid port numbers are 0 to 65535."
 producer,0.1,spid,sourceProcessId,Integer,,The ID of the source process associated with the event.
 producer,0.1,spriv,sourceUserPrivileges,String,1023,"The typical values are “Administrator”, “User”, and “Guest”. It identifies the source user’s privileges. In UNIX, for example, activity executed by the root user would be identified with “Administrator”."
 producer,0.1,sproc,sourceProcessName,String,1023,The name of the event’s source process.
 producer,0.1,spt,sourcePort,Integer,,The valid port numbers are 0 to 65535.
-producer,0.1,src,sourceAddress,IPv4 Address,,Identifies the source that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,src,sourceAddress,IP Address,,Identifies the source that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,start,startTime,Time Stamp,,The time when the activity the event referred to started. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
 producer,0.1,suid,sourceUserId,String,1023,"Identifies the source user by ID. This is the user associated with the source of the event. For example, in UNIX, the root user is generally associated with user ID 0."
 producer,0.1,suser,sourceUserName,String,1023,Identifies the source user by name. Email addresses are also mapped into the UserName fields. The sender is a candidate to put into this field.
