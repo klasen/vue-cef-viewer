@@ -131,14 +131,6 @@ producer,1.2,deviceTranslatedZoneKey,Device Translated Zone Key,Long,,ID of a de
 producer,1.2,deviceZoneKey,Device Zone Key,Long,,ID of a deviceZone resource reference.
 producer,1.2,sTranslatedZoneKey,Source Translated Zone Key,Long,,ID of a sourceTranslatedZone resource reference.
 producer,1.2,sZoneKey,Source Zone Key,Long,,ID of a sourceZone resource reference.
-producer,1.2,reportedDuration,Reported Duration,Long,,Elapsed time in milliseconds of the action or entity the event represents.
-producer,1.2,reportedResourceGroupName,Reported Resource Group Name,String,128,Name of a group containing the resource in the system that sent the event.
-producer,1.2,reportedResourceID,Reported Resource ID,String,256,Name of a group containing the resource in the system that sent the event.
-producer,1.2,reportedResourceName,Reported Resource Name,String,64,Name of the affected resource in the system that sent the event.
-producer,1.2,reportedResourceType,Reported Resource Type,String,64,Type of the affected resource in the system that sent the event.
-producer,1.2,frameworkName,Framework Name,String,256,The name of the framework used for threatAttackID.
-producer,1.2,threatActor,Threat actor,String,40,Threat actor associated with the event.
-producer,1.2,threatAttackID,Threat Attack ID,String,32,A full ID of a threat or attack as defined in the security framework in frameworkName.
 consumer,0.1,agentDnsDomain,agentDnsDomain,String,255,The DNS domain name of the ArcSight connector that processed the event.
 consumer,0.1,agentNtDomain,agentNtDomain,String,255,
 consumer,0.1,agentTranslatedAddress,agentTranslatedAddress,IP Address,,
@@ -183,11 +175,3 @@ consumer,1.2,deviceTranslatedZoneKey,Device Translated Zone Key,Long,,ID of a de
 consumer,1.2,deviceZoneKey,Device Zone Key,Long,,ID of a deviceZone resource reference.
 consumer,1.2,sTranslatedZoneKey,Source Translated Zone Key,Long,,ID of a sourceTranslatedZone resource reference.
 consumer,1.2,sZoneKey,Source Zone Key,Long,,ID of a sourceZone resource reference.
-consumer,1.2,reportedDuration,Reported Duration,Long,,Elapsed time in milliseconds of the action or entity the event represents.
-consumer,1.2,reportedResourceGroupName,Reported Resource Group Name,String,128,Name of a group containing the resource in the system that sent the event.
-consumer,1.2,reportedResourceID,Reported Resource ID,String,256,Name of a group containing the resource in the system that sent the event.
-consumer,1.2,reportedResourceName,Reported Resource Name,String,64,Name of the affected resource in the system that sent the event.
-consumer,1.2,reportedResourceType,Reported Resource Type,String,64,Type of the affected resource in the system that sent the event.
-consumer,1.2,frameworkName,Framework Name,String,256,The name of the framework used for threatAttackID.
-consumer,1.2,threatActor,Threat actor,String,40,Threat actor associated with the event.
-consumer,1.2,threatAttackID,Threat Attack ID,String,32,A full ID of a threat or attack as defined in the security framework in frameworkName.
