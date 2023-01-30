@@ -296,7 +296,7 @@ function validateExtensionValue(dataType, length, value) {
       console.log("Unvalidated dataType: %s", dataType);
       break;
     case "MAC Address":
-      if (!/^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$/.test(value)) {
+      if (!/^[0-9a-fA-F]{2}([:-][0-9a-fA-F]{2}){5}$/.test(value)) {
         return "Invalid format";
       }
       break;
