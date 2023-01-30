@@ -122,15 +122,14 @@ producer,0.1,start,startTime,Time Stamp,,The time when the activity the event re
 producer,0.1,suid,sourceUserId,String,1023,"Identifies the source user by ID. This is the user associated with the source of the event. For example, in UNIX, the root user is generally associated with user ID 0."
 producer,0.1,suser,sourceUserName,String,1023,Identifies the source user by name. Email addresses are also mapped into the UserName fields. The sender is a candidate to put into this field.
 producer,0.1,type,type,Integer,,"0 means base event, 1 means aggregated, 2 means correlation, and 3 means action. This field can be omitted for base events (type 0)."
-producer,1.2,agentTranslatedZoneKey,Agent Translated Zone Key,Long,,ID of an agentTranslatedZone resource reference.
-producer,1.2,agentZoneKey,Agent Zone Key,Long,,ID of an agentZone resource reference.
-producer,1.2,customerKey,Customer Key,Long,,ID of a customer resource reference.
-producer,1.2,dTranslatedZoneKey,Destination Translated Zone Key,Long,,ID of a destinationTranslatedZone resource reference.
-producer,1.2,dZoneKey,Destination Zone Key,Long,,ID of a destinationZone resource reference.
-producer,1.2,deviceTranslatedZoneKey,Device Translated Zone Key,Long,,ID of a deviceTranslatedZone resource reference.
-producer,1.2,deviceZoneKey,Device Zone Key,Long,,ID of a deviceZone resource reference.
-producer,1.2,sTranslatedZoneKey,Source Translated Zone Key,Long,,ID of a sourceTranslatedZone resource reference.
-producer,1.2,sZoneKey,Source Zone Key,Long,,ID of a sourceZone resource reference.
+producer,1.2,reportedDuration,Reported Duration,Long,,Elapsed time in milliseconds of the action or entity the event represents.
+producer,1.2,reportedResourceGroupName,Reported Resource Group Name,String,128,Name of a group containing the resource in the system that sent the event.
+producer,1.2,reportedResourceID,Reported Resource ID,String,256,Name of a group containing the resource in the system that sent the event.
+producer,1.2,reportedResourceName,Reported Resource Name,String,64,Name of the affected resource in the system that sent the event.
+producer,1.2,reportedResourceType,Reported Resource Type,String,64,Type of the affected resource in the system that sent the event.
+producer,1.2,frameworkName,Framework Name,String,256,The name of the framework used for threatAttackID.
+producer,1.2,threatActor,Threat actor,String,40,Threat actor associated with the event.
+producer,1.2,threatAttackID,Threat Attack ID,String,32,A full ID of a threat or attack as defined in the security framework in frameworkName.
 consumer,0.1,agentDnsDomain,agentDnsDomain,String,255,The DNS domain name of the ArcSight connector that processed the event.
 consumer,0.1,agentNtDomain,agentNtDomain,String,255,
 consumer,0.1,agentTranslatedAddress,agentTranslatedAddress,IP Address,,

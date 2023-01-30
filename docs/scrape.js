@@ -6,6 +6,8 @@ const fs = require('fs');
 const ObjectsToCsv = require("objects-to-csv");
 
 const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/Content/CEF/Chapter%202%20ArcSight%20Extension.htm#'
+const producerDictionaryName = 'producer'
+const consumerDictionaryName = 'consumer'
 
 let dictionary = [];
 
@@ -33,7 +35,19 @@ function parseExtension(dict, dictionaryName, $, element) {
         console.log('Invalid key "' + rawkey + '" -> ' + key);
     }
 
-    if (dataType=="IPv4 Address") {
+    // ignore 1.2 *Key producer extensions that are actually consumer
+    if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
+        console.log('Ignore duplicate ' + dictionaryName + ' extension "' + key + '"')
+        return;
+    }
+
+    // ignore 1.2 *Key consumer extensions that are actually producer
+    if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
+        console.log('Ignore duplicate ' + dictionaryName + ' extension "' + key + '"')
+        return;
+    }
+
+    if (dataType == "IPv4 Address") {
         console.log('Fix data type for key "' + rawkey + '": ' + dataType + "-> IP Address");
         dataType = "IP Address";
     }
