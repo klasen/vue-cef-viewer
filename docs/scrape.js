@@ -139,6 +139,13 @@ function parseExtension(dict, dictionaryName, $, element) {
     dict.push(extension);
 }
 
+// input: array of property names, names starting with "-" are sorted reversely
+const sortByFields = (fields) => (a, b) => fields.map(key => {
+    let direction = 1;
+    if (key[0] === '-') { direction = -1; key = key.substring(1); }
+    return a[key] > b[key] ? direction : a[key] < b[key] ? -(direction) : 0;
+}).reduce((p, n) => p ? p : n, 0);
+
 function saveJson(arr, fileName) {
     // transform array of objects into map
     let extensionMap = {};
@@ -176,6 +183,9 @@ async function scrapeUrl(url) {
         consumerRows.each((index, element) => {
             parseExtension(dictionary, consumerDictionaryName, $, element);
         })
+
+        // sort dictionary by dictionaryName (producer first), version, key, and fullName
+        dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
 
         let csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary.csv')
