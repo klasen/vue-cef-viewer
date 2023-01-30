@@ -78,6 +78,19 @@ function parseExtension(dict, dictionaryName, $, element) {
         }        
     }        
 
+    // remove spaces from fullName
+    const origFullName2 = fullName;
+    fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
+    if (fullName != origFullName2) {
+        console.log('Invalid fullName "' + origFullName + '" -> ' + fullName);
+    }
+
+    // Lower case first character of fullName
+    if (/^[A-Z]/.test(fullName)) {
+        fullName = fullName.charAt(0).toLowerCase() + fullName.slice(1);
+        console.log('Lower case first fullName character of "' + origFullName + '" -> ' + fullName);
+    }
+
     // IP address extensions can take IPv6 now
     if (dataType == 'IPv4 Address') {
         console.log('Fix data type for key "' + key + '": ' + dataType + '-> IP Address');

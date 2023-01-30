@@ -1,7 +1,7 @@
 dictionaryName,version,key,fullName,dataType,length,description
 devguide,,,applicationProtocol,String,31,n/a
 devguide,,,baseEventCount,Integer,n/a,0 -> 231-1
-devguide,,,bytes In,Long,n/a,0 -> 263-1
+devguide,,,bytesIn,Long,n/a,0 -> 263-1
 devguide,,,bytesOut,Long,n/a,0 -> 263-1 -1
 devguide,,,categoryBehavior,String,1023,n/a (1)
 devguide,,,categoryDeviceGroup,String,1023,n/a (1)
