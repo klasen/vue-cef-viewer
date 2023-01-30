@@ -285,7 +285,7 @@ String.prototype.parseCEF = function () {
   return obj;
 };
 
-function validateExtensionValue(dataType, length, value) {
+function validateExtensionValue(name, dataType, length, value) {
   switch (dataType) {
     case "String":
       if (value.length > length) {
@@ -326,6 +326,12 @@ function validateExtensionValue(dataType, length, value) {
     default:
       return ("Unknown dataType: " + dataType);
   }
+
+  if (/host$/i.test(name)) {
+    if (!/^(?!:\/\/)(?=.{1,255}$)((.{1,63}\.){1,127}(?![0-9]*$)[a-z0-9-]+\.?)$/igm.test(value)) {
+      return "Invalid FQDN";
+    }
+  }
   return true;
 }
 
@@ -350,7 +356,7 @@ function prepareCefDisplay(cef, dictionary) {
           obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
         }
         obj.comments.push(dictionary[k]["dataType"] + (dictionary[k]["length"] ? "[" + dictionary[k]["length"] + "]" : ""));
-        let validity = validateExtensionValue(dictionary[k]["dataType"], dictionary[k]["length"], v);
+        let validity = validateExtensionValue(k, dictionary[k]["dataType"], dictionary[k]["length"], v);
         if (validity !== true) {
           obj.meta["invalidValue"] = true;
           obj.warnings.push(validity);
