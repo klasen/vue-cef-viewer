@@ -11,6 +11,8 @@ const producerDictionaryName = 'producer'
 const consumerDictionaryName = 'consumer'
 const devguideDictionaryName = 'devguide'
 
+let firstDmac = true; // dmac key occurs twice
+
 function parseExtension(dict, dictionaryName, $, element) {
     const tds = $(element).find('td');
 
@@ -23,6 +25,7 @@ function parseExtension(dict, dictionaryName, $, element) {
 
     // extract the text from each cell
     if (dictionaryName == devguideDictionaryName) {
+        version = '0.1';
         fullName = $(tds[0]).text().trim();
         dataType = $(tds[1]).text().trim();
         length = $(tds[2]).text().trim();
@@ -52,11 +55,11 @@ function parseExtension(dict, dictionaryName, $, element) {
             description = desc.text().trim();
         } else {
             description = $(tds[5]).text().trim();
-        }    
-    }    
-    
+        }
+    }
+
     // fix data
-    
+
     // ignore 1.2 *Key producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
         console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
@@ -90,31 +93,104 @@ function parseExtension(dict, dictionaryName, $, element) {
         console.log('Lower case first fullName character of "' + origFullName + '" -> ' + fullName);
     }
 
-    // IP address extensions can take IPv6 now
-    if (dataType == 'IPv4 Address') {
-        console.log('Fix data type for key "' + key + '": ' + dataType + '-> IP Address');
-        dataType = 'IP Address';
-    }    
+    // fix data for specific keys
+    switch (key) {
+        case 'dmac':
+            if (firstDmac) {
+                fullName = 'destinationMacAddress';
+                console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+                firstDmac = false;
+            }
+            break;
+        case 'flexString1Label':
+            fullName = 'flexString1Label';
+            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            break;
+        case 'fname':
+            fullName = 'fileName';
+            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            break;
+        case 'threatActor':
+            fullName = 'threatActor';
+            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            break;
+        default:
+            break;
+    }
+
+    // fix data for specific full names
+    switch (fullName) {
+        case 'deviceMacAddress': {
+            const origKey = key;
+            key = 'deviceMacAddress';
+            console.log('Fix key "' + origKey + '" -> "' + key + '"');
+            break;
+        }
+        case 'deviceCustomIPv6Address1':
+        case 'deviceCustomIPv6Address2':
+        case 'deviceCustomIPv6Address3':
+            dataType = 'IPv6 Address';
+            break;
+        case 'agentSeverity':
+        case 'deviceEventClassId':
+        case 'deviceProduct':
+        case 'deviceVersion':
+        case 'deviceVendor':
+        case 'name':
+            // ignore header fields
+            return;
+        default:
+            break;
+    }
+
+    // normalize dataType
+    const origDataType = dataType;
+    switch (dataType) {
+        case 'IPv4 Address': // IP address extensions can take IPv6 now
+        case 'IPAddress':
+            dataType = 'IP Address';
+            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            break;
+        case 'MacAddress':
+        case 'MAC address':
+            dataType = 'MAC Address';
+            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            break;
+        case 'TimeStamp':
+            dataType = 'Time Stamp';
+            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            break;
+        default:
+            break;
+    }
 
     if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
         console.log('Fix data type for key "' + key + '": ' + dataType + '-> Long');
         dataType = 'Long';
         length = '';
-    }    
+    }
 
+    if (length.startsWith('n/a')) {
+        length = '';
+    }
+
+    if (description.endsWith('(2)')) {
+        // Note (2): Although URI fields can be set using the FlexConnector properties file, these are really links to resources in the database. Therefore, it is recommended that those fields be set using the network-model and customer-setting features.
+        length = '2048';
+    }
     // there is no more 4.x, set length to 4000
     if (length.startsWith('1023 (4.x)')) {
         console.log('Set length for key "' + fullName + '": ' + length + '-> 4000');
         length = '4000';
-    }    
+    }
 
     // convert numeric length to Number
     if (dataType === 'String') {
         length = Number(length);
         if (Number.isNaN(length)) {
             length = undefined
-        }    
-    }    
+        }
+    }
 
     // add to results
     let extension = {
