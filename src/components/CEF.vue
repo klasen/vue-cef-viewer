@@ -364,7 +364,7 @@ function prepareCefDisplay(cef, dictionary) {
         obj.comments.push(dictionary[k]["description"]);
       } else {
         obj.meta["userDefinedExtension"] = true;
-        obj.comments.push("User-Defined Extension");
+        obj.notices.push("User-Defined Extension");
         if (!/^[A-Z][a-zA-Z0-9]*$/.test(k)) {
           // https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/index.html#CEF/Chapter%204%20User%20Defined%20Extensions.htm#Limitations?TocPath=_____5
           obj.meta["invalidExtensionName"] = true;
