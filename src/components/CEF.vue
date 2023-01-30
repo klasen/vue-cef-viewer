@@ -16,7 +16,11 @@
         <td>
           <pre>{{ message }}</pre>
         </td>
-        <td></td>
+        <td>
+          <ul>
+            <li v-for="error in cef.errors" :key="error" class="status_error">{{ error }}</li>
+          </ul>
+        </td>
       </tr>
       <template v-if="cef.Version">
         <tr class="section">
@@ -169,8 +173,10 @@ String.prototype.unescapeCefValue = function () {
 * @return {Object} Map of names (attributes) to values
 */
 String.prototype.parseCEF = function () {
-  var obj = {};
-  obj.extensions = {};
+  var obj = {
+    "extensions": {},
+    "errors": []
+  };
 
   // search for CEF message prefix
   var i = this.search(/CEF:/);
@@ -245,13 +251,17 @@ String.prototype.parseCEF = function () {
           foundfirstKeyValueSeparator = true;
         } else {
           // on subsequent key-value separators, we know where the previous value ended and add the previous key-value pair to extensions
-          if (quoted) {
-            obj.extensions[key] = this
-              .substring(startValue, startKeyValuePair - 1).unescapeCefValue();
-            quoted = false;
+          if (key in obj.extensions) {
+            obj.errors.push("Duplicate '" + key + "' extension. Ignoring subsequent instances.");
           } else {
-            obj.extensions[key] = this
-              .substring(startValue, startKeyValuePair - 1);
+            if (quoted) {
+              obj.extensions[key] = this
+                .substring(startValue, startKeyValuePair - 1).unescapeCefValue();
+              quoted = false;
+            } else {
+              obj.extensions[key] = this
+                .substring(startValue, startKeyValuePair - 1);
+            }
           }
         }
 
@@ -275,10 +285,14 @@ String.prototype.parseCEF = function () {
   }
   // add last key pair to extensions
   if (foundfirstKeyValueSeparator) {
-    if (quoted) {
-      obj.extensions[key] = this.substring(startValue, i).unescapeCefValue();
+    if (key in obj.extensions) {
+      obj.errors.push("Duplicate '" + key + "' extension. Ignoring subsequent instances.");
     } else {
-      obj.extensions[key] = this.substring(startValue, i);
+      if (quoted) {
+        obj.extensions[key] = this.substring(startValue, i).unescapeCefValue();
+      } else {
+        obj.extensions[key] = this.substring(startValue, i);
+      }
     }
   }
 
