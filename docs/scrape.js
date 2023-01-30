@@ -35,6 +35,10 @@ function parseExtension(dict, dictionaryName, $, element) {
         if (key != origKey) {
             console.log('Invalid key "' + origKey + '" -> ' + key);
         }
+        if (/^[A-Z]/.test(key)) {
+            key = key.charAt(0).toLowerCase() + key.slice(1);
+            console.log('Lower case first character of "' + origKey + '" -> ' + key);
+        }
 
         fullName = $(tds[2]).text().trim();
 

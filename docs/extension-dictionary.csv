@@ -6,7 +6,7 @@ producer,0.1,c6a1Label,deviceCustomIPv6 Address1Label,String,1023,All custom fie
 producer,0.1,c6a3,deviceCustomIPv6Address3,IPv6 address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
 producer,0.1,c6a3Label,deviceCustomIPv6Address3 Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,c6a4,deviceCustomIPv6 Address4,IPv6 address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,C6a4Label,deviceCustomIPv6 Address4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,c6a4Label,deviceCustomIPv6 Address4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,cat,deviceEventCategory,String,1023,Represents the category assigned by the originating device. Devices often use their own categorization schema to classify event. Example: “/Monitor/Disk/Read”
 producer,0.1,cfp1,deviceCustomFloatingPoint1,Floating Point,,One of our floating point fields available to map fields that do not apply to any other in this dictionary.
 producer,0.1,cfp1Label,deviceCustom FloatingPoint1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
@@ -49,8 +49,8 @@ producer,0.1,deviceExternalId,deviceExternalId,String,255,A name that uniquely i
 producer,0.1,deviceFacility,deviceFacility,String,1023,"The facility generating this event. For example, Syslog has an explicit facility associated with every event."
 producer,0.1,deviceInboundInterface,deviceInboundInterface,String,128,Interface on which the packet or data entered the device.
 producer,0.1,deviceNtDomain,deviceNtDomain,String,255,The Windows domain name of the device address.
-producer,0.1,DeviceOutboundInterface,deviceOutboundInterface,String,128,Interface on which the packet or data left the device.
-producer,0.1,DevicePayloadId,devicePayloadId,String,128,Unique identifier for the payload associated with the event.
+producer,0.1,deviceOutboundInterface,deviceOutboundInterface,String,128,Interface on which the packet or data left the device.
+producer,0.1,devicePayloadId,devicePayloadId,String,128,Unique identifier for the payload associated with the event.
 producer,0.1,deviceProcessName,deviceProcessName,String,1023,Process name associated with the event. An example might be the process generating the syslog entry in UNIX.
 producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IP Address,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dhost,destinationHostName,String,1023,"Identifies the destination that an event refers to in an IP network. The format must be a fully qualified domain name (FQDN) associated with the destination node, when a node is available. Examples: “host.domain.com” or “host”."
