@@ -127,6 +127,16 @@ function parseExtension(dict, dictionaryName, $, element) {
         'length': length,
         'description': description
     };
+
+    // check for duplicate extensions
+    for (let index = 0; index < dict.length; index++) {
+        const element = dict[index];
+        if ((key && key == element.key) || fullName == element.fullName) {
+            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
+            return;
+        }
+    }
+
     dict.push(extension);
 }
 
