@@ -33,11 +33,11 @@ function parseExtension(dict, dictionaryName, $, element) {
         const origKey = $(tds[1]).text().trim();
         key = origKey.replace(/[^0-9a-zA-Z]/g, '');
         if (key != origKey) {
-            console.log('Invalid key "' + origKey + '" -> ' + key);
+            console.log('Fix key "' + origKey + '" -> "' + key + '"');
         }
         if (/^[A-Z]/.test(key)) {
             key = key.charAt(0).toLowerCase() + key.slice(1);
-            console.log('Lower case first character of "' + origKey + '" -> ' + key);
+            console.log('Lower case first character of key "' + origKey + '" -> ' + key + '"');
         }
 
         fullName = $(tds[2]).text().trim();
@@ -59,13 +59,12 @@ function parseExtension(dict, dictionaryName, $, element) {
     
     // ignore 1.2 *Key producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
-        console.log('Ignore duplicate ' + dictionaryName + ' extension "' + key + '"')
+        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
         return;
     }
-
     // ignore 1.2 *Key consumer extensions that are actually producer
     if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
-        console.log('Ignore duplicate ' + dictionaryName + ' extension "' + key + '"')
+        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
         return;
     }
 
@@ -74,15 +73,15 @@ function parseExtension(dict, dictionaryName, $, element) {
     if (/^idFile/.test(fullName)) {
         fullName = origFullName.replace('id', 'old');
         if (fullName != origFullName) {
-            console.log('Fix fullName "' + origFullName + '" -> ' + fullName);
-        }        
-    }        
+            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+        }
+    }
 
     // remove spaces from fullName
     const origFullName2 = fullName;
     fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
     if (fullName != origFullName2) {
-        console.log('Invalid fullName "' + origFullName + '" -> ' + fullName);
+        console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
     }
 
     // Lower case first character of fullName
