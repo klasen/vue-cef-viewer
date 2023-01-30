@@ -3,38 +3,56 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const ObjectsToCsv = require("objects-to-csv");
+const ObjectsToCsv = require('objects-to-csv');
 
 const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/Content/CEF/Chapter%202%20ArcSight%20Extension.htm#'
+const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
 const producerDictionaryName = 'producer'
 const consumerDictionaryName = 'consumer'
-
-let dictionary = [];
+const devguideDictionaryName = 'devguide'
 
 function parseExtension(dict, dictionaryName, $, element) {
     const tds = $(element).find('td');
 
-    //Extracting the text out of each cell
-    const version = $(tds[0]).text().trim();
-    const rawkey = $(tds[1]).text().trim();
-    let fullName = $(tds[2]).text().trim();
-    let dataType = $(tds[3]).text().trim();
-    let length = $(tds[4]).text().trim();
-    // use first <p> element to skip note div
+    let version;
+    let key;
+    let fullName;
+    let dataType;
+    let length;
     let description;
-    const desc = $(tds[5]).find('p');
-    if (desc.length > 0) {
-        description = $(tds[5]).find('p').text().trim();
+
+    // extract the text from each cell
+    if (dictionaryName == devguideDictionaryName) {
+        fullName = $(tds[0]).text().trim();
+        dataType = $(tds[1]).text().trim();
+        length = $(tds[2]).text().trim();
+        description = $(tds[3]).text().trim();
     } else {
-        description = $(tds[5]).text().trim();
-    }
+        version = $(tds[0]).text().trim();
 
+        const origKey = $(tds[1]).text().trim();
+        key = origKey.replace(/[^0-9a-zA-Z]/g, '');
+        if (key != origKey) {
+            console.log('Invalid key "' + origKey + '" -> ' + key);
+        }
+
+        fullName = $(tds[2]).text().trim();
+
+        dataType = $(tds[3]).text().trim();
+
+        length = $(tds[4]).text().trim();
+
+        // use first <p> element to skip note div
+        const desc = $(tds[5]).find('p');
+        if (desc.length > 0) {
+            description = desc.text().trim();
+        } else {
+            description = $(tds[5]).text().trim();
+        }    
+    }    
+    
     // fix data
-    const key = rawkey.replace(/[^0-9a-zA-Z]/g, '');
-    if (key != rawkey) {
-        console.log('Invalid key "' + rawkey + '" -> ' + key);
-    }
-
+    
     // ignore 1.2 *Key producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
         console.log('Ignore duplicate ' + dictionaryName + ' extension "' + key + '"')
@@ -47,27 +65,51 @@ function parseExtension(dict, dictionaryName, $, element) {
         return;
     }
 
-    if (dataType == "IPv4 Address") {
-        console.log('Fix data type for key "' + rawkey + '": ' + dataType + "-> IP Address");
-        dataType = "IP Address";
-    }
+    // fix fullNames beginning with idFile
+    const origFullName = fullName;
+    if (/^idFile/.test(fullName)) {
+        fullName = origFullName.replace('id', 'old');
+        if (fullName != origFullName) {
+            console.log('Fix fullName "' + origFullName + '" -> ' + fullName);
+        }        
+    }        
+
+    // IP address extensions can take IPv6 now
+    if (dataType == 'IPv4 Address') {
+        console.log('Fix data type for key "' + key + '": ' + dataType + '-> IP Address');
+        dataType = 'IP Address';
+    }    
 
     if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
         console.log('Fix data type for key "' + key + '": ' + dataType + '-> Long');
         dataType = 'Long';
         length = '';
-    }
+    }    
 
+    // there is no more 4.x, set length to 4000
+    if (length.startsWith('1023 (4.x)')) {
+        console.log('Set length for key "' + fullName + '": ' + length + '-> 4000');
+        length = '4000';
+    }    
+
+    // convert numeric length to Number
+    if (dataType === 'String') {
+        length = Number(length);
+        if (Number.isNaN(length)) {
+            length = undefined
+        }    
+    }    
+
+    // add to results
     let extension = {
         'dictionaryName': dictionaryName,
         'version': version,
         'key': key,
         'fullName': fullName,
         'dataType': dataType,
-        'length': dataType === "String" ? Number(length) : length,
-        'description': description,
+        'length': length,
+        'description': description
     };
-
     dict.push(extension);
 }
 
@@ -89,30 +131,42 @@ function saveJson(arr, fileName) {
     });
 }
 
-(async function scrapeCefImplementationStandardUrl() {
-    const response = await axios(cefImplementationStandardUrl)
+async function scrapeUrl(url) {
+    const response = await axios(url)
     const html = await response.data;
     const $ = cheerio.load(html);
 
-    //Selecting all rows inside our target table
+    if (url == cefImplementationStandardUrl) {
+        let dictionary = [];
 
-    const producerRows = $('.table_2:nth-of-type(1) tbody tr');
-    //Looping through the rows
-    producerRows.each((index, element) => {
-        parseExtension(dictionary, 'producer', $, element);
-    })
+        //Selecting all rows inside our target table
+        const producerRows = $('.table_2:nth-of-type(1) tbody tr');
+        //Looping through the rows
+        producerRows.each((index, element) => {
+            parseExtension(dictionary, producerDictionaryName, $, element);
+        })
 
-    const consumerRows = $('.table_2:nth-of-type(2) tbody tr');
-    //Looping through the rows
-    consumerRows.each((index, element) => {
-        parseExtension(dictionary, 'consumer', $, element);
-    })
+        const consumerRows = $('.table_2:nth-of-type(2) tbody tr');
+        consumerRows.each((index, element) => {
+            parseExtension(dictionary, consumerDictionaryName, $, element);
+        })
 
-    // console.dir(producerDictionary);
-    // console.dir(consumerDictionary);
+        let csv = new ObjectsToCsv(dictionary);
+        await csv.toDisk('docs/extension-dictionary.csv')
 
-    let csv = new ObjectsToCsv(dictionary);
-    await csv.toDisk('docs/extension-dictionary.csv')
+        saveJson(dictionary, 'src/components/extension-dictionary.json');
+    } else {
+        let dictionary = [];
+        const devguideRows = $('tbody tr');
+        //Looping through the rows
+        devguideRows.each((index, element) => {
+            parseExtension(dictionary, devguideDictionaryName, $, element);
+        })
 
-    saveJson(dictionary, 'src/components/extension-dictionary.json');
-})();
+        let csv = new ObjectsToCsv(dictionary);
+        await csv.toDisk('docs/extension-dictionary-flexconn_devguide.csv')
+    }
+}
+
+scrapeUrl(cefImplementationStandardUrl);
+scrapeUrl(cefFlexconnDevguideUrl);

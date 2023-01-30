@@ -1,0 +1,135 @@
+dictionaryName,version,key,fullName,dataType,length,description
+devguide,,,applicationProtocol,String,31,n/a
+devguide,,,baseEventCount,Integer,n/a,0 -> 231-1
+devguide,,,bytes In,Long,n/a,0 -> 263-1
+devguide,,,bytesOut,Long,n/a,0 -> 263-1 -1
+devguide,,,categoryBehavior,String,1023,n/a (1)
+devguide,,,categoryDeviceGroup,String,1023,n/a (1)
+devguide,,,categoryObject,String,1023,n/a (1)
+devguide,,,categoryOutcome,String,1023,n/a (1)
+devguide,,,categorySignificance,String,1023,n/a (1)
+devguide,,,categoryTechnique,String,1023,n/a (1)
+devguide,,,cryptoSignature,String,512,n/a
+devguide,,,customerURI,String,,n/a (2)
+devguide,,,destinationAddress,IPAddress,n/a,IPv4 or IPv6 (3)
+devguide,,,destinationDnsDomain,String,255,n/a
+devguide,,,destinationHostName,String,1023,n/a
+devguide,,,destinationMacAddress,MacAddress,n/a,MAC (4)
+devguide,,,destinationNtDomain,String,255,n/a
+devguide,,,destinationPort,Integer,n/a,0 ->65535
+devguide,,,destinationProcessName,String,1023,n/a
+devguide,,,destinationServiceName,String,1023,n/a
+devguide,,,destinationTranslatedAddress,IPAddress,n/a,IPv4 or IPv6 (3)
+devguide,,,destinationTranslatedPort,Integer,n/a,0 -> 65535
+devguide,,,destinationTranslatedZoneURI,String,,n/a (2)
+devguide,,,destinationUserId,String,1023,n/a
+devguide,,,destinationUserName,String,1023,n/a
+devguide,,,destinationUserPrivileges,String,1023,n/a
+devguide,,,destinationZoneURI,String,,n/a (2)
+devguide,,,deviceAction,String,63,n/a
+devguide,,,deviceAddress,IPAddress,n/a,IPv4  or IPv6 (3)
+devguide,,,deviceCustomDate1,TimeStamp,n/a,n/a (5)
+devguide,,,deviceCustomDate1Label,String,1023,n/a
+devguide,,,deviceCustomDate2,TimeStamp,n/a,n/a (5)
+devguide,,,deviceCustomDate2Label,String,1023,n/a
+devguide,,,deviceCustomIPv6Address1,IPAddress,n/a,IPv6 (8)
+devguide,,,deviceCustomIPv6Address1Label,String,1023,Should be “Device IPv6 Address”
+devguide,,,deviceCustomIPv6Address2,IPAddress,n/a,IPv6 (8)
+devguide,,,deviceCustomIPv6Address2Label,String,1023,Should be “Source IPv6 Address”
+devguide,,,deviceCustomIPv6Address3,IPAddress,n/a,IPv6 (8)
+devguide,,,deviceCustomIPv6Address3Label,String,1023,Should be “Destination IPv6 Address”
+devguide,,,deviceCustomNumber1,Long,n/a,- 263 -> 263-1
+devguide,,,deviceCustomNumber1Label,String,1023,n/a
+devguide,,,deviceCustomNumber2,Long,n/a,- 263 -> 263-1
+devguide,,,deviceCustomNumber2Label,String,1023,n/a
+devguide,,,deviceCustomNumber3,Long,n/a,- 263 -> 263-1
+devguide,,,deviceCustomNumber3Label,String,1023,n/a
+devguide,,,deviceCustomString1,String,4000,n/a
+devguide,,,deviceCustomString1Label,String,1023,n/a
+devguide,,,deviceCustomString2,String,4000,n/a
+devguide,,,deviceCustomString2Label,String,1023,n/a
+devguide,,,deviceCustomString3,String,4000,n/a
+devguide,,,deviceCustomString3Label,String,1023,n/a
+devguide,,,deviceCustomString4,String,4000,n/a
+devguide,,,deviceCustomString4Label,String,1023,n/a
+devguide,,,deviceCustomString5,String,4000,n/a
+devguide,,,deviceCustomString5Label,String,1023,n/a
+devguide,,,deviceCustomString6,String,4000,n/a
+devguide,,,deviceCustomString6Label,String,1023,n/a
+devguide,,,deviceDnsDomain,String,255,n/a
+devguide,,,deviceDomain,String,1023,n/a
+devguide,,,deviceEventCategory,String,1023,n/a
+devguide,,,deviceEventClassId,String,1023,n/a
+devguide,,,deviceExternalId,String,255,n/a
+devguide,,,deviceFacility,String,1023,n/a
+devguide,,,deviceHostName,String,63,n/a
+devguide,,,deviceInboundInterface,String,15,n/a
+devguide,,,deviceMacAddress,MacAddress,n/a,MAC (4)
+devguide,,,deviceNtDomain,String,255,n/a
+devguide,,,deviceOutboundInterface,String,15,n/a
+devguide,,,devicePayloadId,String,128,n/a
+devguide,,,deviceProcessName,String,1023,n/a
+devguide,,,deviceProduct,String,63,n/a
+devguide,,,deviceReceiptTime,TimeStamp,n/a,n/a (5)
+devguide,,,deviceSeverity,String,63,n/a
+devguide,,,deviceTimeZone,String,255,n/a
+devguide,,,deviceTranslatedAddress,IPAddress,n/a,IPv4 or IPv6  (3)
+devguide,,,deviceTranslatedZoneURI,String,,n/a (2)
+devguide,,,deviceVendor,String,63,n/a
+devguide,,,deviceVersion,String,31,n/a
+devguide,,,deviceZoneURI,String,,n/a (2)
+devguide,,,endTime,TimeStamp,n/a,n/a (5)
+devguide,,,externalId,String,40,n/a
+devguide,,,fileCreateTime,TimeStamp,n/a,n/a (5)
+devguide,,,fileHash,String,255,n/a
+devguide,,,fileId,String,1023,n/a
+devguide,,,fileModificationTime,TimeStamp,n/a,n/a (5)
+devguide,,,fileName,String,1023,n/a
+devguide,,,filePath,String,1023,n/a
+devguide,,,filePermission,String,1023,n/a
+devguide,,,fileSize,Long,n/a,0 -> 263-1
+devguide,,,fileType,String,1023,n/a
+devguide,,,flexDate1,TimeStamp,n/a,n/a (5)
+devguide,,,flexDate1Label,String,128,n/a
+devguide,,,flexNumber1,Long,n/a,- 263 -> 263-1
+devguide,,,flexNumber1Label,String,128,n/a
+devguide,,,flexNumber2,Long,n/a,-2 63 -> 263-1
+devguide,,,flexNumber2Label,String,128,n/a
+devguide,,,flexString1,String,1023,n/a
+devguide,,,flexString1Label,String,128,n/a
+devguide,,,flexString2,String,1023,n/a
+devguide,,,flexString2Label,String,128,n/a
+devguide,,,message,String,1023,n/a
+devguide,,,name,String,512,n/a (9)
+devguide,,,oldFileCreateTime,TimeStamp,n/a,n/a (5)
+devguide,,,oldFileHash,String,255,n/a
+devguide,,,oldFileId,String,1023,n/a
+devguide,,,oldFileModificationTime,TimeStamp,n/a,n/a (5)
+devguide,,,oldFileName,String,1023,n/a
+devguide,,,oldFilePath,String,1023,n/a
+devguide,,,oldFilePermission,String,1023,n/a
+devguide,,,oldFileSize,Long,n/a,0 -> 263-1
+devguide,,,oldFileType,String,1023,n/a
+devguide,,,rawEvent,String,4000,n/a (7)
+devguide,,,requestClientApplication,String,1023,n/a
+devguide,,,requestContext,String,2048,n/a
+devguide,,,requestCookies,String,1023,n/a
+devguide,,,requestMethod,String,1023,n/a
+devguide,,,requestUrl,String,1023,n/a
+devguide,,,sourceAddress,IPAddress,n/a,IPv4 or IPv6  (3)
+devguide,,,sourceDnsDomain,String,255,n/a
+devguide,,,sourceHostName,String,1023,n/a
+devguide,,,sourceMacAddress,MacAddress,n/a,MAC (4)
+devguide,,,sourceNtDomain,String,255,n/a
+devguide,,,sourcePort,Integer,n/a,0 -> 65535
+devguide,,,sourceProcessName,String,1023,n/a
+devguide,,,sourceServiceName,String,1023,n/a
+devguide,,,sourceTranslatedAddress,IPAddress,n/a,IPv4 or IPv6  (3)
+devguide,,,sourceTranslatedPort,Integer,n/a,0 -> 65535
+devguide,,,sourceTranslatedZoneURI,String,,n/a (2)
+devguide,,,sourceUserId,String,1023,n/a
+devguide,,,sourceUserName,String,1023,n/a
+devguide,,,sourceUserPrivileges,String,1023,n/a
+devguide,,,sourceZoneURI,String,,n/a (2)
+devguide,,,startTime,TimeStamp,n/a,n/a (5)
+devguide,,,transportProtocol,String,31,n/a (6)
