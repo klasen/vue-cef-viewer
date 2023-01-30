@@ -84,7 +84,7 @@ producer,0.1,flexString1Label,flexString2Label,String,128,The label field is a s
 producer,0.1,flexString2,flexString2,String,1023,"One of four floating point fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary."
 producer,0.1,flexString2Label,flexString2Label,String,128,The label field is a string and describes the purpose of the flex field.
 producer,0.1,fname,filename,String,1023,Name of the file only (without its path).
-producer,0.1,fsize,fileSize,Integer,,Size of the file.
+producer,0.1,fsize,fileSize,Long,,Size of the file.
 producer,0.1,in,bytesIn,Long,,"Number of bytes transferred inbound, relative to the source to destination relationship, meaning that data was flowing from source to destination."
 producer,0.1,msg,message,String,1023,An arbitrary message giving more details about the event. Multi-line entries can be produced by using \n as the new line separator.
 producer,0.1,oldFileCreateTime,oldFileCreateTime,Time Stamp,,Time when old file was created.
@@ -94,7 +94,7 @@ producer,0.1,oldFileModificationTime,oldFileModificationTime,Time Stamp,,Time wh
 producer,0.1,oldFileName,oldFileName,String,1023,Name of the old file.
 producer,0.1,oldFilePath,oldFilePath,String,1023,"Full path to the old file, including the file name itself. Examples: c:\Program Files\ WindowsNT\Accessories \wordpad.exe or /usr/bin/zip"
 producer,0.1,oldFilePermission,oldFilePermission,String,1023,Permissions of the old file.
-producer,0.1,oldFileSize,oldFileSize,Integer,,Size of the old file.
+producer,0.1,oldFileSize,oldFileSize,Long,,Size of the old file.
 producer,0.1,oldFileType,oldFileType,String,1023,"Type of the old file (pipe, socket, etc.)"
 producer,0.1,out,bytesOut,Long,,"Number of bytes transferred outbound relative to the source to destination relationship. For example, the byte number of data flowing from the destination to the source."
 producer,0.1,outcome,eventOutcome,String,63,"Displays the outcome, usually as ‘success’ or ‘failure’."

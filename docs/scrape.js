@@ -38,8 +38,8 @@ function parseExtension(dict, dictionaryName, $, element) {
         dataType = "IP Address";
     }
 
-    if (length.startsWith('64-bit') || rawkey == 'in' || rawkey == 'out') {
-        console.log('Fix data type for key "' + rawkey + '": ' + dataType + "-> Long");
+    if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
+        console.log('Fix data type for key "' + key + '": ' + dataType + '-> Long');
         dataType = 'Long';
         length = '';
     }
