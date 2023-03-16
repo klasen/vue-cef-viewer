@@ -16,7 +16,11 @@
         <td>
           <pre>{{ message }}</pre>
         </td>
-        <td></td>
+        <td>
+          <ul>
+            <li v-for="error in cef.errors" :key="error" class="status_error">{{ error }}</li>
+          </ul>
+        </td>
       </tr>
       <template v-if="cef.Version">
         <tr class="section">
@@ -169,8 +173,10 @@ String.prototype.unescapeCefValue = function () {
 * @return {Object} Map of names (attributes) to values
 */
 String.prototype.parseCEF = function () {
-  var obj = {};
-  obj.extensions = {};
+  var obj = {
+    "extensions": {},
+    "errors": []
+  };
 
   // search for CEF message prefix
   var i = this.search(/CEF:/);
@@ -245,13 +251,17 @@ String.prototype.parseCEF = function () {
           foundfirstKeyValueSeparator = true;
         } else {
           // on subsequent key-value separators, we know where the previous value ended and add the previous key-value pair to extensions
-          if (quoted) {
-            obj.extensions[key] = this
-              .substring(startValue, startKeyValuePair - 1).unescapeCefValue();
-            quoted = false;
+          if (key in obj.extensions) {
+            obj.errors.push("Duplicate '" + key + "' extension. Ignoring subsequent instances.");
           } else {
-            obj.extensions[key] = this
-              .substring(startValue, startKeyValuePair - 1);
+            if (quoted) {
+              obj.extensions[key] = this
+                .substring(startValue, startKeyValuePair - 1).unescapeCefValue();
+              quoted = false;
+            } else {
+              obj.extensions[key] = this
+                .substring(startValue, startKeyValuePair - 1);
+            }
           }
         }
 
@@ -275,17 +285,21 @@ String.prototype.parseCEF = function () {
   }
   // add last key pair to extensions
   if (foundfirstKeyValueSeparator) {
-    if (quoted) {
-      obj.extensions[key] = this.substring(startValue, i).unescapeCefValue();
+    if (key in obj.extensions) {
+      obj.errors.push("Duplicate '" + key + "' extension. Ignoring subsequent instances.");
     } else {
-      obj.extensions[key] = this.substring(startValue, i);
+      if (quoted) {
+        obj.extensions[key] = this.substring(startValue, i).unescapeCefValue();
+      } else {
+        obj.extensions[key] = this.substring(startValue, i);
+      }
     }
   }
 
   return obj;
 };
 
-function validateExtensionValue(dataType, length, value) {
+function validateExtensionValue(name, dataType, length, value) {
   switch (dataType) {
     case "String":
       if (value.length > length) {
@@ -296,7 +310,7 @@ function validateExtensionValue(dataType, length, value) {
       console.log("Unvalidated dataType: %s", dataType);
       break;
     case "MAC Address":
-      if (!/^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$/.test(value)) {
+      if (!/^[0-9a-fA-F]{2}([:-][0-9a-fA-F]{2}){5}$/.test(value)) {
         return "Invalid format";
       }
       break;
@@ -326,6 +340,12 @@ function validateExtensionValue(dataType, length, value) {
     default:
       return ("Unknown dataType: " + dataType);
   }
+
+  if (/host$/i.test(name)) {
+    if (!/^(?!:\/\/)(?=.{1,255}$)((.{1,63}\.){1,127}(?![0-9]*$)[a-z0-9-]+\.?)$/igm.test(value)) {
+      return "Invalid FQDN";
+    }
+  }
   return true;
 }
 
@@ -350,7 +370,7 @@ function prepareCefDisplay(cef, dictionary) {
           obj.comments.push(capitalizeFirstLetter(dictionary[k]["dictionaryName"]) + " extension from CEF specification " + dictionary[k]["version"]);
         }
         obj.comments.push(dictionary[k]["dataType"] + (dictionary[k]["length"] ? "[" + dictionary[k]["length"] + "]" : ""));
-        let validity = validateExtensionValue(dictionary[k]["dataType"], dictionary[k]["length"], v);
+        let validity = validateExtensionValue(k, dictionary[k]["dataType"], dictionary[k]["length"], v);
         if (validity !== true) {
           obj.meta["invalidValue"] = true;
           obj.warnings.push(validity);
@@ -358,7 +378,7 @@ function prepareCefDisplay(cef, dictionary) {
         obj.comments.push(dictionary[k]["description"]);
       } else {
         obj.meta["userDefinedExtension"] = true;
-        obj.comments.push("User-Defined Extension");
+        obj.notices.push("User-Defined Extension");
         if (!/^[A-Z][a-zA-Z0-9]*$/.test(k)) {
           // https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/index.html#CEF/Chapter%204%20User%20Defined%20Extensions.htm#Limitations?TocPath=_____5
           obj.meta["invalidExtensionName"] = true;
