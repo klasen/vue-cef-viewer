@@ -71,14 +71,8 @@ function parseExtension(dict, dictionaryName, $, element) {
         return;
     }
 
-    // fix fullNames beginning with idFile
+    // normalize fullName so we can map between Dev Guide an Implementation Standard
     const origFullName = fullName;
-    if (/^idFile/.test(fullName)) {
-        fullName = origFullName.replace('id', 'old');
-        if (fullName != origFullName) {
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
-        }
-    }
 
     // remove spaces from fullName
     const origFullName2 = fullName;
