@@ -36,7 +36,7 @@ function parseExtension(dict, dictionaryName, $, element) {
         const origKey = $(tds[1]).text().trim();
         key = origKey.replace(/[^0-9a-zA-Z]/g, '');
         if (key != origKey) {
-            console.log('Fix key "' + origKey + '" -> "' + key + '"');
+            console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
         }
         if (/^[A-Z]/.test(key)) {
             key = key.charAt(0).toLowerCase() + key.slice(1);
@@ -62,12 +62,12 @@ function parseExtension(dict, dictionaryName, $, element) {
 
     // ignore 1.2 *Key producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
-        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
+        console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
     // ignore 1.2 *Key consumer extensions that are actually producer
     if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
-        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
+        console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
 
@@ -235,6 +235,7 @@ function saveJson(arr, fileName) {
 }
 
 async function scrapeUrl(url) {
+    console.log('Scraping ' + url);
     const response = await axios(url)
     const html = await response.data;
     const $ = cheerio.load(html);
