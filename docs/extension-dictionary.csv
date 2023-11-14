@@ -48,7 +48,6 @@ producer,0.1,deviceDnsDomain,deviceDnsDomain,String,255,The DNS domain part of t
 producer,0.1,deviceExternalId,deviceExternalId,String,255,A name that uniquely identifies the device generating this event.
 producer,0.1,deviceFacility,deviceFacility,String,1023,"The facility generating this event. For example, Syslog has an explicit facility associated with every event."
 producer,0.1,deviceInboundInterface,deviceInboundInterface,String,128,Interface on which the packet or data entered the device.
-producer,0.1,deviceMacAddress,deviceMacAddress,MAC Address,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,deviceNtDomain,deviceNtDomain,String,255,The Windows domain name of the device address.
 producer,0.1,deviceOutboundInterface,deviceOutboundInterface,String,128,Interface on which the packet or data left the device.
 producer,0.1,devicePayloadId,devicePayloadId,String,128,Unique identifier for the payload associated with the event.
@@ -67,6 +66,7 @@ producer,0.1,duid,destinationUserId,String,1023,"Identifies the destination user
 producer,0.1,duser,destinationUserName,String,1023,Identifies the destination user by name. This is the user associated with the event’s destination. Email addresses are often mapped into the UserName fields. The recipient is a candidate to put into this field.
 producer,0.1,dvc,deviceAddress,IP Address,,Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,dvchost,deviceHostName,String,100,"The format should be a fully qualified domain name (FQDN) associated with the device node, when a node is available. Example: “host.domain.com” or “host”."
+producer,0.1,dvcmac,deviceMacAddress,MAC Address,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dvcpid,deviceProcessId,Integer,,Provides the ID of the process on the device generating the event.
 producer,0.1,end,endTime,Time Stamp,,The time at which the activity related to the event ended. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st1970). An example would be reporting the end of a session.
 producer,0.1,externalId,externalId,String,40,"The ID used by an originating device. They are usually increasing numbers, associated with events."

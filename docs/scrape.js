@@ -115,9 +115,11 @@ function parseExtension(dict, dictionaryName, $, element) {
     // fix data for specific full names
     switch (fullName) {
         case 'deviceMacAddress': {
+            if (dictionaryName != devguideDictionaryName) {
             const origKey = key;
-            key = 'deviceMacAddress';
-            console.log('Fix key "' + origKey + '" -> "' + key + '"');
+                key = 'dvcmac';
+                console.log('Fix key "' + (origKey ? origKey : fullName) + '" -> "' + key + '"');
+            }
             break;
         }
         case 'deviceCustomIPv6Address1':
