@@ -78,13 +78,13 @@ function parseExtension(dict, dictionaryName, $, element) {
     const origFullName2 = fullName;
     fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
     if (fullName != origFullName2) {
-        console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+        console.log('Remove spaces from full name: "' + origFullName + '" -> "' + fullName + '"');
     }
 
     // Lower case first character of fullName
     if (/^[A-Z]/.test(fullName)) {
         fullName = fullName.charAt(0).toLowerCase() + fullName.slice(1);
-        console.log('Lower case first fullName character of "' + origFullName + '" -> ' + fullName);
+        console.log('Lower case first fullName character of "' + origFullName + '" -> "' + fullName + '"');
     }
 
     // fix data for specific keys
@@ -116,7 +116,7 @@ function parseExtension(dict, dictionaryName, $, element) {
     switch (fullName) {
         case 'deviceMacAddress': {
             if (dictionaryName != devguideDictionaryName) {
-            const origKey = key;
+                const origKey = key;
                 key = 'dvcmac';
                 console.log('Fix key "' + (origKey ? origKey : fullName) + '" -> "' + key + '"');
             }
@@ -145,16 +145,16 @@ function parseExtension(dict, dictionaryName, $, element) {
         case 'IPv4 Address': // IP address extensions can take IPv6 now
         case 'IPAddress':
             dataType = 'IP Address';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'MacAddress':
         case 'MAC address':
             dataType = 'MAC Address';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'TimeStamp':
             dataType = 'Time Stamp';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         default:
             break;
