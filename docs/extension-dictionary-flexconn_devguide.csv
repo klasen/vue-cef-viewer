@@ -63,7 +63,7 @@ devguide,0.1,,deviceExternalId,String,255,n/a
 devguide,0.1,,deviceFacility,String,1023,n/a
 devguide,0.1,,deviceHostName,String,63,n/a
 devguide,0.1,,deviceInboundInterface,String,15,n/a
-devguide,0.1,deviceMacAddress,deviceMacAddress,MAC Address,,MAC (4)
+devguide,0.1,,deviceMacAddress,MAC Address,,MAC (4)
 devguide,0.1,,deviceNtDomain,String,255,n/a
 devguide,0.1,,deviceOutboundInterface,String,15,n/a
 devguide,0.1,,devicePayloadId,String,128,n/a

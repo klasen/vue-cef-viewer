@@ -36,7 +36,7 @@ function parseExtension(dict, dictionaryName, $, element) {
         const origKey = $(tds[1]).text().trim();
         key = origKey.replace(/[^0-9a-zA-Z]/g, '');
         if (key != origKey) {
-            console.log('Fix key "' + origKey + '" -> "' + key + '"');
+            console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
         }
         if (/^[A-Z]/.test(key)) {
             key = key.charAt(0).toLowerCase() + key.slice(1);
@@ -62,35 +62,29 @@ function parseExtension(dict, dictionaryName, $, element) {
 
     // ignore 1.2 *Key producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
-        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
+        console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
     // ignore 1.2 *Key consumer extensions that are actually producer
     if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
-        console.log('Ignore invalid extension for ' + dictionaryName + ': "' + key + '"')
+        console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
 
-    // fix fullNames beginning with idFile
+    // normalize fullName so we can map between Dev Guide an Implementation Standard
     const origFullName = fullName;
-    if (/^idFile/.test(fullName)) {
-        fullName = origFullName.replace('id', 'old');
-        if (fullName != origFullName) {
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
-        }
-    }
 
     // remove spaces from fullName
     const origFullName2 = fullName;
     fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
     if (fullName != origFullName2) {
-        console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+        console.log('Remove spaces from full name: "' + origFullName + '" -> "' + fullName + '"');
     }
 
     // Lower case first character of fullName
     if (/^[A-Z]/.test(fullName)) {
         fullName = fullName.charAt(0).toLowerCase() + fullName.slice(1);
-        console.log('Lower case first fullName character of "' + origFullName + '" -> ' + fullName);
+        console.log('Lower case first fullName character of "' + origFullName + '" -> "' + fullName + '"');
     }
 
     // fix data for specific keys
@@ -121,9 +115,11 @@ function parseExtension(dict, dictionaryName, $, element) {
     // fix data for specific full names
     switch (fullName) {
         case 'deviceMacAddress': {
-            const origKey = key;
-            key = 'deviceMacAddress';
-            console.log('Fix key "' + origKey + '" -> "' + key + '"');
+            if (dictionaryName != devguideDictionaryName) {
+                const origKey = key;
+                key = 'dvcmac';
+                console.log('Fix key "' + (origKey ? origKey : fullName) + '" -> "' + key + '"');
+            }
             break;
         }
         case 'deviceCustomIPv6Address1':
@@ -149,16 +145,16 @@ function parseExtension(dict, dictionaryName, $, element) {
         case 'IPv4 Address': // IP address extensions can take IPv6 now
         case 'IPAddress':
             dataType = 'IP Address';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'MacAddress':
         case 'MAC address':
             dataType = 'MAC Address';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'TimeStamp':
             dataType = 'Time Stamp';
-            console.log('Fix data type for key "' + key + '": ' + origDataType + '" -> "' + dataType + '"');
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         default:
             break;
@@ -241,8 +237,9 @@ function saveJson(arr, fileName) {
 }
 
 async function scrapeUrl(url) {
+    console.log('Scraping ' + url);
     const response = await axios(url)
-    const html = await response.data;
+    const html = response.data;
     const $ = cheerio.load(html);
 
     if (url == cefImplementationStandardUrl) {
@@ -280,5 +277,10 @@ async function scrapeUrl(url) {
     }
 }
 
-scrapeUrl(cefImplementationStandardUrl);
-scrapeUrl(cefFlexconnDevguideUrl);
+async function main() {
+    await scrapeUrl(cefImplementationStandardUrl);
+    console.log('');
+    await scrapeUrl(cefFlexconnDevguideUrl);
+}
+
+main();
