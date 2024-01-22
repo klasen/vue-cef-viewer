@@ -239,7 +239,7 @@ function saveJson(arr, fileName) {
 async function scrapeUrl(url) {
     console.log('Scraping ' + url);
     const response = await axios(url)
-    const html = await response.data;
+    const html = response.data;
     const $ = cheerio.load(html);
 
     if (url == cefImplementationStandardUrl) {
@@ -277,5 +277,10 @@ async function scrapeUrl(url) {
     }
 }
 
-scrapeUrl(cefImplementationStandardUrl);
-scrapeUrl(cefFlexconnDevguideUrl);
+async function main() {
+    await scrapeUrl(cefImplementationStandardUrl);
+    console.log('');
+    await scrapeUrl(cefFlexconnDevguideUrl);
+}
+
+main();
