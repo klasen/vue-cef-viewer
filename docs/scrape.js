@@ -147,7 +147,12 @@ function parseExtension(dict, dictionaryName, $, element) {
             dataType = 'IP Address';
             console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
+        case 'IPv6 address':
+            dataType = 'IPv6 Address';
+            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            break;
         case 'MacAddress':
+        case 'Mac Address':
         case 'MAC address':
             dataType = 'MAC Address';
             console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
