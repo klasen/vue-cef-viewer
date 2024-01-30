@@ -218,7 +218,7 @@ const sortByFields = (fields) => (a, b) => fields.map(key => {
     return a[key] > b[key] ? direction : a[key] < b[key] ? -(direction) : 0;
 }).reduce((p, n) => p ? p : n, 0);
 
-function saveJson(arr, fileName) {
+function saveJson(arr, fileName) { // eslint-disable-line no-unused-vars
     // transform array of objects into map
     let extensionMap = {};
     for (let extension of arr) {
