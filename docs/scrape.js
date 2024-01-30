@@ -5,8 +5,8 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
 
-const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/Content/CEF/Chapter%202%20ArcSight%20Extension.htm#'
-const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
+const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
+const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
 const producerDictionaryName = 'producer'
 const consumerDictionaryName = 'consumer'
 const devguideDictionaryName = 'devguide'
