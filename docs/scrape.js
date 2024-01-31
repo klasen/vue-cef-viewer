@@ -80,14 +80,14 @@ function parseExtension(dict, dictionaryName, $, element) {
                 firstDmac = false;
                 if (fullName != 'destinationMacAddress') {
                     fullName = 'destinationMacAddress';
-                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+                    console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
                 }
             }
             break;
         case 'flexString1Label':
             if (fullName != 'flexString1Label') {
-            fullName = 'flexString1Label';
-            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+                fullName = 'flexString1Label';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             }
             break;
         case 'fname':
@@ -162,13 +162,14 @@ function parseExtension(dict, dictionaryName, $, element) {
             break;
     }
 
-    if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
+    if (dataType != 'Long' && (key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
         console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + dataType + '" -> "Long"');
         dataType = 'Long';
         length = '';
     }
 
-    if (length.startsWith('n/a')) {
+    if (length.startsWith('64-bit') || length.startsWith('n/a')) {
+        console.log('Fix length for key "' + (key ? key : fullName) + '": "' + length + '" -> ""');
         length = '';
     }
 
