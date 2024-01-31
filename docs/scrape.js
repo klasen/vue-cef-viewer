@@ -271,14 +271,18 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, consumerDictionaryName, $, element);
         })
 
-        // dictionary with fewer columns for comparison with flexconn_devguide
+        // dictionary with only producer extensions and fewer columns for comparison with flexconn_devguide
         let comparisonDictionary = [];
-        dictionary.map(element => comparisonDictionary.push({
-            'fullName': element.normalizedFullName,
-            'dataType': element.dataType,
-            'length': element.length,
-        }));
-
+        dictionary.map((element) => {
+            if (element.dictionaryName == producerDictionaryName) {
+                comparisonDictionary.push({
+                    'fullName': element.normalizedFullName,
+                    'dataType': element.dataType,
+                    'length': element.length,
+                });
+            }
+        });
+        comparisonDictionary.sort(sortByFields(['fullName']));
         let csv = new ObjectsToCsv(comparisonDictionary);
         await csv.toDisk('docs/extension-dictionary-for-comparison.csv')
 
@@ -287,10 +291,10 @@ async function scrapeUrl(url) {
 
         // sort dictionary by dictionaryName (producer first), version, key, and fullName
         dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
-        
+
         csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary.csv')
-        
+
         saveJson(dictionary, 'src/components/extension-dictionary.json');
     } else {
         let dictionary = [];
