@@ -246,15 +246,15 @@ Generate a html side by side comparison of the CSV files for both documents usin
 On the `spec-vs-devguide` branch:
 
 1) Scrape metadata
-2) Commit `/docs/extensions-dictionary.csv`
-3) Copy `docs/extensions-dictionary-flexconn_devguide.csv` to `docs/extensions-dictionary.csv`
+2) Commit `/docs/*.csv`
+3) Copy `docs/extensions-dictionary-flexconn_devguide-for-comparison.csv` to `docs/extensions-dictionary-for-comparison.csv`
 4) Create diff
 
 ```sh
-node ./docs/scrape.js
-git commit -m "Update scraped metadata" docs/*.csv
-cp ./docs/extensions-dictionary-flexconn_devguide.csv ./docs/extensions-dictionary.csv
-diff2html --style side --title "CEF Implementation Standard vs. Flexconn Devguide" --matchWordsThreshold 0.1 --fileContentToggle false --file docs/cef-implementation-standard-v27_vs_flexconn-devguide-24.1.html
+node ./docs/scrape.js > docs/fixes.txt
+git commit -m "Update scraped metadata" docs/*.html docs/*.csv docs/fixes.txt src/components/extension-dictionary.json
+cp ./docs/extensions-dictionary-flexconn_devguide-for-comparison.csv ./docs/extensions-dictionary-for-comparison.csv
+diff2html --style side --title "CEF Implementation Standard vs. Flexconn Devguide" --matchWordsThreshold 0.1 --fileContentToggle false --file docs/cef-implementation-standard_vs_flexconn-devguide.html
 ```
 
 ### Compiles and hot-reloads for development
