@@ -129,6 +129,10 @@ function parseExtension(dict, dictionaryName, $, element) {
     // normalize dataType
     const origDataType = dataType;
     switch (dataType) {
+        case 'Floating Point':
+            dataType = 'Double';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            break;
         case 'IPv4 Address': // IP address extensions can take IPv6 now
         case 'IPAddress':
         case 'IP Address':
@@ -139,9 +143,9 @@ function parseExtension(dict, dictionaryName, $, element) {
             dataType = 'IPv6 Address';
             console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
-        case 'MAC Address':
         case 'Mac Address':
         case 'MAC address':
+        case 'MAC Address':
             dataType = 'MacAddress';
             console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
@@ -154,7 +158,7 @@ function parseExtension(dict, dictionaryName, $, element) {
             break;
     }
 
-    if (dataType != 'Long' && (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
+    if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
         console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + dataType + '" -> "Long"');
         dataType = 'Long';
         length = '';
