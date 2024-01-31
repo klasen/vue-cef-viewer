@@ -60,12 +60,12 @@ function parseExtension(dict, dictionaryName, $, element) {
 
     // fix data
 
-    // ignore producer extensions that are actually consumer
-    if (dictionaryName == producerDictionaryName && version == '1.2' && /^parser|Key$/.test(key)) {
+    // remove producer extensions that are actually consumer
+    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key))) || key == 'type') {
         console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
-    // ignore consumer extensions that are actually producer
+    // remove consumer extensions that are actually producer
     if (dictionaryName == consumerDictionaryName && version == '1.2' && /^reported|^framework|^threat/.test(key)) {
         console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
