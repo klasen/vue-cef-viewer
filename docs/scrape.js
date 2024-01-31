@@ -144,29 +144,31 @@ function parseExtension(dict, dictionaryName, $, element) {
     switch (dataType) {
         case 'IPv4 Address': // IP address extensions can take IPv6 now
         case 'IPAddress':
-            dataType = 'IP Address';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        case 'IP Address':
+            dataType = 'IpAddress';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'IPv6 address':
             dataType = 'IPv6 Address';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
-        case 'MacAddress':
+        case 'MAC Address':
         case 'Mac Address':
         case 'MAC address':
-            dataType = 'MAC Address';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            dataType = 'MacAddress';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'TimeStamp':
-            dataType = 'Time Stamp';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        case 'Time Stamp':
+            dataType = 'DateTime';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         default:
             break;
     }
 
-    if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
-        console.log('Fix data type for key "' + key + '": ' + dataType + '-> Long');
+    if (dataType != 'Long' && (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
+        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + dataType + '" -> "Long"');
         dataType = 'Long';
         length = '';
     }
