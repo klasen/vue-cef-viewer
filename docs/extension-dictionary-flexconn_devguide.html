@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<!--RR: Updated links to support, P724, Product Documentation, and Education -->
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-toc-path="Additional Parser Settings" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ArcSight Built-in Event Field Mappings</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <style>html,
+body
+{
+	height: 100%;
+	margin-right: 2em;
+}
+
+.wrapper
+{
+	min-height: 100% !important;
+	margin: 0 auto -10em;
+	padding-left: 0.2em;
+}
+
+footer,
+.float
+{
+	height: 10em;
+	margin: 0;
+	clear: both;
+}
+
+.footer
+{
+	border-top: 1px solid #CCCCCC;
+}
+
+div.roundcorners
+{
+	-moz-border-radius-bottomleft: 0em;
+	/* GR: changed from 1em */
+	border-bottom-left-radius: 0em;
+	/* GR: changed from 1em */
+	-moz-border-radius-topright: 0em;
+	/* GR: changed from 1em */
+	border-top-right-radius: 0em;
+	/* GR: changed from 1em */
+	background-color: #F6F6F6;
+	/* GR: changed from f2f2f2 */
+	width: 100% !important;
+	padding: 0em;
+}
+
+p.footerhead
+{
+	font-size: 1.1em;
+	/* GR: changed from 1em */
+	line-height: 1em;
+	padding: 0em;
+	margin-top: 0;
+	margin-bottom: .75em;
+	font-family: Calibri, Lucida Grande, Verdana, Helvetica, sans-serif;
+	/* GR: new */
+}
+
+a#mf-feedbackOpen.footerlink
+{
+	display: block;
+	text-decoration: none;
+	margin: 20px 5px 0px 5px;
+	border-bottom: 1px dotted rgba(0, 121, 239, 0.5);
+	text-transform: uppercase;
+}
+
+/*  NEW */
+
+.bottom-footer
+{
+	background: #ffffff none repeat scroll 0% 0%;
+	font-family: Calibri, Lucida Grande, Verdana, Helvetica, sans-serif;
+	/* GR: new */
+}
+
+.bottom-footer-inner
+{
+	/*width: 103.5%; */
+	margin: 0px;
+	padding: 0px;
+}
+
+.bottom-footer-inner img
+{
+	margin: 25px 0px 0px;
+	width: 118.56px;
+	height: 50px;
+}
+
+.bottom-footer-inner p
+{
+	float: left;
+	font-size: 0.7em;
+	line-height: 0em;
+	margin: 30px 0px 0px;
+}
+
+.bottom-footer-inner ul
+{
+	overflow: auto;
+	float: right;
+	font-size: 0.9em;
+	margin: 0px;
+}
+
+.bottom-footer-inner ul li
+{
+	float: left;
+	list-style-type: none;
+}
+
+.bottom-footer-inner ul li a
+{
+	display: block;
+	text-decoration: none;
+	margin: 20px 5px 0px 5px;
+	border-bottom: 1px dotted rgba(0, 121, 239, 0.5);
+	text-transform: uppercase;
+}
+
+</style>
+        <link href="../Resources/Stylesheets/_MF_ARST_IE_Experience.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../Resources/Scripts/_MF_copy-pre.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm">Open topic with navigation</a>
+        </p>
+        <div class="wrapper">
+            <div class="nocontent">
+                <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" / " data-mc-breadcrumbs-count="5" data-mc-toc="True"><span class="MCBreadcrumbsPrefix"> </span>
+                </div>
+            </div>
+            <div role="main" id="mc-main-content">
+                <h1><span class="mc-variable _ARST_Variables.BrandName variable">ArcSight</span> Built-in Event Field Mappings</h1>
+                <p>The following table lists <span class="mc-variable _ARST_Variables.BrandName variable">ArcSight</span> event fields. See the numbered Range Notes (n) following this table for further explanations of certain field ranges.</p>
+                <table style="width: 100%;">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>ArcSight Mapping</p>
+                            </th>
+                            <th>
+                                <p>Type</p>
+                            </th>
+                            <th>
+                                <p>Length</p>
+                            </th>
+                            <th>
+                                <p>Range</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>applicationProtocol</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>31</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>baseEventCount</p>
+                            </td>
+                            <td>
+                                <p>Integer</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 2<span style="vertical-align: super;">31</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>bytes In</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 2<span style="vertical-align: super;">63</span>-1 </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>bytesOut</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 2<span style="vertical-align: super;">63</span>-1 -1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categoryBehavior</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categoryDeviceGroup</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categoryObject</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categoryOutcome</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categorySignificance</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>categoryTechnique</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a (1)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>cryptoSignature</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>512</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>customerURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4 or IPv6 (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationDnsDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationHostName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationMacAddress</p>
+                            </td>
+                            <td>
+                                <p>MacAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>MAC (4)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationNtDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationPort</p>
+                            </td>
+                            <td>
+                                <p>Integer</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt;65535</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationProcessName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationServiceName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationTranslatedAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4 or IPv6 (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationTranslatedPort</p>
+                            </td>
+                            <td>
+                                <p>Integer</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 65535</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationTranslatedZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationUserId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationUserName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationUserPrivileges</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>destinationZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceAction</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>63</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4  or IPv6 (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomDate1</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomDate1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomDate2</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomDate2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address1</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv6 (8)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>Should be “Device IPv6 Address”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address2</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv6 (8)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>Should be “Source IPv6 Address”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address3</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv6 (8)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomIPv6Address3Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>Should be “Destination IPv6 Address”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber1</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>- 2<span style="vertical-align: super;">63</span> -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber2</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>- 2<span style="vertical-align: super;">63</span> -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber3</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>- 2<span style="vertical-align: super;">63</span> -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomNumber3Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString1</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString2</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString3</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString3Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString4</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString4Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString5</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString5Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString6</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023 (4.x)</p>
+                                <p>4000 (5.x)</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceCustomString6Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceDnsDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceEventCategory</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceEventClassId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceExternalId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceFacility</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceHostName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>63</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceInboundInterface</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>15</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceMacAddress</p>
+                            </td>
+                            <td>
+                                <p>MacAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>MAC (4)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceNtDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceOutboundInterface</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>15</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>devicePayloadId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceProcessName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceProduct</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>63</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceReceiptTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceSeverity</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>63</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceTimeZone</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceTranslatedAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4 or IPv6  (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceTranslatedZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceVendor</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>63</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceVersion</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>31</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>deviceZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>endTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>externalId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>40</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileCreateTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileHash</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileModificationTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>filePath</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>filePermission</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileSize</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>fileType</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexDate1</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexDate1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexNumber1</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>- 2<span style="vertical-align: super;">63</span> -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexNumber1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexNumber2</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>-2 <span style="vertical-align: super;">63</span> -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexNumber2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexString1 </p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexString1Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexString2</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>flexString2Label</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>128</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>message</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>name</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>512</p>
+                            </td>
+                            <td>
+                                <p>n/a (9)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileCreateTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileHash</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileModificationTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFilePath</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFilePermission</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileSize</p>
+                            </td>
+                            <td>
+                                <p>Long</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 2<span style="vertical-align: super;">63</span>-1</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>oldFileType</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>rawEvent</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>4000</p>
+                            </td>
+                            <td>
+                                <p>n/a (7)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>requestClientApplication</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>requestContext</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>2048</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>requestCookies</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>requestMethod</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>requestUrl</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4 or IPv6  (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceDnsDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceHostName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceMacAddress</p>
+                            </td>
+                            <td>
+                                <p>MacAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>MAC (4)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceNtDomain</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>255</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourcePort</p>
+                            </td>
+                            <td>
+                                <p>Integer</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 65535</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceProcessName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceServiceName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceTranslatedAddress</p>
+                            </td>
+                            <td>
+                                <p>IPAddress</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>IPv4 or IPv6  (3)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceTranslatedPort</p>
+                            </td>
+                            <td>
+                                <p>Integer</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>0 -&gt; 65535</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceTranslatedZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceUserId</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceUserName</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceUserPrivileges</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>1023</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>sourceZoneURI</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>-</p>
+                            </td>
+                            <td>
+                                <p>n/a (2)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>startTime</p>
+                            </td>
+                            <td>
+                                <p>TimeStamp</p>
+                            </td>
+                            <td>
+                                <p>n/a</p>
+                            </td>
+                            <td>
+                                <p>n/a (5)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>transportProtocol</p>
+                            </td>
+                            <td>
+                                <p>String</p>
+                            </td>
+                            <td>
+                                <p>31</p>
+                            </td>
+                            <td>
+                                <p>n/a (6)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><b>Range Notes</b>
+                </p>
+                <ol>
+                    <li value="1">
+                        <p>Although these fields can be set using the <span class="mc-variable _ARST_Variables.FlexConnector variable">FlexConnector</span> properties file, the recommended way is to create a categorization file. For more about the possible values, see the "Categories" topic in the Console Help or the <i>ArcSight Console User’s Guide.</i> Also, see<a href="Appendix_FlexConnectors_and_Categorization.htm" class="noNum MCXref xref xrefnoNum">Categorizing Events</a>.</p>
+                    </li>
+                    <li value="2">
+                        <p>Although URI fields can be set using the <span class="mc-variable _ARST_Variables.FlexConnector variable">FlexConnector</span> properties file, these are really links to resources in the database. Therefore, it is recommended that those fields be set using the network-model and customer-setting features.</p>
+                    </li>
+                    <li value="3">
+                        <p>This can be an IPv4 address (from <code>0.0.0.0</code> to <code>255.255.255.255</code>) or an IPv6 address (<code>xxxx:xxxx:xxxx:xxxx:xxxx:xxxx</code>).</p>
+                    </li>
+                    <li value="4">
+                        <p>This is a MAC address: <code>XX:XX:XX:XX:XX:XX</code> or <code>XX-XX-XX-XX-XX-XX</code>.</p>
+                    </li>
+                    <li value="5">
+                        <p>This is a timestamp stored as milliseconds since January 1, 1970.</p>
+                    </li>
+                    <li value="6">
+                        <p>The options are: TCP, UDP, ICMP, IGMP, ARP.</p>
+                    </li>
+                    <li value="7">
+                        <p>Set <code>PreserveRawEvent</code> to <code>Yes</code> to have the connector automatically preserve the original event log received from the device. With the default <code>No</code>, you can configure this field. To find the <code>PreserveRawEvent </code>field in the <span class="mc-variable _ARST_Variables.ESM_LegacyConsole variable">ArcSight Console</span> interface, go to the <b>Connectors resource tree &gt; Configure &gt; Default tab &gt; Content &gt;Processing section &gt; PreserveRawEvent</b>.</p>
+                    </li>
+                    <li value="8">
+                        <p>For a non-IPv6-aware parser, the IPv6 fields (<code>deviceCustomIPv6Address1</code>, <code>2</code>, and <code>3</code>) should consistently use 1 for device, 2 for source, and 3 for destination. The labels for them will automatically be set if the IPv6 address field is set, but if your <span class="mc-variable _ARST_Variables.ESM_LegacyConsole variable">ArcSight Console</span> parser sets them explicitly, it should use the exact strings shown above. </p>
+                        <p>For an IPv6-aware parser, the IPv6 fields  (<code>deviceCustomIPv6Address1</code>, <code>2</code>, and <code>3</code>) can contain either IPv4 or IPv6 addresses. In practice, these fields should rarely be used. If they are, the labels should be set to an appropriate value.<br /></p>
+                    </li>
+                    <li value="9">
+                        <p>The <code>name</code> field is mandatory. </p>
+                    </li>
+                </ol>
+                <p>See <a href="Appendix_ArcSight_Built_in_Tokens.htm" class="noNum MCXref xref xrefnoNum">ArcSight Built-in Tokens</a> for a list of <span class="mc-variable _ARST_Variables.BrandName variable">ArcSight</span> built-in tokens.</p>
+            </div>
+            <p>&#160;</p>
+            <!-- /* horizontal rule (line) */ hr width="100%" size="4" align="center" padding-bottom="0" style="clear:both" /> -->
+            <div class="float">
+            </div>
+        </div>
+        <div class="footer">
+            <MadCap:conditionalText data-mc-conditions="_MF_Conditions.Footer">
+                <!-- NEW -->
+                <div class="bottom-footer">
+                    <div class="bottom-footer-inner">
+                        <div style="clear:both">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-footer">
+                    <div class="bottom-footer-inner">
+                        <ul>
+                            <li><a href="../Resources/MasterPages/Legal_Notices.htm">© <span class="mc-variable _MFc_Basic_Variables._MF_Copyright_Date_Range variable">2023</span>&#160;<span class="mc-variable _MFb_Branding_Variables._MF_Company_Legal_Name variable">Open Text or one of its affiliates</span></a>
+                            </li>
+                            <li><a href="https://community.microfocus.com/t5/Security/ct-p/Protect724" target="_blank">CyberRes by OpenText Security Community</a>
+                            </li>
+                            <li><a href="https://www.microfocus.com/documentation/arcsight" target="_blank">ArcSight Documentation</a>
+                            </li>
+                            <li><a href="https://softwaresupport.softwaregrp.com" target="_blank">Support</a>
+                            </li>
+                            <li><a href="https://www.microfocus.com/en-us/services/enterprise-information-data-management" target="_blank">Education</a>
+                            </li>
+                            <li>
+                                <div>
+                                    <div><a href="javascript:sendFeedback();" class="avoidPrint" data-mc-conditions="_MF_Conditions.Footer">Send Us Feedback</a>
+                                    </div>
+                                    <!-- Localizable -->
+                                    <div id="mf-feedbackDiv" class="MCTextPopupBody" style="display:none; word-wrap:break-word;">
+                                        <div style="position: absolute;top: 2px;right: 2px;text-align: right;"><a href="javascript:closeFeedback();" id="mf-feedbackClose">Close</a>
+                                        </div>
+                                        <!-- Localizable -->
+                                        <p style="font-weight: bold; font-size: 1em; margin-top: 1.5em;">We welcome your comments!</p>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <p style="font-weight: bold; font-size: 1em; margin-top: 1.5em;">You can either: </p>
+                                        <div style="clear:both">
+                                        </div>
+                                        <br />
+                                        <div style="font-size: 1em;"><a name="mf-feedbackOpen" id="mf-feedbackOpen" class="footerlink">Open an email window.</a>
+                                        </div>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <p style="font-size: 1em;">Or copy the information below to an email client and send the email to <span class="mc-variable _MFc_Basic_Variables._MF_Product_IE_Team_PDL variable">MFI-Documentation-Feedback@opentext.com</span>.</p>
+                                        <div style="clear:both">
+                                        </div>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <div id="mf-feedbackBody">
+                                            <br />Help Topic ID: <span id="mf-feedbackURL"></span><br /><br />Product: <span id="mf-feedbackProduct"></span><span id="mf-feedbackAcronym"></span>&#160;<span id="mf-feedbackVersion"></span><br /><br />Topic Title: <span id="mf-feedbackTopic"></span><br /><br />Feedback:<br /><br /><br /></div>
+                                        <!-- Localizable -->
+                                        <hr />
+                                    </div>
+                                    <div style="display:none;" id="mf-feedback-variables" productName="ArcSight FlexConnectors" productVersion="8.4.3" commentsEmailAddress="MFI-Documentation-Feedback@opentext.com" productAcronym="" topicTitle="ArcSight Built-in Event Field Mappings" skinLine1="ArcSight FlexConnectors" skinLine2="">&#160;
+         <p style="display:none;"><script src="../Resources/MasterPages/_MF_Feedback.js"></script></p></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div style="clear:both">
+                        </div>
+                    </div>
+                </div>
+                <!-- end NEW -->
+            </MadCap:conditionalText>
+            <p style="visibility:hidden"> </p>
+            <p><a href="../Resources/MasterPages/_MF_HTML5_bannerTitle.htm" style="visibility: hidden;"></a>
+            </p>
+        </div>
+    </body>
+</html>

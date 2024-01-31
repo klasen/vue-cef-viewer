@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<!--RR: Updated links to support, P724, Product Documentation, and Education -->
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-toc-path="" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ArcSight Extension Dictionary</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <style>html,
+body
+{
+	height: 100%;
+	margin-right: 2em;
+}
+
+.wrapper
+{
+	min-height: 100% !important;
+	margin: 0 auto -10em;
+	padding-left: 0.2em;
+}
+
+footer,
+.float
+{
+	height: 10em;
+	margin: 0;
+	clear: both;
+}
+
+.footer
+{
+	border-top: 1px solid #CCCCCC;
+}
+
+div.roundcorners
+{
+	-moz-border-radius-bottomleft: 0em;
+	/* GR: changed from 1em */
+	border-bottom-left-radius: 0em;
+	/* GR: changed from 1em */
+	-moz-border-radius-topright: 0em;
+	/* GR: changed from 1em */
+	border-top-right-radius: 0em;
+	/* GR: changed from 1em */
+	background-color: #F6F6F6;
+	/* GR: changed from f2f2f2 */
+	width: 100% !important;
+	padding: 0em;
+}
+
+p.footerhead
+{
+	font-size: 1.1em;
+	/* GR: changed from 1em */
+	line-height: 1em;
+	padding: 0em;
+	margin-top: 0;
+	margin-bottom: .75em;
+	font-family: Calibri, Lucida Grande, Verdana, Helvetica, sans-serif;
+	/* GR: new */
+}
+
+a#mf-feedbackOpen.footerlink
+{
+	display: block;
+	text-decoration: none;
+	margin: 20px 5px 0px 5px;
+	border-bottom: 1px dotted rgba(0, 121, 239, 0.5);
+	text-transform: uppercase;
+}
+
+/*  NEW */
+
+.bottom-footer
+{
+	background: #ffffff none repeat scroll 0% 0%;
+	font-family: Calibri, Lucida Grande, Verdana, Helvetica, sans-serif;
+	/* GR: new */
+}
+
+.bottom-footer-inner
+{
+	/*width: 103.5%; */
+	margin: 0px;
+	padding: 0px;
+}
+
+.bottom-footer-inner img
+{
+	margin: 25px 0px 0px;
+	width: 118.56px;
+	height: 50px;
+}
+
+.bottom-footer-inner p
+{
+	float: left;
+	font-size: 0.7em;
+	line-height: 0em;
+	margin: 30px 0px 0px;
+}
+
+.bottom-footer-inner ul
+{
+	overflow: auto;
+	float: right;
+	font-size: 0.9em;
+	margin: 0px;
+}
+
+.bottom-footer-inner ul li
+{
+	float: left;
+	list-style-type: none;
+}
+
+.bottom-footer-inner ul li a
+{
+	display: block;
+	text-decoration: none;
+	margin: 20px 5px 0px 5px;
+	border-bottom: 1px dotted rgba(0, 121, 239, 0.5);
+	text-transform: uppercase;
+}
+
+</style>
+        <link href="../Resources/Stylesheets/_MF_ARST_IE_Experience.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../Resources/Scripts/_MF_copy-pre.js">
+        </script>
+    </head>
+    <body>
+        <p class="MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"><a href="../../index.html#CEF/Chapter 2 ArcSight Extension.htm">Open topic with navigation</a>
+        </p>
+        <div class="wrapper">
+            <div class="nocontent">
+                <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" / " data-mc-breadcrumbs-count="5" data-mc-toc="True"><span class="MCBreadcrumbsPrefix"> </span>
+                </div>
+            </div>
+            <div role="main" id="mc-main-content">
+                <h1 class="Heading1"><a name="_Toc494359739"></a>ArcSight Extension Dictionary</h1>
+                <p>The <a href="#CEF">CEF Key Names For Event Producers</a> and <a href="#CEF2">CEF Key Names for Event Consumers</a> tables list the predefined names that establish usages for both event producers and event consumers. While the fields listed in both the tables are useful event consumers, the fields listed in the <a href="#CEF2">CEF Key Names for Event Consumers</a> table must not be set by event producers.</p>
+                <div class="Admonition_Note">
+                    <p style="text-align: left;" data-mc-autonum="&lt;b&gt;Note: &lt;/b&gt;"><span class="autonumber"><span><b>Note: </b></span></span>
+                        <br />
+                    </p>
+                    <ul>
+                        <li>
+                            <p style="text-align: left;">The <b>bytesIn</b> and <b>bytesOut</b> fields were containing only Integer values in CEF 0.1. However, from CEF 1.0 onwards, these fields also contain the Long values. </p>
+                        </li>
+                        <li>
+                            <p style="text-align: left;">All IP address fields in CEF 0.1 were containing IPv4 addresses only.  However, from CEF 1.0 onwards, these fields also contain IPv6 addresses.</p>
+                        </li>
+                    </ul>
+                </div>
+                <h2 class="Heading2"><a name="_Toc494359740"></a>CEF Key Names for Event Producers</h2>
+                <p>This table displays the CEF names along with the full names for each CEF key name. When sending events, the CEF key name is the proper form to use, because using the full name to send an event will fail.</p>
+                <h4 class="Heading4_1"><a name="CEF"></a><span class="span_15">CEF Key Names for Event&#160;Producers</span>
+                </h4>
+                <table class="table_2">
+                    <col class="col_5" style="width: 33px;" />
+                    <col class="col_5" />
+                    <col class="col_6" />
+                    <col class="col_7" />
+                    <col class="col_8" />
+                    <col class="col_9" />
+                    <thead>
+                        <tr>
+                            <th>
+                                <p>CEF Specification Version</p>
+                            </th>
+                            <th class="th_2">
+                                <p class="p_17">CEF Key Name</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Full Name</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Data Type</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Length</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Meaning</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">act</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceAction</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">63</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Action taken by the device.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">app</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">applicationProtocol</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">31</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Application level protocol, example: HTTP, HTTPS, SSHv2, Telnet, POP, IMPA, IMAPS, and so on.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">c6a1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomIPv6Address1</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv6 address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.</p>
+                                <div class="Admonition_Tip" style="text-align: left;"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">c6a1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomIPv6 Address1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">c6a3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomIPv6Address3</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv6 address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.</p>
+                                <div class="Admonition_Tip" style="text-align: left;"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">c6a3Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomIPv6Address3 Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">c6a4</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomIPv6 Address4</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv6 address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.</p>
+                                <div class="Admonition_Tip" style="text-align: left;"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">C6a4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomIPv6 Address4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">cat</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceEventCategory</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Represents the category assigned by the originating device. Devices often use their own categorization schema to classify event. Example: “/Monitor/Disk/Read”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomFloatingPoint1</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Floating Point</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of our floating point fields available to map fields that do not apply to any other in this dictionary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustom FloatingPoint1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomFloatingPoint2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Floating Point</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four floating point fields available to map fields that do not apply to any other in this dictionary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomFloatingPoint2 Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomFloatingPoint3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Floating Point</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four floating point fields available to map fields that do not apply to any other in this dictionary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp3Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustom FloatingPoint3Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp4</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomFloatingPoint4</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Floating Point</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the four floating point fields available to map fields that do not apply to any other in this dictionary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cfp4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustom FloatingPoint4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomNumber1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Long</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomNumber1Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">DeviceCustomNumber2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Long</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomNumber2Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomNumber3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Long</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cn3Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomNumber3Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cnt</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">baseEventCount</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">A count associated with this event. How many times was this same event observed? Count can be omitted if it is 1.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip" style="text-align: left;"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString3</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip" style="text-align: left;"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs3Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString3Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs4</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString4</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString4Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs5</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString5</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs5Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">deviceCustomString5Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs6</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString6</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of six strings available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">cs6Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomString6Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">destination DnsDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationDnsDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The DNS domain part of the complete fully qualified domain name (FQDN).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">destination ServiceName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationServiceName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The service targeted by this event. Example: “sshd”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">destination Translated Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationTranslated Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the translated destination that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">destination TranslatedPort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationTranslatedPort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Port after it was translated; for example, a firewall. Valid port numbers are 0 to 65535.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceCustom Date1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomDate1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">TimeStamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceCustom Date1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomDate1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceCustom Date2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomDate2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">TimeStamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of the two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible.</p>
+                                <div class="Admonition_Tip"><b>TIP</b>:&#160;  For tips on using these fields, see the guidelines defined under <a href="Chapter 4 User Defined Extensions.htm#_Toc494359748">User-Defined Extensions</a>.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceCustom Date2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceCustomDate2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceDirection</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceDirection</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Any information about what direction the observed communication has taken. The following values are supported: “0” for inbound or “1” for outbound</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceDns Domain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceDnsDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The DNS domain part of the complete fully qualified domain name (FQDN).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">device ExternalId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceExternalId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">A name that uniquely identifies the device generating this event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceFacility</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceFacility</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The facility generating this event. For example, Syslog has an explicit facility associated with every event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceInbound Interface</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceInboundInterface</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Interface on which the packet or data entered the device.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">deviceNt Domain</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceNtDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The Windows domain name of the device address.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">Device Outbound Interface</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceOutboundInterface</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Interface on which the packet or data left the device.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">Device PayloadId</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">devicePayloadId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Unique identifier for the payload associated with the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">deviceProcess Name</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceProcessName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Process name associated with the event. An example might be the process generating the syslog entry in UNIX.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">device Translated Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceTranslatedAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dhost</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationHostName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the destination that an event refers to in an IP network. The format must be a fully qualified domain name (FQDN) associated with the destination node, when a node is available. Examples: “host.domain.com” or “host”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dmac</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceMacAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">MAC Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Six colon-seperated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dntdom</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationNtDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The Windows domain name of the destination address.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dpid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationProcessId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Provides the ID of the destination process associated with the event. For example, if an event contains process ID 105, “105” is the process ID.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dpriv</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationUserPrivileges</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The typical values are “Administrator”, “User”, and “Guest”. This identifies the destination user’s privileges. In UNIX, for example, activity executed on the root user would be identified with destinationUser Privileges of “Administrator”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dproc</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationProcessName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The name of the event’s destination process. Example:&#160; “telnetd” or “sshd”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dpt</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationPort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The valid port numbers are between 0 and 65535.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dst</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the destination address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dtz</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceTimeZone</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The timezone for the device generating the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">duid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationUserId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the destination user by ID. For example, in UNIX, the root user is generally associated with user ID 0.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">duser</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationUserName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the destination user by name. This is the user associated with the event’s destination. Email addresses are often mapped into the UserName fields. The recipient is a candidate to put into this field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dvc</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dvchost</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceHostName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">100</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The format should be a fully qualified domain name (FQDN) associated with the device node, when a node is available. Example: “host.domain.com” or “host”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dmac</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceMacAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">MAC Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">dvcpid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceProcessId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Provides the ID of the process on the device generating the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">end</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">endTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">The time at which the activity related to the event ended. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1</span><sup class="sup_1">st</sup><span class="span_5">1970). An example would be reporting the end of a session.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">externalId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">externalId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">40</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The ID used by an originating device. They are usually increasing numbers, associated with events.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fileCreateTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileCreateTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time when the file was created.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fileHash</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileHash</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Hash of a file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fileId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">An ID associated with a file could be the inode.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fileModification Time</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileModificationTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time when the file was last modified.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">filePath</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">filePath</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Full path to the file, including file name itself. Example: C:\Program Files \WindowsNT\Accessories\ wordpad.exe or /usr/bin/zip</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">filePermission</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">filePermission</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Permissions of the file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fileType</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileType</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Type of file (pipe, socket, etc.)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">flexDate1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexDate1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">A timestamp field available to map a timestamp that does not apply to any other defined timestamp field in this dictionary. Use all flex fields sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">flexDate1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexDate1Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The label field is a string and describes the purpose of the flex field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">flexString1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexString1</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">One of four floating point fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">flexString1<br />Label</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexString2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The label field is a string and describes the purpose of the flex field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">flexString2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexString2</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">One of four floating point fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">flex String2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">flexString2Label</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">128</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The label field is a string and describes the purpose of the flex field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fname</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">filename</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Name of the file only (without its path).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">fsize</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">fileSize</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Size of the file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">in</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">bytesIn</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Number of bytes transferred inbound, relative to the source to destination relationship, meaning that data was flowing from source to destination.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">msg</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">message</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">An arbitrary message giving more details about the event. Multi-line entries can be produced by using \n as the new line separator.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileCreate Time</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileCreateTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time when old file was created.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileHash</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileHash</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Hash of the old file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">An ID associated with the old file could be the inode.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFile Modification Time</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">oldFileModificationTime</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time when old file was last modified.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Name of the old file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFilePath</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFilePath</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Full path to the old file, including the file name itself. Examples: c:\Program Files\ WindowsNT\Accessories \wordpad.exe or /usr/bin/zip</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFile Permission</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFilePermission</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Permissions of the old file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileSize</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileSize</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Size of the old file.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">oldFileType</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">oldFileType</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Type of the old file (pipe, socket, etc.)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">out</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">bytesOut</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Number of bytes transferred outbound relative to the source to destination relationship. For example, the byte number of data flowing from the destination to the source.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">outcome</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">eventOutcome</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">63</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Displays the outcome, usually as ‘success’ or ‘failure’.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">proto</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">transportProtocol</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">31</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the Layer-4 protocol used. The possible values are protocols such as TCP or UDP.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">reason</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Reason</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The reason an audit event was generated. For example “badd password” or “unknown user”. This could also be an error or return code. Example: “0x1234”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">request</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">requestUrl</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">In the case of an HTTP request, this field contains the URL accessed. The URL should contain the protocol as well. Example: “http://www/secure.com”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">requestClient Application</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">requestClientApplication</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The User-Agent associated with the request.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">requestContext</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">requestContext</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Description of the content from which the request originated (for example, HTTP Referrer)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">requestCookies</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">requestCookies</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Cookies associated with the request.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">requestMethod</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">requestMethod</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The method used to access a URL. Possible values: “POST”, “GET”, etc.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">rt</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceReceiptTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">The time at which the event related to the activity was received. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1</span><sup class="sup_1">st</sup><span class="span_5"> 1970)</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_20"><span class="span_16">shost</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceHostName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">Identifies the source that an event refers to in an IP network. The format should be a fully qualified domain name (DQDN) associated with the source node, when a mode is available. Examples:&#160; “host” or “host.domain.com”.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">smac</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceMacAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">MAC address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">sntdom</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceNtDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The Windows domain name for the source address.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">sourceDns Domain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceDnsDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The DNS domain part of the complete fully qualified domain name (FQDN).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">source ServiceName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceServiceName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The service that is responsible for generating this event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">source Translated Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">sourceTranslatedAddress</span>
+                                </p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the translated source that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">source TranslatedPort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceTranslatedPort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">A port number after being translated by, for example, a firewall. Valid port numbers are 0 to 65535.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">spid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceProcessId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The ID of the source process associated with the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">spriv</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceUserPrivileges</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The typical values are “Administrator”, “User”, and “Guest”. It identifies the source user’s privileges. In UNIX, for example, activity executed by the root user would be identified with “Administrator”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">sproc</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceProcessName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The name of the event’s source process.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">spt</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourcePort</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The valid port numbers are 0 to 65535.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">src</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IPv4 Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the source that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">start</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">startTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">The time when the activity the event referred to started. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1</span><sup class="sup_1">st</sup><span class="span_5"> 1970)</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">suid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceUserId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the source user by ID. This is the user associated with the source of the event. For example, in UNIX, the root user is generally associated with user ID 0.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">suser</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceUserName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Identifies the source user by name. Email addresses are also mapped into the UserName fields. The sender is a candidate to put into this field.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_19">type</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">type</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Integer</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">0 means base event, 1 means aggregated, 2 means correlation, and 3 means action. This field can be omitted for base events (type 0).</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">agentTranslatedZoneKey</td>
+                            <td class="td_4">Agent Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of an agentTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">agentZoneKey</td>
+                            <td class="td_4">Agent Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of an agentZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">customerKey</td>
+                            <td class="td_4">Customer Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a customer resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">dTranslatedZoneKey</td>
+                            <td class="td_4">Destination Translated Zone Key	</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a destinationTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">dZoneKey</td>
+                            <td class="td_4">Destination Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a destinationZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">deviceTranslatedZoneKey</td>
+                            <td class="td_4">Device Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a deviceTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">deviceZoneKey</td>
+                            <td class="td_4">Device Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a deviceZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">sTranslatedZoneKey</td>
+                            <td class="td_4">Source Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a sourceTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">sZoneKey</td>
+                            <td class="td_4">Source Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a sourceZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedDuration</td>
+                            <td class="td_4">Reported Duration</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64-bit signed</td>
+                            <td class="td_4">Elapsed time in milliseconds of the action or entity the event represents.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceGroupName</td>
+                            <td class="td_4">Reported Resource Group Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">128</td>
+                            <td class="td_4">Name of a group containing the resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceID</td>
+                            <td class="td_4">Reported Resource ID</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">256</td>
+                            <td class="td_4">Name of a group containing the resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceName</td>
+                            <td class="td_4">Reported Resource Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64</td>
+                            <td class="td_4">Name of the affected resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceType</td>
+                            <td class="td_4">Reported Resource Type</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64</td>
+                            <td class="td_4">Type of the affected resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">frameworkName</td>
+                            <td class="td_4">Framework Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">256</td>
+                            <td class="td_4">The name of the framework used for threatAttackID.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">threatActor</td>
+                            <td class="td_4">	Threat actor</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">40</td>
+                            <td class="td_4">Threat actor associated with the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">threatAttackID</td>
+                            <td class="td_4">Threat Attack ID</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">32</td>
+                            <td class="td_4">A full ID of a threat or attack as defined in the security framework in frameworkName.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 class="Heading2"><a name="_Toc494359741"></a>CEF Key Names for Event Consumers</h2>
+                <p>This table displays the CEF names along with the full names for each name. When sending events, the CEF key name is the proper form to use. If you use the full name to send an event, then it will fail.</p>
+                <h4 class="Heading4_1"><a name="CEF2"></a>CEF Key Names For Event Consumers</h4>
+                <table class="table_2">
+                    <col class="col_10" />
+                    <col class="col_10" />
+                    <col class="col_11" />
+                    <col class="col_12" />
+                    <col class="col_13" />
+                    <col class="col_14" />
+                    <thead>
+                        <tr>
+                            <th>CEF Specification Version</th>
+                            <th class="th_2">
+                                <p class="p_17">CEF Key Name</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Full Name</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Data Type</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Length</p>
+                            </th>
+                            <th class="th_3">
+                                <p class="p_17">Meaning</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentDns Domain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentDnsDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The DNS domain name of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentNtDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentNtDomain</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentTranslated Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentTranslatedAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IP Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentTranslated ZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentTranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentTranslated Zone URI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentTranslatedZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agentZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">agt</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">IP Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The IP address of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">ahost</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentHostName</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">1023</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The hostname of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">aid</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">40</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The agent ID of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">amac</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentMacAddress</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">MAC Address</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The MAC address of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">art</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentReceiptTime</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Time Stamp</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The time at which information about the event was received by the ArcSight connector.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">at</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentType</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">63</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The agent type of the ArcSight connector that processed the event</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">atz</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentTimeZone</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">255</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The agent time zone of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">av</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">agentVersion</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">31</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The version of the ArcSight connector that processed the event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">customer ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">customerExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">customerURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">customerURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">destination TranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationTranslated ZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">destination Translated ZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationTranslated ZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20"><span class="span_5">The URI for the Translated Zone that the destination asset has been assigned to in ArcSight.</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">destinationZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">destinationZone URI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The URI for the Zone that the destination asset has been assigned to in ArcSight.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">device TranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceTranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">device TranslatedZone URI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceTranslatedZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The URI for the Translated Zone that the device asset has been assigned to in ArcSight.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">deviceZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">deviceZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">deviceZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Thee URI for the Zone that the device asset has been assigned to in ArcSight.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">dlat</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationGeoLatitude</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Double</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The latitudinal value from which the destination’s IP address belongs.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">dlong</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">destinationGeoLongitude</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Double</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The longitudinal value from which the destination’s IP address belongs.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">eventId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">eventId</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Long</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">This is a unique ID that ArcSight assigns to each event.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">rawEvent</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">rawEvent</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">4000</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">slat</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceGeoLatitude</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Double</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">slong</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceGeoLongitude</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">Double</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">source TranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceTranslatedZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">source TranslatedZone URI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceTranslatedZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The URI for the Translated Zone that the destination asset has been assigned to in ArcSight.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">sourceZone ExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceZoneExternalID</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">200</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_20">&#160;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0.1</td>
+                            <td class="td_3">
+                                <p class="p_18">sourceZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">sourceZoneURI</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">String</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">2048</p>
+                            </td>
+                            <td class="td_4">
+                                <p class="p_18">The URI for the Zone that the source asset has been assigned to in ArcSight.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">agentTranslatedZoneKey</td>
+                            <td class="td_4">Agent Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of an agentTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">agentZoneKey</td>
+                            <td class="td_4">Agent Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of an agentZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">customerKey</td>
+                            <td class="td_4">Customer Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a customer resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">dTranslatedZoneKey</td>
+                            <td class="td_4">Destination Translated Zone Key	</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a destinationTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">dZoneKey</td>
+                            <td class="td_4">Destination Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a destinationZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">deviceTranslatedZoneKey</td>
+                            <td class="td_4">Device Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a deviceTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">deviceZoneKey</td>
+                            <td class="td_4">Device Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a deviceZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">sTranslatedZoneKey</td>
+                            <td class="td_4">Source Translated Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a sourceTranslatedZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">sZoneKey</td>
+                            <td class="td_4">Source Zone Key</td>
+                            <td class="td_4">Integer</td>
+                            <td class="td_4">64-bit</td>
+                            <td class="td_4">ID of a sourceZone resource reference.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedDuration</td>
+                            <td class="td_4">Reported Duration</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64-bit signed</td>
+                            <td class="td_4">Elapsed time in milliseconds of the action or entity the event represents.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceGroupName</td>
+                            <td class="td_4">Reported Resource Group Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">128</td>
+                            <td class="td_4">Name of a group containing the resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceID</td>
+                            <td class="td_4">Reported Resource ID</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">256</td>
+                            <td class="td_4">Name of a group containing the resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceName</td>
+                            <td class="td_4">Reported Resource Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64</td>
+                            <td class="td_4">Name of the affected resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">reportedResourceType</td>
+                            <td class="td_4">Reported Resource Type</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">64</td>
+                            <td class="td_4">Type of the affected resource in the system that sent the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">frameworkName</td>
+                            <td class="td_4">Framework Name</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">256</td>
+                            <td class="td_4">The name of the framework used for threatAttackID.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">threatActor</td>
+                            <td class="td_4">	Threat actor</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">40</td>
+                            <td class="td_4">Threat actor associated with the event.</td>
+                        </tr>
+                        <tr>
+                            <td>1.2</td>
+                            <td class="td_3">threatAttackID</td>
+                            <td class="td_4">Threat Attack ID</td>
+                            <td class="td_4">String</td>
+                            <td class="td_4">32</td>
+                            <td class="td_4">A full ID of a threat or attack as defined in the security framework in frameworkName.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>&#160;</p>
+            <!-- /* horizontal rule (line) */ hr width="100%" size="4" align="center" padding-bottom="0" style="clear:both" /> -->
+            <div class="float">
+            </div>
+        </div>
+        <div class="footer">
+            <MadCap:conditionalText data-mc-conditions="_MF_Conditions.Footer">
+                <!-- NEW -->
+                <div class="bottom-footer">
+                    <div class="bottom-footer-inner">
+                        <div style="clear:both">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-footer">
+                    <div class="bottom-footer-inner">
+                        <ul>
+                            <li><a href="../Resources/MasterPages/Legal_Notices.htm">© <span class="mc-variable _MFc_Basic_Variables._MF_Copyright_Date_Range variable">2010 - 2022</span>&#160;<span class="mc-variable _MFb_Branding_Variables._MF_Company_Legal_Name variable">Micro Focus or one of its affiliates</span></a>
+                            </li>
+                            <li><a href="https://community.microfocus.com/t5/Security/ct-p/Protect724" target="_blank">Micro Focus Security Community</a>
+                            </li>
+                            <li><a href="https://community.microfocus.com/t5/ArcSight-Product-Documentation/ct-p/productdocs" target="_blank">All Documentation</a>
+                            </li>
+                            <li><a href="https://softwaresupport.softwaregrp.com" target="_blank">Support</a>
+                            </li>
+                            <li><a href="https://www.microfocus.com/en-us/services/enterprise-information-data-management" target="_blank">Education</a>
+                            </li>
+                            <li>
+                                <div>
+                                    <div><a href="javascript:sendFeedback();" class="avoidPrint" data-mc-conditions="_MF_Conditions.Footer">Send Us Feedback</a>
+                                    </div>
+                                    <!-- Localizable -->
+                                    <div id="mf-feedbackDiv" class="MCTextPopupBody" style="display:none; word-wrap:break-word;">
+                                        <div style="position: absolute;top: 2px;right: 2px;text-align: right;"><a href="javascript:closeFeedback();" id="mf-feedbackClose">Close</a>
+                                        </div>
+                                        <!-- Localizable -->
+                                        <p style="font-weight: bold; font-size: 1em; margin-top: 1.5em;">We welcome your comments!</p>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <p style="font-weight: bold; font-size: 1em; margin-top: 1.5em;">You can either: </p>
+                                        <div style="clear:both">
+                                        </div>
+                                        <br />
+                                        <div style="font-size: 1em;"><a name="mf-feedbackOpen" id="mf-feedbackOpen" class="footerlink">Open an email window.</a>
+                                        </div>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <p style="font-size: 1em;">Or copy the information below to an email client and send the email to <span class="mc-variable _MFc_Basic_Variables._MF_Product_IE_Team_PDL variable">Documentation-Feedback@microfocus.com</span>.</p>
+                                        <div style="clear:both">
+                                        </div>
+                                        <!-- Localizable -->
+                                        <div style="clear:both">
+                                        </div>
+                                        <div id="mf-feedbackBody">
+                                            <br />Help Topic ID: <span id="mf-feedbackURL"></span><br /><br />Product: <span id="mf-feedbackProduct"></span><span id="mf-feedbackAcronym"></span>&#160;<span id="mf-feedbackVersion"></span><br /><br />Topic Title: <span id="mf-feedbackTopic"></span><br /><br />Feedback:<br /><br /><br /></div>
+                                        <!-- Localizable -->
+                                        <hr />
+                                    </div>
+                                    <div style="display:none;" id="mf-feedback-variables" productName="SmartConnectors" productVersion="8.3.0" commentsEmailAddress="Documentation-Feedback@microfocus.com" productAcronym="" topicTitle="ArcSight Extension Dictionary" skinLine1="Implementing ArcSight Common Event Format (CEF) - Version 26" skinLine2="">&#160;
+         <p style="display:none;"><script src="../Resources/MasterPages/_MF_Feedback.js"></script></p></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div style="clear:both">
+                        </div>
+                    </div>
+                </div>
+                <!-- end NEW -->
+            </MadCap:conditionalText>
+            <p style="visibility:hidden"> </p>
+            <p><a href="../Resources/MasterPages/_MF_HTML5_bannerTitle.htm" style="visibility: hidden;"></a>
+            </p>
+        </div>
+    </body>
+</html>

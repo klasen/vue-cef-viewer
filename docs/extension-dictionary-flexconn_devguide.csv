@@ -1,7 +1,7 @@
 dictionaryName,version,key,fullName,dataType,length,description
 devguide,0.1,,applicationProtocol,String,31,n/a
 devguide,0.1,,baseEventCount,Integer,,0 -> 231-1
-devguide,0.1,,bytesIn,Long,,0 -> 263-1
+devguide,0.1,,bytes In,Long,,0 -> 263-1
 devguide,0.1,,bytesOut,Long,,0 -> 263-1 -1
 devguide,0.1,,categoryBehavior,String,1023,n/a (1)
 devguide,0.1,,categoryDeviceGroup,String,1023,n/a (1)
@@ -11,15 +11,15 @@ devguide,0.1,,categorySignificance,String,1023,n/a (1)
 devguide,0.1,,categoryTechnique,String,1023,n/a (1)
 devguide,0.1,,cryptoSignature,String,512,n/a
 devguide,0.1,,customerURI,String,2048,n/a (2)
-devguide,0.1,,destinationAddress,IP Address,,IPv4 or IPv6 (3)
+devguide,0.1,,destinationAddress,IpAddress,,IPv4 or IPv6 (3)
 devguide,0.1,,destinationDnsDomain,String,255,n/a
 devguide,0.1,,destinationHostName,String,1023,n/a
-devguide,0.1,,destinationMacAddress,MAC Address,,MAC (4)
+devguide,0.1,,destinationMacAddress,MacAddress,,MAC (4)
 devguide,0.1,,destinationNtDomain,String,255,n/a
 devguide,0.1,,destinationPort,Integer,,0 ->65535
 devguide,0.1,,destinationProcessName,String,1023,n/a
 devguide,0.1,,destinationServiceName,String,1023,n/a
-devguide,0.1,,destinationTranslatedAddress,IP Address,,IPv4 or IPv6 (3)
+devguide,0.1,,destinationTranslatedAddress,IpAddress,,IPv4 or IPv6 (3)
 devguide,0.1,,destinationTranslatedPort,Integer,,0 -> 65535
 devguide,0.1,,destinationTranslatedZoneURI,String,2048,n/a (2)
 devguide,0.1,,destinationUserId,String,1023,n/a
@@ -27,10 +27,10 @@ devguide,0.1,,destinationUserName,String,1023,n/a
 devguide,0.1,,destinationUserPrivileges,String,1023,n/a
 devguide,0.1,,destinationZoneURI,String,2048,n/a (2)
 devguide,0.1,,deviceAction,String,63,n/a
-devguide,0.1,,deviceAddress,IP Address,,IPv4  or IPv6 (3)
-devguide,0.1,,deviceCustomDate1,Time Stamp,,n/a (5)
+devguide,0.1,,deviceAddress,IpAddress,,IPv4  or IPv6 (3)
+devguide,0.1,,deviceCustomDate1,DateTime,,n/a (5)
 devguide,0.1,,deviceCustomDate1Label,String,1023,n/a
-devguide,0.1,,deviceCustomDate2,Time Stamp,,n/a (5)
+devguide,0.1,,deviceCustomDate2,DateTime,,n/a (5)
 devguide,0.1,,deviceCustomDate2Label,String,1023,n/a
 devguide,0.1,,deviceCustomIPv6Address1,IPv6 Address,,IPv6 (8)
 devguide,0.1,,deviceCustomIPv6Address1Label,String,1023,Should be “Device IPv6 Address”
@@ -63,29 +63,28 @@ devguide,0.1,,deviceExternalId,String,255,n/a
 devguide,0.1,,deviceFacility,String,1023,n/a
 devguide,0.1,,deviceHostName,String,63,n/a
 devguide,0.1,,deviceInboundInterface,String,15,n/a
-devguide,0.1,,deviceMacAddress,MAC Address,,MAC (4)
+devguide,0.1,,deviceMacAddress,MacAddress,,MAC (4)
 devguide,0.1,,deviceNtDomain,String,255,n/a
 devguide,0.1,,deviceOutboundInterface,String,15,n/a
 devguide,0.1,,devicePayloadId,String,128,n/a
 devguide,0.1,,deviceProcessName,String,1023,n/a
-devguide,0.1,,deviceReceiptTime,Time Stamp,,n/a (5)
-devguide,0.1,,deviceSeverity,String,63,n/a
+devguide,0.1,,deviceReceiptTime,DateTime,,n/a (5)
 devguide,0.1,,deviceTimeZone,String,255,n/a
-devguide,0.1,,deviceTranslatedAddress,IP Address,,IPv4 or IPv6  (3)
+devguide,0.1,,deviceTranslatedAddress,IpAddress,,IPv4 or IPv6  (3)
 devguide,0.1,,deviceTranslatedZoneURI,String,2048,n/a (2)
 devguide,0.1,,deviceZoneURI,String,2048,n/a (2)
-devguide,0.1,,endTime,Time Stamp,,n/a (5)
+devguide,0.1,,endTime,DateTime,,n/a (5)
 devguide,0.1,,externalId,String,40,n/a
-devguide,0.1,,fileCreateTime,Time Stamp,,n/a (5)
+devguide,0.1,,fileCreateTime,DateTime,,n/a (5)
 devguide,0.1,,fileHash,String,255,n/a
 devguide,0.1,,fileId,String,1023,n/a
-devguide,0.1,,fileModificationTime,Time Stamp,,n/a (5)
+devguide,0.1,,fileModificationTime,DateTime,,n/a (5)
 devguide,0.1,,fileName,String,1023,n/a
 devguide,0.1,,filePath,String,1023,n/a
 devguide,0.1,,filePermission,String,1023,n/a
 devguide,0.1,,fileSize,Long,,0 -> 263-1
 devguide,0.1,,fileType,String,1023,n/a
-devguide,0.1,,flexDate1,Time Stamp,,n/a (5)
+devguide,0.1,,flexDate1,DateTime,,n/a (5)
 devguide,0.1,,flexDate1Label,String,128,n/a
 devguide,0.1,,flexNumber1,Long,,- 263 -> 263-1
 devguide,0.1,,flexNumber1Label,String,128,n/a
@@ -96,10 +95,10 @@ devguide,0.1,,flexString1Label,String,128,n/a
 devguide,0.1,,flexString2,String,1023,n/a
 devguide,0.1,,flexString2Label,String,128,n/a
 devguide,0.1,,message,String,1023,n/a
-devguide,0.1,,oldFileCreateTime,Time Stamp,,n/a (5)
+devguide,0.1,,oldFileCreateTime,DateTime,,n/a (5)
 devguide,0.1,,oldFileHash,String,255,n/a
 devguide,0.1,,oldFileId,String,1023,n/a
-devguide,0.1,,oldFileModificationTime,Time Stamp,,n/a (5)
+devguide,0.1,,oldFileModificationTime,DateTime,,n/a (5)
 devguide,0.1,,oldFileName,String,1023,n/a
 devguide,0.1,,oldFilePath,String,1023,n/a
 devguide,0.1,,oldFilePermission,String,1023,n/a
@@ -111,20 +110,20 @@ devguide,0.1,,requestContext,String,2048,n/a
 devguide,0.1,,requestCookies,String,1023,n/a
 devguide,0.1,,requestMethod,String,1023,n/a
 devguide,0.1,,requestUrl,String,1023,n/a
-devguide,0.1,,sourceAddress,IP Address,,IPv4 or IPv6  (3)
+devguide,0.1,,sourceAddress,IpAddress,,IPv4 or IPv6  (3)
 devguide,0.1,,sourceDnsDomain,String,255,n/a
 devguide,0.1,,sourceHostName,String,1023,n/a
-devguide,0.1,,sourceMacAddress,MAC Address,,MAC (4)
+devguide,0.1,,sourceMacAddress,MacAddress,,MAC (4)
 devguide,0.1,,sourceNtDomain,String,255,n/a
 devguide,0.1,,sourcePort,Integer,,0 -> 65535
 devguide,0.1,,sourceProcessName,String,1023,n/a
 devguide,0.1,,sourceServiceName,String,1023,n/a
-devguide,0.1,,sourceTranslatedAddress,IP Address,,IPv4 or IPv6  (3)
+devguide,0.1,,sourceTranslatedAddress,IpAddress,,IPv4 or IPv6  (3)
 devguide,0.1,,sourceTranslatedPort,Integer,,0 -> 65535
 devguide,0.1,,sourceTranslatedZoneURI,String,2048,n/a (2)
 devguide,0.1,,sourceUserId,String,1023,n/a
 devguide,0.1,,sourceUserName,String,1023,n/a
 devguide,0.1,,sourceUserPrivileges,String,1023,n/a
 devguide,0.1,,sourceZoneURI,String,2048,n/a (2)
-devguide,0.1,,startTime,Time Stamp,,n/a (5)
+devguide,0.1,,startTime,DateTime,,n/a (5)
 devguide,0.1,,transportProtocol,String,31,n/a (6)
