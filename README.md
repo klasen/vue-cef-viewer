@@ -253,7 +253,7 @@ On the `spec-vs-devguide` branch:
 ```sh
 node ./docs/scrape.js > docs/fixes.txt
 git commit -m "Update scraped metadata" docs/*.html docs/*.csv docs/fixes.txt src/components/extension-dictionary.json
-cp ./docs/extensions-dictionary-flexconn_devguide-for-comparison.csv ./docs/extensions-dictionary-for-comparison.csv
+cp ./docs/extension-dictionary-flexconn_devguide-for-comparison.csv ./docs/extension-dictionary-for-comparison.csv
 diff2html --style side --title "CEF Implementation Standard vs. Flexconn Devguide" --matchWordsThreshold 0.1 --fileContentToggle false --file docs/cef-implementation-standard_vs_flexconn-devguide.html
 ```
 
