@@ -77,14 +77,18 @@ function parseExtension(dict, dictionaryName, $, element) {
     switch (key) {
         case 'dmac':
             if (firstDmac) {
-                fullName = 'destinationMacAddress';
                 firstDmac = false;
+                if (fullName != 'destinationMacAddress') {
+                    fullName = 'destinationMacAddress';
                 console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+                }
             }
             break;
         case 'flexString1Label':
+            if (fullName != 'flexString1Label') {
             fullName = 'flexString1Label';
             console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
             break;
         case 'fname':
             fullName = 'fileName';
