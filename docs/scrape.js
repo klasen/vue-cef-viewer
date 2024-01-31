@@ -40,7 +40,7 @@ function parseExtension(dict, dictionaryName, $, element) {
         }
         if (/^[A-Z]/.test(key)) {
             key = key.charAt(0).toLowerCase() + key.slice(1);
-            console.log('Lower case first character of key "' + origKey + '" -> ' + key + '"');
+            console.log('Lower case first character of key "' + origKey + '" -> "' + key + '"');
         }
 
         fullName = $(tds[2]).text().trim();
@@ -60,53 +60,39 @@ function parseExtension(dict, dictionaryName, $, element) {
 
     // fix data
 
-    // ignore 1.2 *Key producer extensions that are actually consumer
-    if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
+    // ignore producer extensions that are actually consumer
+    if (dictionaryName == producerDictionaryName && version == '1.2' && /^parser|Key$/.test(key)) {
         console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
-    // ignore 1.2 *Key consumer extensions that are actually producer
-    if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
+    // ignore consumer extensions that are actually producer
+    if (dictionaryName == consumerDictionaryName && version == '1.2' && /^reported|^framework|^threat/.test(key)) {
         console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
 
-    // normalize fullName so we can map between Dev Guide an Implementation Standard
     const origFullName = fullName;
-
-    // remove spaces from fullName
-    const origFullName2 = fullName;
-    fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
-    if (fullName != origFullName2) {
-        console.log('Remove spaces from full name: "' + origFullName + '" -> "' + fullName + '"');
-    }
-
-    // Lower case first character of fullName
-    if (/^[A-Z]/.test(fullName)) {
-        fullName = fullName.charAt(0).toLowerCase() + fullName.slice(1);
-        console.log('Lower case first fullName character of "' + origFullName + '" -> "' + fullName + '"');
-    }
 
     // fix data for specific keys
     switch (key) {
         case 'dmac':
             if (firstDmac) {
                 fullName = 'destinationMacAddress';
-                console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
                 firstDmac = false;
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             }
             break;
         case 'flexString1Label':
             fullName = 'flexString1Label';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             break;
         case 'fname':
             fullName = 'fileName';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             break;
         case 'threatActor':
             fullName = 'threatActor';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             break;
         default:
             break;
@@ -130,10 +116,11 @@ function parseExtension(dict, dictionaryName, $, element) {
         case 'agentSeverity':
         case 'deviceEventClassId':
         case 'deviceProduct':
+        case 'deviceSeverity':
         case 'deviceVersion':
         case 'deviceVendor':
         case 'name':
-            // ignore header fields
+            console.log('Ignore CEF header field "' + fullName + '"');
             return;
         default:
             break;
@@ -183,7 +170,7 @@ function parseExtension(dict, dictionaryName, $, element) {
     }
     // there is no more 4.x, set length to 4000
     if (length.startsWith('1023 (4.x)')) {
-        console.log('Set length for key "' + fullName + '": ' + length + '-> 4000');
+        console.log('Adjust length for key "' + (key ? key : fullName) + '": ' + length + ' -> 4000');
         length = '4000';
     }
 
@@ -191,7 +178,28 @@ function parseExtension(dict, dictionaryName, $, element) {
     if (dataType === 'String') {
         length = Number(length);
         if (Number.isNaN(length)) {
-            length = undefined
+            console.log('Non-numeric string length for key: "' + (key ? key : fullName) + '": ' + length)
+            length = undefined;
+        }
+    }
+
+    // normalize fullName so we can map between Dev Guide an Implementation Standard
+    // remove spaces from fullName
+    var normalizedFullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
+    // Lower case first character of fullName
+    if (/^[A-Z]/.test(normalizedFullName)) {
+        normalizedFullName = normalizedFullName.charAt(0).toLowerCase() + normalizedFullName.slice(1);
+    }
+    if (normalizedFullName != origFullName) {
+        // console.log('Normalize full name: "' + origFullName + '" -> "' + normalizedFullName + '"');
+    }
+
+    // check for duplicate extensions
+    for (let index = 0; index < dict.length; index++) {
+        const element = dict[index];
+        if ((key && key == element.key) || fullName == element.fullName) {
+            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
+            return;
         }
     }
 
@@ -203,18 +211,9 @@ function parseExtension(dict, dictionaryName, $, element) {
         'fullName': fullName,
         'dataType': dataType,
         'length': length,
-        'description': description
+        'description': description,
+        'normalizedFullName': normalizedFullName
     };
-
-    // check for duplicate extensions
-    for (let index = 0; index < dict.length; index++) {
-        const element = dict[index];
-        if ((key && key == element.key) || fullName == element.fullName) {
-            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
-            return;
-        }
-    }
-
     dict.push(extension);
 }
 
@@ -239,7 +238,7 @@ function saveJson(arr, fileName) { // eslint-disable-line no-unused-vars
             console.log('An error occured while writing JSON Object to File.');
             return console.log(err);
         }
-        console.log(fileName + ' file has been saved.');
+        // console.log(fileName + ' file has been saved.');
     });
 }
 
@@ -272,12 +271,26 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, consumerDictionaryName, $, element);
         })
 
+        // dictionary with fewer columns for comparison with flexconn_devguide
+        let comparisonDictionary = [];
+        dictionary.map(element => comparisonDictionary.push({
+            'fullName': element.normalizedFullName,
+            'dataType': element.dataType,
+            'length': element.length,
+        }));
+
+        let csv = new ObjectsToCsv(comparisonDictionary);
+        await csv.toDisk('docs/extension-dictionary-for-comparison.csv')
+
+        // remove normalizedFullName that was neded for comparison
+        dictionary.forEach(element => delete element.normalizedFullName);
+
         // sort dictionary by dictionaryName (producer first), version, key, and fullName
         dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
-
-        let csv = new ObjectsToCsv(dictionary);
+        
+        csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary.csv')
-
+        
         saveJson(dictionary, 'src/components/extension-dictionary.json');
     } else {
         let dictionary = [];
@@ -287,8 +300,26 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, devguideDictionaryName, $, element);
         })
 
-        let csv = new ObjectsToCsv(dictionary);
+        // dictionary with fewer columns for comparison with cefImplementationStandard
+        let comparisonDictionary = [];
+        dictionary.map(element => comparisonDictionary.push({
+            'fullName': element.normalizedFullName,
+            'dataType': element.dataType,
+            'length': element.length,
+        }));
+        comparisonDictionary.sort(sortByFields(['fullName']));
+        let csv = new ObjectsToCsv(comparisonDictionary);
+        await csv.toDisk('docs/extension-dictionary-flexconn_devguide-for-comparison.csv')
+
+        // remove normalizedFullName that was neded for comparison
+        dictionary.forEach(element => delete element.normalizedFullName);
+
+        // sort dictionary by dictionaryName (producer first), version, key, and fullName
+        dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
+
+        csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary-flexconn_devguide.csv')
+
     }
 }
 
