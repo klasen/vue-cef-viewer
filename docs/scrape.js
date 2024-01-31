@@ -245,6 +245,14 @@ async function scrapeUrl(url) {
     console.log('Scraping ' + url);
     const response = await axios(url)
     const html = response.data;
+    fs.writeFile(url == cefImplementationStandardUrl ? 'docs/extension-dictionary.html' : 'docs/extension-dictionary-flexconn_devguide.html', html, 'utf8', function (err) {
+        if (err) {
+            console.log('An error occured while writing HTTP response to File.');
+            return console.log(err);
+        }
+
+    });
+
     const $ = cheerio.load(html);
 
     if (url == cefImplementationStandardUrl) {
