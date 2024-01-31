@@ -307,9 +307,11 @@ function validateExtensionValue(name, dataType, length, value) {
       }
       break;
     case "Time Stamp":
+    case "DateTime":
       console.log("Unvalidated dataType: %s", dataType);
       break;
     case "MAC Address":
+    case "MacAddress":
       if (!/^[0-9a-fA-F]{2}([:-][0-9a-fA-F]{2}){5}$/.test(value)) {
         return "Invalid format";
       }
@@ -317,8 +319,12 @@ function validateExtensionValue(name, dataType, length, value) {
     case "IPv4 Address":
     case "IPv6 Address":
     case "IP Address":
-      console.log("Unvalidated dataType: %s", dataType);
-      break;
+    case "IpAddress":
+      if (/^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/.test(value) || /^((([0-9a-fA-F]){1,4}):){7}([0-9a-fA-F]){1,4}$/.test(value)) {
+        break;
+      } else {
+        return "Invalid format";
+      }
     case "Integer": {
       const n = parseInt(value);
       if (Number.isNaN(n) || n > 2147483647 || n < -2147483648) {
