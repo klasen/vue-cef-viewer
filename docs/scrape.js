@@ -181,17 +181,17 @@ function parseExtension(dict, dictionaryName, $, element) {
     if (dataType != 'Long' && (key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
         dataType = 'Long';
         length = '';
-        console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
     }
 
     if (length.startsWith('64-bit')) {
         dataType = 'Long';
         length = '';
-        console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
     }
 
     if (length.startsWith('n/a')) {
-        console.log('Fix length for key "' + (key ? key : fullName) + '": "' + length + '" -> ""');
+        console.log('Normalize length for key "' + (key ? key : fullName) + '": "' + length + '" -> ""');
         length = '';
     }
 
@@ -221,9 +221,9 @@ function parseExtension(dict, dictionaryName, $, element) {
     if (/^[A-Z]/.test(normalizedFullName)) {
         normalizedFullName = normalizedFullName.charAt(0).toLowerCase() + normalizedFullName.slice(1);
     }
-    if (normalizedFullName != origFullName) {
-        // console.log('Normalize full name: "' + origFullName + '" -> "' + normalizedFullName + '"');
-    }
+    // if (normalizedFullName != origFullName) {
+    //     console.log('Normalize full name: "' + origFullName + '" -> "' + normalizedFullName + '"');
+    // }
 
     // check for duplicate extensions
     for (let index = 0; index < dict.length; index++) {
