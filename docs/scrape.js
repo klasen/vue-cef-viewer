@@ -23,6 +23,8 @@ function parseExtension(dict, dictionaryName, $, element) {
     let length;
     let description;
 
+    let origKey;
+
     // extract the text from each cell
     if (dictionaryName == devguideDictionaryName) {
         version = '0.1';
@@ -33,7 +35,7 @@ function parseExtension(dict, dictionaryName, $, element) {
     } else {
         version = $(tds[0]).text().trim();
 
-        const origKey = $(tds[1]).text().trim();
+        origKey = $(tds[1]).text().trim();
         key = origKey.replace(/[^0-9a-zA-Z]/g, '');
         if (key != origKey) {
             console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
@@ -58,6 +60,9 @@ function parseExtension(dict, dictionaryName, $, element) {
         }
     }
 
+    const origDataType = dataType;
+    const origFullName = fullName;
+
     // fix data
 
     // remove producer extensions that are actually consumer
@@ -70,8 +75,6 @@ function parseExtension(dict, dictionaryName, $, element) {
         console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
-
-    const origFullName = fullName;
 
     // fix data for specific keys
     switch (key) {
@@ -131,7 +134,6 @@ function parseExtension(dict, dictionaryName, $, element) {
     }
 
     // normalize dataType
-    const origDataType = dataType;
     switch (dataType) {
         case 'Floating Point':
             dataType = 'Double';
@@ -163,12 +165,18 @@ function parseExtension(dict, dictionaryName, $, element) {
     }
 
     if (dataType != 'Long' && (key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
-        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + dataType + '" -> "Long"');
         dataType = 'Long';
         length = '';
+        console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
     }
 
-    if (length.startsWith('64-bit') || length.startsWith('n/a')) {
+    if (length.startsWith('64-bit')) {
+        dataType = 'Long';
+        length = '';
+        console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+    }
+
+    if (length.startsWith('n/a')) {
         console.log('Fix length for key "' + (key ? key : fullName) + '": "' + length + '" -> ""');
         length = '';
     }
