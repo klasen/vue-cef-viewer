@@ -1,5 +1,13 @@
+<script setup>
+// import HelloWorld from './components/HelloWorld.vue'
+// import TheWelcome from './components/TheWelcome.vue'
+import CEF from './components/CEF.vue'
+import { ref } from 'vue'
+const message = ref('');
+</script>
+
 <template>
-  <div id="app">
+  <main>
     <h1>Common Event Format (CEF) Viewer using Vue.js</h1>
     <p>
       This is a small <a href="https://vuejs.org/">Vue.js</a> App to display
@@ -12,37 +20,14 @@
       the
       <a href="https://github.com/klasen/vue-cef-viewer">GitHub project</a>.
     </p>
-    <textarea ref="message" v-model="message" placeholder="paste CEF message here" id="message"></textarea>
+    <textarea v-model="message" placeholder="paste CEF message here" id="message"></textarea>
 
     <CEF :message="message" v-if="message" />
-  </div>
+  </main>
 </template>
 
-<script>
-import CEF from './components/CEF.vue'
-
-export default {
-  name: 'App',
-  components: {
-    CEF: CEF
-  },
-  data: function () {
-    return {
-      'message': ''
-    };
-  },
-  mounted: function () {
-    this.$nextTick(function () {
-      this.$refs.message.focus();
-    })
-  },
-
-
-}
-</script>
-
-<style>
-#app {
+<style scoped>
+main {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #2c3e50;
@@ -56,6 +41,4 @@ textarea {
   height: 8em;
   background-color: #fcdb1f;
 }
-
-
 </style>
