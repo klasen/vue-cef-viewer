@@ -106,7 +106,7 @@ deviceZoneExternalID,String,200
 deviceZoneKey,Long,
 deviceZoneURI,String,2048
 endTime,DateTime,
-eventId,Id,
+eventId,Long,
 eventOutcome,String,63
 externalId,String,40
 fileCreateTime,DateTime,

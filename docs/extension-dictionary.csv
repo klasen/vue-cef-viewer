@@ -54,7 +54,7 @@ producer,0.1,devicePayloadId,devicePayloadId,String,128,Unique identifier for th
 producer,0.1,deviceProcessName,deviceProcessName,String,1023,Process name associated with the event. An example might be the process generating the syslog entry in UNIX.
 producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IpAddress,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dhost,destinationHostName,String,1023,"Identifies the destination that an event refers to in an IP network. The format must be a fully qualified domain name (FQDN) associated with the destination node, when a node is available. Examples: “host.domain.com” or “host”."
-producer,0.1,dmac,destinationMacAddress,MacAddress,,Six colon-seperated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
+producer,0.1,dmac,destinationMacAddress,MacAddress,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dntdom,destinationNtDomain,String,255,The Windows domain name of the destination address.
 producer,0.1,dpid,destinationProcessId,Integer,,"Provides the ID of the destination process associated with the event. For example, if an event contains process ID 105, “105” is the process ID."
 producer,0.1,dpriv,destinationUserPrivileges,String,1023,"The typical values are “Administrator”, “User”, and “Guest”. This identifies the destination user’s privileges. In UNIX, for example, activity executed on the root user would be identified with destinationUser Privileges of “Administrator”."
@@ -106,7 +106,7 @@ producer,0.1,requestContext,requestContext,String,2048,"Description of the conte
 producer,0.1,requestCookies,requestCookies,String,1023,Cookies associated with the request.
 producer,0.1,requestMethod,requestMethod,String,1023,"The method used to access a URL. Possible values: “POST”, “GET”, etc."
 producer,0.1,rt,deviceReceiptTime,DateTime,,The time at which the event related to the activity was received. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
-producer,0.1,shost,sourceHostName,String,1023,"Identifies the source that an event refers to in an IP network. The format should be a fully qualified domain name (DQDN) associated with the source node, when a mode is available. Examples:  “host” or “host.domain.com”."
+producer,0.1,shost,sourceHostName,String,1023,"Identifies the source that an event refers to in an IP network. The format should be a fully qualified domain name (FQDN) associated with the source node, when a mode is available. Examples:  “host” or “host.domain.com”."
 producer,0.1,smac,sourceMacAddress,MacAddress,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,sntdom,sourceNtDomain,String,255,The Windows domain name for the source address.
 producer,0.1,sourceDnsDomain,sourceDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
@@ -171,5 +171,7 @@ consumer,1.2,dTranslatedZoneKey,Destination Translated Zone Key,Long,,ID of a de
 consumer,1.2,dZoneKey,Destination Zone Key,Long,,ID of a destinationZone resource reference.
 consumer,1.2,deviceTranslatedZoneKey,Device Translated Zone Key,Long,,ID of a deviceTranslatedZone resource reference.
 consumer,1.2,deviceZoneKey,Device Zone Key,Long,,ID of a deviceZone resource reference.
+consumer,1.2,parserIdentifier,Parser Identifier,String,36,The parser ID of the parser file that processed the event.
+consumer,1.2,parserVersion,Parser Version,String,8,The release timestamp (DD-MM-YY) of the parser file that processed the event.
 consumer,1.2,sTranslatedZoneKey,Source Translated Zone Key,Long,,ID of a sourceTranslatedZone resource reference.
 consumer,1.2,sZoneKey,Source Zone Key,Long,,ID of a sourceZone resource reference.
