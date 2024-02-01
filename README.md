@@ -239,6 +239,24 @@ Scrape CEF implementation standard and save producer and consumer extension dict
 node ./docs/scrape.js
 ```
 
+#### Compare CEF Implementation Standard and Flexconn Devguide
+
+Generate a html side by side comparison of the CSV files for both documents using [diff2html-cli](https://www.npmjs.com/package/diff2html-cli).
+
+On the `spec-vs-devguide` branch:
+
+1) Scrape metadata
+2) Commit `/docs/*.csv`
+3) Copy `docs/extensions-dictionary-flexconn_devguide-for-comparison.csv` to `docs/extensions-dictionary-for-comparison.csv`
+4) Create diff
+
+```sh
+node ./docs/scrape.js > docs/fixes.txt
+git commit -m "Update scraped metadata" docs/*.html docs/*.csv docs/fixes.txt src/components/extension-dictionary.json
+cp ./docs/extension-dictionary-flexconn_devguide-for-comparison.csv ./docs/extension-dictionary-for-comparison.csv
+diff2html --style side --title "CEF Implementation Standard vs. Flexconn Devguide" --matchWordsThreshold 0.1 --fileContentToggle false --file docs/cef-implementation-standard_vs_flexconn-devguide.html
+```
+
 ### Compiles and hot-reloads for development
 
 ```sh

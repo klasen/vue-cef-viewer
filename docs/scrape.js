@@ -5,13 +5,14 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
 
-const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/cef-implementation-standard/Content/CEF/Chapter%202%20ArcSight%20Extension.htm#'
-const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-8.4/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
+const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
+const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
 const producerDictionaryName = 'producer'
 const consumerDictionaryName = 'consumer'
 const devguideDictionaryName = 'devguide'
 
 let firstDmac = true; // dmac key occurs twice
+let hasDvcMac = false; // dvcmac disappeared
 
 function parseExtension(dict, dictionaryName, $, element) {
     const tds = $(element).find('td');
@@ -23,6 +24,8 @@ function parseExtension(dict, dictionaryName, $, element) {
     let length;
     let description;
 
+    let origKey;
+
     // extract the text from each cell
     if (dictionaryName == devguideDictionaryName) {
         version = '0.1';
@@ -33,14 +36,14 @@ function parseExtension(dict, dictionaryName, $, element) {
     } else {
         version = $(tds[0]).text().trim();
 
-        const origKey = $(tds[1]).text().trim();
+        origKey = $(tds[1]).text().trim();
         key = origKey.replace(/[^0-9a-zA-Z]/g, '');
         if (key != origKey) {
             console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
         }
         if (/^[A-Z]/.test(key)) {
             key = key.charAt(0).toLowerCase() + key.slice(1);
-            console.log('Lower case first character of key "' + origKey + '" -> ' + key + '"');
+            console.log('Lower case first character of key "' + origKey + '" -> "' + key + '"');
         }
 
         fullName = $(tds[2]).text().trim();
@@ -58,55 +61,59 @@ function parseExtension(dict, dictionaryName, $, element) {
         }
     }
 
+    const origDataType = dataType;
+    const origFullName = fullName;
+
     // fix data
 
-    // ignore 1.2 *Key producer extensions that are actually consumer
-    if (dictionaryName == producerDictionaryName && version == '1.2' && /Key$/.test(key)) {
+    // remove producer extensions that are actually consumer
+    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key))) || key == 'type') {
         console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
-    // ignore 1.2 *Key consumer extensions that are actually producer
-    if (dictionaryName == consumerDictionaryName && version == '1.2' && !/Key$/.test(key)) {
+    // remove consumer extensions that are actually producer
+    if (dictionaryName == consumerDictionaryName && version == '1.2' && /^reported|^framework|^threat/.test(key)) {
         console.log('Remove producer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
-    }
-
-    // normalize fullName so we can map between Dev Guide an Implementation Standard
-    const origFullName = fullName;
-
-    // remove spaces from fullName
-    const origFullName2 = fullName;
-    fullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
-    if (fullName != origFullName2) {
-        console.log('Remove spaces from full name: "' + origFullName + '" -> "' + fullName + '"');
-    }
-
-    // Lower case first character of fullName
-    if (/^[A-Z]/.test(fullName)) {
-        fullName = fullName.charAt(0).toLowerCase() + fullName.slice(1);
-        console.log('Lower case first fullName character of "' + origFullName + '" -> "' + fullName + '"');
     }
 
     // fix data for specific keys
     switch (key) {
         case 'dmac':
             if (firstDmac) {
-                fullName = 'destinationMacAddress';
-                console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
                 firstDmac = false;
+                if (fullName != 'destinationMacAddress') {
+                    fullName = 'destinationMacAddress';
+                    console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+                }
             }
             break;
+        case 'destinatioTranslatedZoneExternalID':
+            key = 'destinationTranslatedZoneExternalID';
+            console.log('Fix key for key "' + origKey + '" -> "' + key + '"');
+            break;
+        case 'dvcmac':
+            hasDvcMac = true;
+            break;
         case 'flexString1Label':
-            fullName = 'flexString1Label';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            if (fullName != 'flexString1Label') {
+                fullName = 'flexString1Label';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
             break;
         case 'fname':
             fullName = 'fileName';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            break;
+        case 'reportedDuration':
+            if (dataType != 'Long') {
+                dataType = 'Long';
+                console.log('Fix data type for key "' + key + '": "' + origDataType + '" -> "' + dataType + '"');
+            }
             break;
         case 'threatActor':
             fullName = 'threatActor';
-            console.log('Fix full name for key "' + key + '": ' + origFullName + '" -> "' + fullName + '"');
+            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
             break;
         default:
             break;
@@ -130,43 +137,61 @@ function parseExtension(dict, dictionaryName, $, element) {
         case 'agentSeverity':
         case 'deviceEventClassId':
         case 'deviceProduct':
+        case 'deviceSeverity':
         case 'deviceVersion':
         case 'deviceVendor':
         case 'name':
-            // ignore header fields
+            console.log('Ignore CEF header field "' + fullName + '"');
             return;
         default:
             break;
     }
 
     // normalize dataType
-    const origDataType = dataType;
     switch (dataType) {
+        case 'Floating Point':
+            dataType = 'Double';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            break;
         case 'IPv4 Address': // IP address extensions can take IPv6 now
         case 'IPAddress':
-            dataType = 'IP Address';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        case 'IP Address':
+            dataType = 'IpAddress';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
-        case 'MacAddress':
+        case 'IPv6 address':
+            dataType = 'IPv6 Address';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+            break;
+        case 'Mac Address':
         case 'MAC address':
-            dataType = 'MAC Address';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        case 'MAC Address':
+            dataType = 'MacAddress';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         case 'TimeStamp':
-            dataType = 'Time Stamp';
-            console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+        case 'Time Stamp':
+            dataType = 'DateTime';
+            console.log('Normalize data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
             break;
         default:
             break;
     }
 
-    if (length.startsWith('64-bit') || key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize') {
-        console.log('Fix data type for key "' + key + '": ' + dataType + '-> Long');
+    if (dataType != 'Long' && (key == 'in' || key == 'out' || key == 'fsize' || key == 'oldFileSize')) {
         dataType = 'Long';
         length = '';
+        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
+    }
+
+    if (length.startsWith('64-bit')) {
+        dataType = 'Long';
+        length = '';
+        console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
     }
 
     if (length.startsWith('n/a')) {
+        console.log('Normalize length for key "' + (key ? key : fullName) + '": "' + length + '" -> ""');
         length = '';
     }
 
@@ -176,7 +201,7 @@ function parseExtension(dict, dictionaryName, $, element) {
     }
     // there is no more 4.x, set length to 4000
     if (length.startsWith('1023 (4.x)')) {
-        console.log('Set length for key "' + fullName + '": ' + length + '-> 4000');
+        console.log('Adjust length for key "' + (key ? key : fullName) + '": ' + length + ' -> 4000');
         length = '4000';
     }
 
@@ -184,7 +209,28 @@ function parseExtension(dict, dictionaryName, $, element) {
     if (dataType === 'String') {
         length = Number(length);
         if (Number.isNaN(length)) {
-            length = undefined
+            console.log('Non-numeric string length for key: "' + (key ? key : fullName) + '": ' + length)
+            length = undefined;
+        }
+    }
+
+    // normalize fullName so we can map between Dev Guide an Implementation Standard
+    // remove spaces from fullName
+    var normalizedFullName = fullName.replace(/[^0-9a-zA-Z]/g, '');
+    // Lower case first character of fullName
+    if (/^[A-Z]/.test(normalizedFullName)) {
+        normalizedFullName = normalizedFullName.charAt(0).toLowerCase() + normalizedFullName.slice(1);
+    }
+    // if (normalizedFullName != origFullName) {
+    //     console.log('Normalize full name: "' + origFullName + '" -> "' + normalizedFullName + '"');
+    // }
+
+    // check for duplicate extensions
+    for (let index = 0; index < dict.length; index++) {
+        const element = dict[index];
+        if ((key && key == element.key) || fullName == element.fullName) {
+            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
+            return;
         }
     }
 
@@ -196,18 +242,9 @@ function parseExtension(dict, dictionaryName, $, element) {
         'fullName': fullName,
         'dataType': dataType,
         'length': length,
-        'description': description
+        'description': description,
+        'normalizedFullName': normalizedFullName
     };
-
-    // check for duplicate extensions
-    for (let index = 0; index < dict.length; index++) {
-        const element = dict[index];
-        if ((key && key == element.key) || fullName == element.fullName) {
-            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
-            return;
-        }
-    }
-
     dict.push(extension);
 }
 
@@ -218,7 +255,7 @@ const sortByFields = (fields) => (a, b) => fields.map(key => {
     return a[key] > b[key] ? direction : a[key] < b[key] ? -(direction) : 0;
 }).reduce((p, n) => p ? p : n, 0);
 
-function saveJson(arr, fileName) {
+function saveJson(arr, fileName) { // eslint-disable-line no-unused-vars
     // transform array of objects into map
     let extensionMap = {};
     for (let extension of arr) {
@@ -232,7 +269,7 @@ function saveJson(arr, fileName) {
             console.log('An error occured while writing JSON Object to File.');
             return console.log(err);
         }
-        console.log(fileName + ' file has been saved.');
+        // console.log(fileName + ' file has been saved.');
     });
 }
 
@@ -240,6 +277,14 @@ async function scrapeUrl(url) {
     console.log('Scraping ' + url);
     const response = await axios(url)
     const html = response.data;
+    fs.writeFile(url == cefImplementationStandardUrl ? 'docs/extension-dictionary.html' : 'docs/extension-dictionary-flexconn_devguide.html', html, 'utf8', function (err) {
+        if (err) {
+            console.log('An error occured while writing HTTP response to File.');
+            return console.log(err);
+        }
+
+    });
+
     const $ = cheerio.load(html);
 
     if (url == cefImplementationStandardUrl) {
@@ -257,10 +302,43 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, consumerDictionaryName, $, element);
         })
 
+        if (!hasDvcMac) {
+            let extension = {
+                'dictionaryName': 'producer',
+                'version': '0.1',
+                'key': 'dvcmac',
+                'fullName': 'deviceMacAddress',
+                'dataType': 'MacAddress',
+                'length': undefined,
+                'description': 'Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”',
+                'normalizedFullName': 'deviceMacAddress'
+            };
+            dictionary.push(extension);
+            console.log('Added missing extension for key "' + extension.key + '"');
+        }
+
+        // dictionary with fewer columns for comparison with flexconn_devguide
+        let comparisonDictionary = [];
+        dictionary.map((element) => {
+            // if (element.dictionaryName == producerDictionaryName) {
+            comparisonDictionary.push({
+                'fullName': element.normalizedFullName,
+                'dataType': element.dataType,
+                'length': element.length,
+            });
+            // }
+        });
+        comparisonDictionary.sort(sortByFields(['fullName']));
+        let csv = new ObjectsToCsv(comparisonDictionary);
+        await csv.toDisk('docs/extension-dictionary-for-comparison.csv')
+
+        // remove normalizedFullName that was neded for comparison
+        dictionary.forEach(element => delete element.normalizedFullName);
+
         // sort dictionary by dictionaryName (producer first), version, key, and fullName
         dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
 
-        let csv = new ObjectsToCsv(dictionary);
+        csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary.csv')
 
         saveJson(dictionary, 'src/components/extension-dictionary.json');
@@ -272,8 +350,26 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, devguideDictionaryName, $, element);
         })
 
-        let csv = new ObjectsToCsv(dictionary);
+        // dictionary with fewer columns for comparison with cefImplementationStandard
+        let comparisonDictionary = [];
+        dictionary.map(element => comparisonDictionary.push({
+            'fullName': element.normalizedFullName,
+            'dataType': element.dataType,
+            'length': element.length,
+        }));
+        comparisonDictionary.sort(sortByFields(['fullName']));
+        let csv = new ObjectsToCsv(comparisonDictionary);
+        await csv.toDisk('docs/extension-dictionary-flexconn_devguide-for-comparison.csv')
+
+        // remove normalizedFullName that was neded for comparison
+        dictionary.forEach(element => delete element.normalizedFullName);
+
+        // sort dictionary by dictionaryName (producer first), version, key, and fullName
+        dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
+
+        csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary-flexconn_devguide.csv')
+
     }
 }
 

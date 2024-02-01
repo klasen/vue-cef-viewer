@@ -2,23 +2,23 @@ dictionaryName,version,key,fullName,dataType,length,description
 producer,0.1,act,deviceAction,String,63,Action taken by the device.
 producer,0.1,app,applicationProtocol,String,31,"Application level protocol, example: HTTP, HTTPS, SSHv2, Telnet, POP, IMPA, IMAPS, and so on."
 producer,0.1,c6a1,deviceCustomIPv6Address1,IPv6 Address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,c6a1Label,deviceCustomIPv6Address1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,c6a1Label,deviceCustomIPv6 Address1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,c6a3,deviceCustomIPv6Address3,IPv6 Address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,c6a3Label,deviceCustomIPv6Address3Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,c6a4,deviceCustomIPv6Address4,IPv6 address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,c6a4Label,deviceCustomIPv6Address4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,c6a3Label,deviceCustomIPv6Address3 Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,c6a4,deviceCustomIPv6 Address4,IPv6 Address,,One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.
+producer,0.1,c6a4Label,deviceCustomIPv6 Address4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,cat,deviceEventCategory,String,1023,Represents the category assigned by the originating device. Devices often use their own categorization schema to classify event. Example: “/Monitor/Disk/Read”
-producer,0.1,cfp1,deviceCustomFloatingPoint1,Floating Point,,One of our floating point fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,cfp1Label,deviceCustomFloatingPoint1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,cfp2,deviceCustomFloatingPoint2,Floating Point,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,cfp2Label,deviceCustomFloatingPoint2Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,cfp3,deviceCustomFloatingPoint3,Floating Point,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,cfp3Label,deviceCustomFloatingPoint3Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,cfp4,deviceCustomFloatingPoint4,Floating Point,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
-producer,0.1,cfp4Label,deviceCustomFloatingPoint4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,cfp1,deviceCustomFloatingPoint1,Double,,One of our floating point fields available to map fields that do not apply to any other in this dictionary.
+producer,0.1,cfp1Label,deviceCustom FloatingPoint1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,cfp2,deviceCustomFloatingPoint2,Double,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
+producer,0.1,cfp2Label,deviceCustomFloatingPoint2 Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,cfp3,deviceCustomFloatingPoint3,Double,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
+producer,0.1,cfp3Label,deviceCustom FloatingPoint3Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
+producer,0.1,cfp4,deviceCustomFloatingPoint4,Double,,One of the four floating point fields available to map fields that do not apply to any other in this dictionary.
+producer,0.1,cfp4Label,deviceCustom FloatingPoint4Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,cn1,deviceCustomNumber1,Long,,"One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,cn1Label,deviceCustomNumber1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,cn2,deviceCustomNumber2,Long,,"One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
+producer,0.1,cn2,DeviceCustomNumber2,Long,,"One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,cn2Label,deviceCustomNumber2Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,cn3,deviceCustomNumber3,Long,,"One of the three number fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,cn3Label,deviceCustomNumber3Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
@@ -37,11 +37,11 @@ producer,0.1,cs6,deviceCustomString6,String,4000,"One of six strings available t
 producer,0.1,cs6Label,deviceCustomString6Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,destinationDnsDomain,destinationDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
 producer,0.1,destinationServiceName,destinationServiceName,String,1023,The service targeted by this event. Example: “sshd”
-producer,0.1,destinationTranslatedAddress,destinationTranslatedAddress,IP Address,,Identifies the translated destination that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,destinationTranslatedAddress,destinationTranslated Address,IpAddress,,Identifies the translated destination that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,destinationTranslatedPort,destinationTranslatedPort,Integer,,"Port after it was translated; for example, a firewall. Valid port numbers are 0 to 65535."
-producer,0.1,deviceCustomDate1,deviceCustomDate1,Time Stamp,,"One of two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
+producer,0.1,deviceCustomDate1,deviceCustomDate1,DateTime,,"One of two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,deviceCustomDate1Label,deviceCustomDate1Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
-producer,0.1,deviceCustomDate2,deviceCustomDate2,Time Stamp,,"One of the two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
+producer,0.1,deviceCustomDate2,deviceCustomDate2,DateTime,,"One of the two timestamp fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible."
 producer,0.1,deviceCustomDate2Label,deviceCustomDate2Label,String,1023,All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.
 producer,0.1,deviceDirection,deviceDirection,Integer,,Any information about what direction the observed communication has taken. The following values are supported: “0” for inbound or “1” for outbound
 producer,0.1,deviceDnsDomain,deviceDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
@@ -52,32 +52,32 @@ producer,0.1,deviceNtDomain,deviceNtDomain,String,255,The Windows domain name of
 producer,0.1,deviceOutboundInterface,deviceOutboundInterface,String,128,Interface on which the packet or data left the device.
 producer,0.1,devicePayloadId,devicePayloadId,String,128,Unique identifier for the payload associated with the event.
 producer,0.1,deviceProcessName,deviceProcessName,String,1023,Process name associated with the event. An example might be the process generating the syslog entry in UNIX.
-producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IP Address,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,deviceTranslatedAddress,deviceTranslatedAddress,IpAddress,,Identifies the translated device address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dhost,destinationHostName,String,1023,"Identifies the destination that an event refers to in an IP network. The format must be a fully qualified domain name (FQDN) associated with the destination node, when a node is available. Examples: “host.domain.com” or “host”."
-producer,0.1,dmac,destinationMacAddress,MAC Address,,Six colon-seperated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
+producer,0.1,dmac,destinationMacAddress,MacAddress,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dntdom,destinationNtDomain,String,255,The Windows domain name of the destination address.
 producer,0.1,dpid,destinationProcessId,Integer,,"Provides the ID of the destination process associated with the event. For example, if an event contains process ID 105, “105” is the process ID."
 producer,0.1,dpriv,destinationUserPrivileges,String,1023,"The typical values are “Administrator”, “User”, and “Guest”. This identifies the destination user’s privileges. In UNIX, for example, activity executed on the root user would be identified with destinationUser Privileges of “Administrator”."
 producer,0.1,dproc,destinationProcessName,String,1023,The name of the event’s destination process. Example:  “telnetd” or “sshd”.
 producer,0.1,dpt,destinationPort,Integer,,The valid port numbers are between 0 and 65535.
-producer,0.1,dst,destinationAddress,IP Address,,Identifies the destination address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
+producer,0.1,dst,destinationAddress,IpAddress,,Identifies the destination address that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”
 producer,0.1,dtz,deviceTimeZone,String,255,The timezone for the device generating the event.
 producer,0.1,duid,destinationUserId,String,1023,"Identifies the destination user by ID. For example, in UNIX, the root user is generally associated with user ID 0."
 producer,0.1,duser,destinationUserName,String,1023,Identifies the destination user by name. This is the user associated with the event’s destination. Email addresses are often mapped into the UserName fields. The recipient is a candidate to put into this field.
-producer,0.1,dvc,deviceAddress,IP Address,,Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,dvc,deviceAddress,IpAddress,,Identifies the device address that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,dvchost,deviceHostName,String,100,"The format should be a fully qualified domain name (FQDN) associated with the device node, when a node is available. Example: “host.domain.com” or “host”."
-producer,0.1,dvcmac,deviceMacAddress,MAC Address,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
+producer,0.1,dvcmac,deviceMacAddress,MacAddress,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,dvcpid,deviceProcessId,Integer,,Provides the ID of the process on the device generating the event.
-producer,0.1,end,endTime,Time Stamp,,The time at which the activity related to the event ended. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st1970). An example would be reporting the end of a session.
+producer,0.1,end,endTime,DateTime,,The time at which the activity related to the event ended. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st1970). An example would be reporting the end of a session.
 producer,0.1,externalId,externalId,String,40,"The ID used by an originating device. They are usually increasing numbers, associated with events."
-producer,0.1,fileCreateTime,fileCreateTime,Time Stamp,,Time when the file was created.
+producer,0.1,fileCreateTime,fileCreateTime,DateTime,,Time when the file was created.
 producer,0.1,fileHash,fileHash,String,255,Hash of a file.
 producer,0.1,fileId,fileId,String,1023,An ID associated with a file could be the inode.
-producer,0.1,fileModificationTime,fileModificationTime,Time Stamp,,Time when the file was last modified.
+producer,0.1,fileModificationTime,fileModificationTime,DateTime,,Time when the file was last modified.
 producer,0.1,filePath,filePath,String,1023,"Full path to the file, including file name itself. Example: C:\Program Files \WindowsNT\Accessories\ wordpad.exe or /usr/bin/zip"
 producer,0.1,filePermission,filePermission,String,1023,Permissions of the file.
 producer,0.1,fileType,fileType,String,1023,"Type of file (pipe, socket, etc.)"
-producer,0.1,flexDate1,flexDate1,Time Stamp,,"A timestamp field available to map a timestamp that does not apply to any other defined timestamp field in this dictionary. Use all flex fields sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary."
+producer,0.1,flexDate1,flexDate1,DateTime,,"A timestamp field available to map a timestamp that does not apply to any other defined timestamp field in this dictionary. Use all flex fields sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary."
 producer,0.1,flexDate1Label,flexDate1Label,String,128,The label field is a string and describes the purpose of the flex field.
 producer,0.1,flexString1,flexString1,String,1023,"One of four floating point fields available to map fields that do not apply to any other in this dictionary. Use sparingly and seek a more specific, dictionary supplied field when possible. These fields are typically reserved for customer use and should not be set by vendors unless necessary."
 producer,0.1,flexString1Label,flexString1Label,String,128,The label field is a string and describes the purpose of the flex field.
@@ -87,10 +87,10 @@ producer,0.1,fname,fileName,String,1023,Name of the file only (without its path)
 producer,0.1,fsize,fileSize,Long,,Size of the file.
 producer,0.1,in,bytesIn,Long,,"Number of bytes transferred inbound, relative to the source to destination relationship, meaning that data was flowing from source to destination."
 producer,0.1,msg,message,String,1023,An arbitrary message giving more details about the event. Multi-line entries can be produced by using \n as the new line separator.
-producer,0.1,oldFileCreateTime,oldFileCreateTime,Time Stamp,,Time when old file was created.
+producer,0.1,oldFileCreateTime,oldFileCreateTime,DateTime,,Time when old file was created.
 producer,0.1,oldFileHash,oldFileHash,String,255,Hash of the old file.
 producer,0.1,oldFileId,oldFileId,String,1023,An ID associated with the old file could be the inode.
-producer,0.1,oldFileModificationTime,oldFileModificationTime,Time Stamp,,Time when old file was last modified.
+producer,0.1,oldFileModificationTime,oldFileModificationTime,DateTime,,Time when old file was last modified.
 producer,0.1,oldFileName,oldFileName,String,1023,Name of the old file.
 producer,0.1,oldFilePath,oldFilePath,String,1023,"Full path to the old file, including the file name itself. Examples: c:\Program Files\ WindowsNT\Accessories \wordpad.exe or /usr/bin/zip"
 producer,0.1,oldFilePermission,oldFilePermission,String,1023,Permissions of the old file.
@@ -99,59 +99,58 @@ producer,0.1,oldFileType,oldFileType,String,1023,"Type of the old file (pipe, so
 producer,0.1,out,bytesOut,Long,,"Number of bytes transferred outbound relative to the source to destination relationship. For example, the byte number of data flowing from the destination to the source."
 producer,0.1,outcome,eventOutcome,String,63,"Displays the outcome, usually as ‘success’ or ‘failure’."
 producer,0.1,proto,transportProtocol,String,31,Identifies the Layer-4 protocol used. The possible values are protocols such as TCP or UDP.
-producer,0.1,reason,reason,String,1023,The reason an audit event was generated. For example “badd password” or “unknown user”. This could also be an error or return code. Example: “0x1234”
+producer,0.1,reason,Reason,String,1023,The reason an audit event was generated. For example “badd password” or “unknown user”. This could also be an error or return code. Example: “0x1234”
 producer,0.1,request,requestUrl,String,1023,"In the case of an HTTP request, this field contains the URL accessed. The URL should contain the protocol as well. Example: “http://www/secure.com”"
 producer,0.1,requestClientApplication,requestClientApplication,String,1023,The User-Agent associated with the request.
 producer,0.1,requestContext,requestContext,String,2048,"Description of the content from which the request originated (for example, HTTP Referrer)"
 producer,0.1,requestCookies,requestCookies,String,1023,Cookies associated with the request.
 producer,0.1,requestMethod,requestMethod,String,1023,"The method used to access a URL. Possible values: “POST”, “GET”, etc."
-producer,0.1,rt,deviceReceiptTime,Time Stamp,,The time at which the event related to the activity was received. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
-producer,0.1,shost,sourceHostName,String,1023,"Identifies the source that an event refers to in an IP network. The format should be a fully qualified domain name (DQDN) associated with the source node, when a mode is available. Examples:  “host” or “host.domain.com”."
-producer,0.1,smac,sourceMacAddress,MAC Address,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
+producer,0.1,rt,deviceReceiptTime,DateTime,,The time at which the event related to the activity was received. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
+producer,0.1,shost,sourceHostName,String,1023,"Identifies the source that an event refers to in an IP network. The format should be a fully qualified domain name (FQDN) associated with the source node, when a mode is available. Examples:  “host” or “host.domain.com”."
+producer,0.1,smac,sourceMacAddress,MacAddress,,Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”
 producer,0.1,sntdom,sourceNtDomain,String,255,The Windows domain name for the source address.
 producer,0.1,sourceDnsDomain,sourceDnsDomain,String,255,The DNS domain part of the complete fully qualified domain name (FQDN).
 producer,0.1,sourceServiceName,sourceServiceName,String,1023,The service that is responsible for generating this event.
-producer,0.1,sourceTranslatedAddress,sourceTranslatedAddress,IP Address,,Identifies the translated source that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,sourceTranslatedAddress,sourceTranslatedAddress,IpAddress,,Identifies the translated source that the event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
 producer,0.1,sourceTranslatedPort,sourceTranslatedPort,Integer,,"A port number after being translated by, for example, a firewall. Valid port numbers are 0 to 65535."
 producer,0.1,spid,sourceProcessId,Integer,,The ID of the source process associated with the event.
 producer,0.1,spriv,sourceUserPrivileges,String,1023,"The typical values are “Administrator”, “User”, and “Guest”. It identifies the source user’s privileges. In UNIX, for example, activity executed by the root user would be identified with “Administrator”."
 producer,0.1,sproc,sourceProcessName,String,1023,The name of the event’s source process.
 producer,0.1,spt,sourcePort,Integer,,The valid port numbers are 0 to 65535.
-producer,0.1,src,sourceAddress,IP Address,,Identifies the source that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
-producer,0.1,start,startTime,Time Stamp,,The time when the activity the event referred to started. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
+producer,0.1,src,sourceAddress,IpAddress,,Identifies the source that an event refers to in an IP network. The format is an IPv4 address. Example: “192.168.10.1”.
+producer,0.1,start,startTime,DateTime,,The time when the activity the event referred to started. The format is MMM dd yyyy HH:mm:ss or milliseconds since epoch (Jan 1st 1970)
 producer,0.1,suid,sourceUserId,String,1023,"Identifies the source user by ID. This is the user associated with the source of the event. For example, in UNIX, the root user is generally associated with user ID 0."
 producer,0.1,suser,sourceUserName,String,1023,Identifies the source user by name. Email addresses are also mapped into the UserName fields. The sender is a candidate to put into this field.
-producer,0.1,type,type,Integer,,"0 means base event, 1 means aggregated, 2 means correlation, and 3 means action. This field can be omitted for base events (type 0)."
-producer,1.2,frameworkName,frameworkName,String,256,The name of the framework used for threatAttackID.
-producer,1.2,reportedDuration,reportedDuration,Long,,Elapsed time in milliseconds of the action or entity the event represents.
-producer,1.2,reportedResourceGroupName,reportedResourceGroupName,String,128,Name of a group containing the resource in the system that sent the event.
-producer,1.2,reportedResourceID,reportedResourceID,String,256,Name of a group containing the resource in the system that sent the event.
-producer,1.2,reportedResourceName,reportedResourceName,String,64,Name of the affected resource in the system that sent the event.
-producer,1.2,reportedResourceType,reportedResourceType,String,64,Type of the affected resource in the system that sent the event.
+producer,1.2,frameworkName,Framework Name,String,256,The name of the framework used for threatAttackID.
+producer,1.2,reportedDuration,Reported Duration,Long,,Elapsed time in milliseconds of the action or entity the event represents.
+producer,1.2,reportedResourceGroupName,Reported Resource Group Name,String,128,Name of a group containing the resource in the system that sent the event.
+producer,1.2,reportedResourceID,Reported Resource ID,String,256,Name of a group containing the resource in the system that sent the event.
+producer,1.2,reportedResourceName,Reported Resource Name,String,64,Name of the affected resource in the system that sent the event.
+producer,1.2,reportedResourceType,Reported Resource Type,String,64,Type of the affected resource in the system that sent the event.
 producer,1.2,threatActor,threatActor,String,40,Threat actor associated with the event.
-producer,1.2,threatAttackID,threatAttackID,String,32,A full ID of a threat or attack as defined in the security framework in frameworkName.
+producer,1.2,threatAttackID,Threat Attack ID,String,32,A full ID of a threat or attack as defined in the security framework in frameworkName.
 consumer,0.1,agentDnsDomain,agentDnsDomain,String,255,The DNS domain name of the ArcSight connector that processed the event.
 consumer,0.1,agentNtDomain,agentNtDomain,String,255,
-consumer,0.1,agentTranslatedAddress,agentTranslatedAddress,IP Address,,
-consumer,0.1,agentTranslatedZoneExternalID,agentTranslatedZoneExternalID,String,200,
+consumer,0.1,agentTranslatedAddress,agentTranslatedAddress,IpAddress,,
+consumer,0.1,agentTranslatedZoneExternalID,agentTranslatedZone ExternalID,String,200,
 consumer,0.1,agentTranslatedZoneURI,agentTranslatedZoneURI,String,2048,
 consumer,0.1,agentZoneExternalID,agentZoneExternalID,String,200,
 consumer,0.1,agentZoneURI,agentZoneURI,String,2048,
-consumer,0.1,agt,agentAddress,IP Address,,The IP address of the ArcSight connector that processed the event.
+consumer,0.1,agt,agentAddress,IpAddress,,The IP address of the ArcSight connector that processed the event.
 consumer,0.1,ahost,agentHostName,String,1023,The hostname of the ArcSight connector that processed the event.
 consumer,0.1,aid,agentId,String,40,The agent ID of the ArcSight connector that processed the event.
-consumer,0.1,amac,agentMacAddress,MAC Address,,The MAC address of the ArcSight connector that processed the event.
-consumer,0.1,art,agentReceiptTime,Time Stamp,,The time at which information about the event was received by the ArcSight connector.
+consumer,0.1,amac,agentMacAddress,MacAddress,,The MAC address of the ArcSight connector that processed the event.
+consumer,0.1,art,agentReceiptTime,DateTime,,The time at which information about the event was received by the ArcSight connector.
 consumer,0.1,at,agentType,String,63,The agent type of the ArcSight connector that processed the event
 consumer,0.1,atz,agentTimeZone,String,255,The agent time zone of the ArcSight connector that processed the event.
 consumer,0.1,av,agentVersion,String,31,The version of the ArcSight connector that processed the event.
 consumer,0.1,customerExternalID,customerExternalID,String,200,
 consumer,0.1,customerURI,customerURI,String,2048,
-consumer,0.1,destinationTranslatedZoneExternalID,destinationTranslatedZoneExternalID,String,200,
-consumer,0.1,destinationTranslatedZoneURI,destinationTranslatedZoneURI,String,2048,The URI for the Translated Zone that the destination asset has been assigned to in ArcSight.
+consumer,0.1,destinationTranslatedZoneExternalID,destinationTranslated ZoneExternalID,String,200,
+consumer,0.1,destinationTranslatedZoneURI,destinationTranslated ZoneURI,String,2048,The URI for the Translated Zone that the destination asset has been assigned to in ArcSight.
 consumer,0.1,destinationZoneExternalID,destinationZoneExternalID,String,200,
 consumer,0.1,destinationZoneURI,destinationZoneURI,String,2048,The URI for the Zone that the destination asset has been assigned to in ArcSight.
-consumer,0.1,deviceTranslatedZoneExternalID,deviceTranslatedZoneExternalID,String,200,
+consumer,0.1,deviceTranslatedZoneExternalID,deviceTranslatedZone ExternalID,String,200,
 consumer,0.1,deviceTranslatedZoneURI,deviceTranslatedZoneURI,String,2048,The URI for the Translated Zone that the device asset has been assigned to in ArcSight.
 consumer,0.1,deviceZoneExternalID,deviceZoneExternalID,String,200,
 consumer,0.1,deviceZoneURI,deviceZoneURI,String,2048,Thee URI for the Zone that the device asset has been assigned to in ArcSight.
@@ -161,16 +160,18 @@ consumer,0.1,eventId,eventId,Long,,This is a unique ID that ArcSight assigns to 
 consumer,0.1,rawEvent,rawEvent,String,4000,
 consumer,0.1,slat,sourceGeoLatitude,Double,,
 consumer,0.1,slong,sourceGeoLongitude,Double,,
-consumer,0.1,sourceTranslatedZoneExternalID,sourceTranslatedZoneExternalID,String,200,
+consumer,0.1,sourceTranslatedZoneExternalID,sourceTranslatedZone ExternalID,String,200,
 consumer,0.1,sourceTranslatedZoneURI,sourceTranslatedZoneURI,String,2048,The URI for the Translated Zone that the destination asset has been assigned to in ArcSight.
 consumer,0.1,sourceZoneExternalID,sourceZoneExternalID,String,200,
 consumer,0.1,sourceZoneURI,sourceZoneURI,String,2048,The URI for the Zone that the source asset has been assigned to in ArcSight.
-consumer,1.2,agentTranslatedZoneKey,agentTranslatedZoneKey,Long,,ID of an agentTranslatedZone resource reference.
-consumer,1.2,agentZoneKey,agentZoneKey,Long,,ID of an agentZone resource reference.
-consumer,1.2,customerKey,customerKey,Long,,ID of a customer resource reference.
-consumer,1.2,dTranslatedZoneKey,destinationTranslatedZoneKey,Long,,ID of a destinationTranslatedZone resource reference.
-consumer,1.2,dZoneKey,destinationZoneKey,Long,,ID of a destinationZone resource reference.
-consumer,1.2,deviceTranslatedZoneKey,deviceTranslatedZoneKey,Long,,ID of a deviceTranslatedZone resource reference.
-consumer,1.2,deviceZoneKey,deviceZoneKey,Long,,ID of a deviceZone resource reference.
-consumer,1.2,sTranslatedZoneKey,sourceTranslatedZoneKey,Long,,ID of a sourceTranslatedZone resource reference.
-consumer,1.2,sZoneKey,sourceZoneKey,Long,,ID of a sourceZone resource reference.
+consumer,1.2,agentTranslatedZoneKey,Agent Translated Zone Key,Long,,ID of an agentTranslatedZone resource reference.
+consumer,1.2,agentZoneKey,Agent Zone Key,Long,,ID of an agentZone resource reference.
+consumer,1.2,customerKey,Customer Key,Long,,ID of a customer resource reference.
+consumer,1.2,dTranslatedZoneKey,Destination Translated Zone Key,Long,,ID of a destinationTranslatedZone resource reference.
+consumer,1.2,dZoneKey,Destination Zone Key,Long,,ID of a destinationZone resource reference.
+consumer,1.2,deviceTranslatedZoneKey,Device Translated Zone Key,Long,,ID of a deviceTranslatedZone resource reference.
+consumer,1.2,deviceZoneKey,Device Zone Key,Long,,ID of a deviceZone resource reference.
+consumer,1.2,parserIdentifier,Parser Identifier,String,36,The parser ID of the parser file that processed the event.
+consumer,1.2,parserVersion,Parser Version,String,8,The release timestamp (DD-MM-YY) of the parser file that processed the event.
+consumer,1.2,sTranslatedZoneKey,Source Translated Zone Key,Long,,ID of a sourceTranslatedZone resource reference.
+consumer,1.2,sZoneKey,Source Zone Key,Long,,ID of a sourceZone resource reference.
