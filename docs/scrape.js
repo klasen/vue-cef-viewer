@@ -12,6 +12,7 @@ const consumerDictionaryName = 'consumer'
 const devguideDictionaryName = 'devguide'
 
 let firstDmac = true; // dmac key occurs twice
+let hasDvcMac = false; // dvcmac disappeared
 
 function parseExtension(dict, dictionaryName, $, element) {
     const tds = $(element).find('td');
@@ -87,6 +88,13 @@ function parseExtension(dict, dictionaryName, $, element) {
                 }
             }
             break;
+        case 'destinatioTranslatedZoneExternalID':
+            key = 'destinationTranslatedZoneExternalID';
+            console.log('Fix key for key "' + origKey + '" -> "' + key + '"');
+            break;
+        case 'dvcmac':
+            hasDvcMac = true;
+            break;
         case 'flexString1Label':
             if (fullName != 'flexString1Label') {
                 fullName = 'flexString1Label';
@@ -96,6 +104,12 @@ function parseExtension(dict, dictionaryName, $, element) {
         case 'fname':
             fullName = 'fileName';
             console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            break;
+        case 'reportedDuration':
+            if (dataType != 'Long') {
+                dataType = 'Long';
+                console.log('Fix data type for key "' + key + '": "' + origDataType + '" -> "' + dataType + '"');
+            }
             break;
         case 'threatActor':
             fullName = 'threatActor';
@@ -288,15 +302,30 @@ async function scrapeUrl(url) {
             parseExtension(dictionary, consumerDictionaryName, $, element);
         })
 
+        if (!hasDvcMac) {
+            let extension = {
+                'dictionaryName': 'producer',
+                'version': '0.1',
+                'key': 'dvcmac',
+                'fullName': 'deviceMacAddress',
+                'dataType': 'MacAddress',
+                'length': undefined,
+                'description': 'Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”',
+                'normalizedFullName': 'deviceMacAddress'
+            };
+            dictionary.push(extension);
+            console.log('Added missing extension for key "' + extension.key + '"');
+        }
+
         // dictionary with fewer columns for comparison with flexconn_devguide
         let comparisonDictionary = [];
         dictionary.map((element) => {
             // if (element.dictionaryName == producerDictionaryName) {
-                comparisonDictionary.push({
-                    'fullName': element.normalizedFullName,
-                    'dataType': element.dataType,
-                    'length': element.length,
-                });
+            comparisonDictionary.push({
+                'fullName': element.normalizedFullName,
+                'dataType': element.dataType,
+                'length': element.length,
+            });
             // }
         });
         comparisonDictionary.sort(sortByFields(['fullName']));
