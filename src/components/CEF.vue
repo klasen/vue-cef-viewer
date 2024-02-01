@@ -82,7 +82,7 @@
       <tr class="cefextension" v-for="ext in cef.extensionsSorted" :key="ext.key">
         <th :title="ext.meta.fullName" :class="ext.meta.invalidExtensionName && 'status_warning'">{{ ext.key }}</th>
         <td :class="ext.meta.invalidValue && 'status_warning'">
-          <pre>{{ ext.value | pretty() }}</pre>
+          <pre>{{ pretty(ext.value) }}</pre>
         </td>
         <td>
           <ul>
@@ -478,11 +478,8 @@ export default {
       document.execCommand("copy");
       window.getSelection().removeAllRanges();
       console.log("Table copied to clipboard");
-    }
-  },
-  filters: {
-    // pretty print objects
-    pretty: (val, indent = 2) => {
+    },
+    pretty(val, indent = 2) {
       if (typeof val !== "string") {
         return JSON.stringify(val, null, indent);
       } else {

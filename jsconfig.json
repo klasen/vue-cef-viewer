@@ -1,22 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
-    "baseUrl": "./",
-    "moduleResolution": "node",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+      "@/*": ["./src/*"]
+    }
   },
-  "vueCompilerOptions": {
-    "target": 2.7
-  }
+  "exclude": ["node_modules", "dist"]
 }
