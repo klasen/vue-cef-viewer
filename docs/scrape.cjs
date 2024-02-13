@@ -80,7 +80,7 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
     }
 
     // remove producer extensions that are actually consumer
-    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key))) || key == 'type') {
+    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key)) || key == 'type')) {
         console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
@@ -105,9 +105,6 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
             key = 'destinationTranslatedZoneExternalID';
             console.log('Fix key for key "' + origKey + '" -> "' + key + '"');
             break;
-        case 'dvcmac':
-            hasDvcMac = true;
-            break;
         case 'flexString1Label':
             if (fullName != 'flexString1Label') {
                 fullName = 'flexString1Label';
@@ -115,8 +112,10 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
             }
             break;
         case 'fname':
-            fullName = 'fileName';
-            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            if (fullName != 'fileName') {
+                fullName = 'fileName';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
             break;
         case 'reportedDuration':
             if (dataType != 'Long') {
@@ -125,8 +124,10 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
             }
             break;
         case 'threatActor':
-            fullName = 'threatActor';
-            console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            if (fullName != 'threatActor') {
+                fullName = 'threatActor';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
             break;
         default:
             break;
@@ -135,7 +136,7 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
     // fix data for specific full names
     switch (fullName) {
         case 'deviceMacAddress': {
-            if (dictionaryName != devguideDictionaryName) {
+            if (dictionaryName != devguideDictionaryName && key != 'dvcmac') {
                 const origKey = key;
                 key = 'dvcmac';
                 console.log('Fix key "' + (origKey ? origKey : fullName) + '" -> "' + key + '"');
