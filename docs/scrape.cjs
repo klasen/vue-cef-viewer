@@ -7,14 +7,14 @@ const ObjectsToCsv = require('objects-to-csv');
 
 const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
 const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
-const producerDictionaryName = 'producer'
-const consumerDictionaryName = 'consumer'
-const devguideDictionaryName = 'devguide'
+const producerDictionaryName = 'producer';
+const consumerDictionaryName = 'consumer';
+const devguideDictionaryName = 'devguide';
 
 let firstDmac = true; // dmac key occurs twice
 let hasDvcMac = false; // dvcmac disappeared
 
-function parseExtension(dict, dictionaryName, $, element) {
+function parseExtensionFromTD(dictionaryName, $, element) {
     const tds = $(element).find('td');
 
     let version;
@@ -24,11 +24,10 @@ function parseExtension(dict, dictionaryName, $, element) {
     let length;
     let description;
 
-    let origKey;
-
     // extract the text from each cell
     if (dictionaryName == devguideDictionaryName) {
         version = '0.1';
+        key = '';
         fullName = $(tds[0]).text().trim();
         dataType = $(tds[1]).text().trim();
         length = $(tds[2]).text().trim();
@@ -36,15 +35,7 @@ function parseExtension(dict, dictionaryName, $, element) {
     } else {
         version = $(tds[0]).text().trim();
 
-        origKey = $(tds[1]).text().trim();
-        key = origKey.replace(/[^0-9a-zA-Z]/g, '');
-        if (key != origKey) {
-            console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
-        }
-        if (/^[A-Z]/.test(key)) {
-            key = key.charAt(0).toLowerCase() + key.slice(1);
-            console.log('Lower case first character of key "' + origKey + '" -> "' + key + '"');
-        }
+        key = $(tds[1]).text().trim();
 
         fullName = $(tds[2]).text().trim();
 
@@ -61,10 +52,32 @@ function parseExtension(dict, dictionaryName, $, element) {
         }
     }
 
+    let extension = {
+        'version': version,
+        'key': key,
+        'fullName': fullName,
+        'dataType': dataType,
+        'length': length,
+        'description': description,
+    };
+    return (extension)
+}
+
+function fixExtension(dictionaryName, version, key, fullName, dataType, length, description) {
+    const origKey = key;
     const origDataType = dataType;
     const origFullName = fullName;
 
     // fix data
+
+    key = origKey.replace(/[^0-9a-zA-Z]/g, '');
+    if (key != origKey) {
+        console.log('Remove spaces from key "' + origKey + '" -> "' + key + '"');
+    }
+    if (/^[A-Z]/.test(key)) {
+        key = key.charAt(0).toLowerCase() + key.slice(1);
+        console.log('Lower case first character of key "' + origKey + '" -> "' + key + '"');
+    }
 
     // remove producer extensions that are actually consumer
     if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key))) || key == 'type') {
@@ -225,15 +238,6 @@ function parseExtension(dict, dictionaryName, $, element) {
     //     console.log('Normalize full name: "' + origFullName + '" -> "' + normalizedFullName + '"');
     // }
 
-    // check for duplicate extensions
-    for (let index = 0; index < dict.length; index++) {
-        const element = dict[index];
-        if ((key && key == element.key) || fullName == element.fullName) {
-            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"')
-            return;
-        }
-    }
-
     // add to results
     let extension = {
         'dictionaryName': dictionaryName,
@@ -245,7 +249,19 @@ function parseExtension(dict, dictionaryName, $, element) {
         'description': description,
         'normalizedFullName': normalizedFullName
     };
-    dict.push(extension);
+    return (extension);
+}
+
+function isDuplicate(dict, key, fullName) {
+    // check for duplicate extensions
+    for (let index = 0; index < dict.length; index++) {
+        const element = dict[index];
+        if ((key && key == element.key) || fullName == element.fullName) {
+            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"');
+            return true;
+        }
+    }
+    return false;
 }
 
 // input: array of property names, names starting with "-" are sorted reversely
@@ -294,12 +310,20 @@ async function scrapeUrl(url) {
         const producerRows = $('.table_2:nth-of-type(1) tbody tr');
         //Looping through the rows
         producerRows.each((index, element) => {
-            parseExtension(dictionary, producerDictionaryName, $, element);
+            let extension = parseExtensionFromTD(producerDictionaryName, $, element);
+            extension = fixExtension(producerDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
+            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
+                dictionary.push(extension);
+            }
         })
 
         const consumerRows = $('.table_2:nth-of-type(2) tbody tr');
         consumerRows.each((index, element) => {
-            parseExtension(dictionary, consumerDictionaryName, $, element);
+            let extension = parseExtensionFromTD(consumerDictionaryName, $, element);
+            extension = fixExtension(consumerDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
+            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
+                dictionary.push(extension);
+            }
         })
 
         if (!hasDvcMac) {
@@ -347,7 +371,12 @@ async function scrapeUrl(url) {
         const devguideRows = $('tbody tr');
         //Looping through the rows
         devguideRows.each((index, element) => {
-            parseExtension(dictionary, devguideDictionaryName, $, element);
+            let extension = parseExtensionFromTD(devguideDictionaryName, $, element);
+            extension = fixExtension(devguideDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
+            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
+                dictionary.push(extension);
+            }
+
         })
 
         // dictionary with fewer columns for comparison with cefImplementationStandard
@@ -369,7 +398,6 @@ async function scrapeUrl(url) {
 
         csv = new ObjectsToCsv(dictionary);
         await csv.toDisk('docs/extension-dictionary-flexconn_devguide.csv')
-
     }
 }
 
