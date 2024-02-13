@@ -12,7 +12,6 @@ const consumerDictionaryName = 'consumer';
 const devguideDictionaryName = 'devguide';
 
 let firstDmac = true; // dmac key occurs twice
-let hasDvcMac = false; // dvcmac disappeared
 
 function parseExtensionFromTD(dictionaryName, $, element) {
     const tds = $(element).find('td');
@@ -253,12 +252,11 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
     return (extension);
 }
 
-function isDuplicate(dict, key, fullName) {
+function hasKey(dict, key, fullName) {
     // check for duplicate extensions
     for (let index = 0; index < dict.length; index++) {
         const element = dict[index];
         if ((key && key == element.key) || fullName == element.fullName) {
-            console.log('Duplicate entry with key "' + key + '" and fullName "' + fullName + '"');
             return true;
         }
     }
@@ -313,8 +311,12 @@ async function scrapeUrl(url) {
         producerRows.each((index, element) => {
             let extension = parseExtensionFromTD(producerDictionaryName, $, element);
             extension = fixExtension(producerDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
-            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
-                dictionary.push(extension);
+            if (extension) {
+                if (hasKey(dictionary, extension.key, extension.fullName)) {
+                    console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+                } else {
+                    dictionary.push(extension);
+                }
             }
         })
 
@@ -322,12 +324,16 @@ async function scrapeUrl(url) {
         consumerRows.each((index, element) => {
             let extension = parseExtensionFromTD(consumerDictionaryName, $, element);
             extension = fixExtension(consumerDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
-            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
-                dictionary.push(extension);
+            if (extension) {
+                if (hasKey(dictionary, extension.key, extension.fullName)) {
+                    console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+                } else {
+                    dictionary.push(extension);
+                }
             }
         })
 
-        if (!hasDvcMac) {
+        if (!hasKey(dictionary, 'dvcmac')) {
             let extension = {
                 'dictionaryName': 'producer',
                 'version': '0.1',
@@ -374,10 +380,13 @@ async function scrapeUrl(url) {
         devguideRows.each((index, element) => {
             let extension = parseExtensionFromTD(devguideDictionaryName, $, element);
             extension = fixExtension(devguideDictionaryName, extension.version, extension.key, extension.fullName, extension.dataType, extension.length, extension.description);
-            if (extension && !isDuplicate(dictionary, extension.key, extension.fullName)) {
-                dictionary.push(extension);
+            if (extension) {
+                if (hasKey(dictionary, extension.key, extension.fullName)) {
+                    console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+                } else {
+                    dictionary.push(extension);
+                }
             }
-
         })
 
         // dictionary with fewer columns for comparison with cefImplementationStandard
