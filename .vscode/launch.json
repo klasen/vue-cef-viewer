@@ -7,11 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "scrape",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/docs/scrape.js"
+            "program": "${workspaceFolder}/docs/scrape.cjs"
         }
     ]
 }
