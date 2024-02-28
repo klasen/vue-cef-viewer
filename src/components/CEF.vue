@@ -415,6 +415,18 @@ function prepareCefDisplay(cef, dictionary) {
       }
       obj["value"] = v;
 
+      if (/^(c6a|cfp|cn|cs|(deviceCustom|flex)(Number|Date|String))\d+$/.test(k)) {
+        if (cef.extensions[k + "Label"]) {
+          obj.label = cef.extensions[k + "Label"];
+        } else {
+          obj.warnings.push("Label extension '" + k + "Label' is missing.");
+        }
+      }
+
+      if (k.endsWith("Label") && !(k.substring(0, k.length - 5) in cef.extensions)) {
+        obj.warnings.push("Value extension '" + k.substring(0, k.length - 5) + "' is missing.");
+      }
+
       return obj;
     }).
     // sort by "key" property
