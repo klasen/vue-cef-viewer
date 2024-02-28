@@ -4,8 +4,9 @@
       <tr class="header">
         <th>Field</th>
         <th>Value</th>
-        <th class="comment">Comment<button class="right" v-on:click="copyToClipboard('ceftable')">Copy to
-            clipboard</button>
+        <th class="comment">
+          <input v-model="showComments" type="checkbox">Show comments</input>
+          <button class="right" v-on:click="copyToClipboard('ceftable')">Copy to clipboard</button>
         </th>
       </tr>
       <tr class="section">
@@ -86,7 +87,7 @@
         </td>
         <td>
           <ul>
-            <li v-for="comment in ext.comments" :key="comment">{{ comment }}</li>
+            <li v-show="showComments" v-for="comment in ext.comments" :key="comment">{{ comment }}</li>
             <li v-for="error in ext.errors" :key="error" class="status_error">{{ error }}</li>
             <li v-for="warning in ext.warnings" :key="warning" class="status_warning">{{ warning }}</li>
             <li v-for="notice in ext.notices" :key="notice" class="status_notice">{{ notice }}</li>
@@ -463,6 +464,11 @@ function prepareCefDisplay(cef, dictionary) {
 
 export default {
   name: 'CEF',
+  data() {
+    return {
+      showComments: true
+    }
+  },
   props: {
     message: String
   },
