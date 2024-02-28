@@ -99,12 +99,12 @@
       <tr class="section" v-if="cef.extensionsByLabelSorted.length > 0">
         <th colspan="3">CEF Extensions by Label</th>
       </tr>
-      <tr class="cefextension" v-for="ext in cef.extensionsByLabelSorted" :key="ext.key">
-        <th>{{ ext.key }}</th>
+      <tr class="cefextension" v-for="ext in cef.extensionsByLabelSorted" :key="ext.label">
+        <th>{{ ext.label }}</th>
         <td>
           <pre>{{ ext.value }}</pre>
         </td>
-        <td></td>
+        <td>{{ ext.key }}</td>
       </tr>
     </table>
   </div>
@@ -441,26 +441,17 @@ function prepareCefDisplay(cef, dictionary) {
     }
     );
 
-  // add keypair for c[ns]<i>Label with value c[ns]<i>
-  cef.extensionsByLabel = {};
-  for (var key in cef.extensions) {
-    if (/Label$/.test(key)) {
-      var baseKey = key.slice(0, -5);
-      if (baseKey in cef.extensions) {
-        cef.extensionsByLabel[cef.extensions[key]] = cef.extensions[baseKey];
-      }
-    }
-  }
+
 
   // convert object to sorted array of objects
-  cef.extensionsByLabelSorted = Object.entries(cef.extensionsByLabel).
-    map(([k, v]) => ({ "key": k, "value": v })).
-    // sort by "key" property
+  cef.extensionsByLabelSorted = cef.extensionsSorted.
+    filter((elem) => elem.label).
+    // sort by "label" property
     sort((a, b) => {
-      if (a.key < b.key) {
+      if (a.label < b.label) {
         return -1;
       }
-      if (a.key > b.key) {
+      if (a.label > b.label) {
         return 1;
       }
       return 0;
