@@ -4,12 +4,11 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
-const csvParser = require('csv-parse/sync');
+const readXlsxFile = require('read-excel-file/node')
 
 const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
 const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
-const cefProducerCSV = 'C:/data/OneDrive - OpenText/products/sentinel/CEF ArcSight Dictionary producer.CSV';
-const cefConsumerCSV = 'C:/data/OneDrive - OpenText/products/sentinel/CEF ArcSight Dictionary consumer.CSV';
+const cefExcel = 'C:/data/OneDrive - OpenText/products/sentinel/CEF ArcSight Dictionary.xlsx';
 const producerDictionaryName = 'producer';
 const consumerDictionaryName = 'consumer';
 const devguideDictionaryName = 'devguide';
@@ -66,6 +65,9 @@ function parseExtensionFromTD(dictionaryName, $, element) {
 }
 
 function fixExtension(dictionaryName, version, key, fullName, dataType, length, description) {
+    length ??= '';
+    description ??= '';
+
     const origKey = key;
     const origDataType = dataType;
     const origFullName = fullName;
@@ -414,39 +416,44 @@ async function scrapeUrl(url) {
     }
 }
 
-async function scrapeCSV() {
+async function scrapeXLXS() {
     let dictionary = [];
 
-    console.log('Scraping Producer CSV');
-    let content = fs.readFileSync(cefProducerCSV);
-    let rows = csvParser.parse(content, { delimiter: ";", from_line: 2 })
-    for (let row of rows) {
-        let extension = fixExtension(producerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
-        if (extension) {
-            if (hasKey(dictionary, extension.key, extension.fullName)) {
-                console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
-            } else {
-                dictionary.push(extension);
+    console.log('Scraping Producer XLSX');
+    await readXlsxFile(cefExcel, {
+        sheet: 'Producers',
+        parseNumber: ((value) => String(value))
+    }).then((rows) => {
+        // `rows` is an array of rows
+        // each row being an array of cells.
+        for (let row of rows.slice(1)) {
+            let extension = fixExtension(producerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
+            if (extension) {
+                if (hasKey(dictionary, extension.key, extension.fullName)) {
+                    console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+                } else {
+                    dictionary.push(extension);
+                }
             }
         }
+    })
 
-    };
-
-    console.log('Scraping Consumer CSV');
-    content = fs.readFileSync(cefConsumerCSV);
-    rows = csvParser.parse(content, { delimiter: ";", from_line: 2 })
-    for (let row of rows) {
-        let extension = fixExtension(consumerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
-        if (extension) {
-            if (hasKey(dictionary, extension.key, extension.fullName)) {
-                console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
-            } else {
-                dictionary.push(extension);
+    console.log('Scraping Consumer XLSX');
+    await readXlsxFile(cefExcel, {
+        sheet: 'Consumers',
+        parseNumber: ((value) => String(value))
+    }).then((rows) => {
+        for (let row of rows.slice(1)) {
+            let extension = fixExtension(consumerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
+            if (extension) {
+                if (hasKey(dictionary, extension.key, extension.fullName)) {
+                    console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+                } else {
+                    dictionary.push(extension);
+                }
             }
         }
-
-    };
-
+    })
 
     if (!hasKey(dictionary, 'dvcmac')) {
         let extension = {
@@ -497,11 +504,13 @@ async function scrapeOnline() {
     await scrapeUrl(cefFlexconnDevguideUrl);
 }
 
-async function scrapeDraftCSVs() {
-    await scrapeCSV();
+async function scrapeDraftXLXS() {
+    await scrapeXLXS();
 }
 
-//  scrapeOnline();
-
-scrapeDraftCSVs();
-
+// main
+if (process.argv.length === 2) {
+    scrapeOnline();
+} else {
+    scrapeDraftXLXS();
+}
