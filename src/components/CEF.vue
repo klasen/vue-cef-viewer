@@ -5,7 +5,8 @@
         <th>Field</th>
         <th>Value</th>
         <th class="comment">
-          <input v-model="showComments" type="checkbox">Show comments</input>
+          <input id="showComments" v-model="showComments" type="checkbox" />
+          <label for="showComments">Show comments</label>
           <button class="right" v-on:click="copyToClipboard('ceftable')">Copy to clipboard</button>
         </th>
       </tr>
