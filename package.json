@@ -1,6 +1,6 @@
 {
   "name": "vue-cef-viewer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Pretty print CEF messages",
   "author": "Norbert Klasen",
   "license": "MIT",
