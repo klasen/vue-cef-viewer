@@ -181,7 +181,7 @@ String.prototype.parseCEF = function () {
   };
 
   // search for CEF message prefix
-  var i = this.search(/CEF:/);
+  var i = this.search(/CEF:[0-9]\|/);
   if (i == -1) {
     // CEF prefix not found
     return obj;
