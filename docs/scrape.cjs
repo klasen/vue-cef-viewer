@@ -4,9 +4,12 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
+const csvParser = require('csv-parse/sync');
 
 const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
 const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
+const cefProducerCSV = 'C:/data/OneDrive - OpenText/products/sentinel/CEF ArcSight Dictionary producer.CSV';
+const cefConsumerCSV = 'C:/data/OneDrive - OpenText/products/sentinel/CEF ArcSight Dictionary consumer.CSV';
 const producerDictionaryName = 'producer';
 const consumerDictionaryName = 'consumer';
 const devguideDictionaryName = 'devguide';
@@ -411,10 +414,94 @@ async function scrapeUrl(url) {
     }
 }
 
-async function main() {
+async function scrapeCSV() {
+    let dictionary = [];
+
+    console.log('Scraping Producer CSV');
+    let content = fs.readFileSync(cefProducerCSV);
+    let rows = csvParser.parse(content, { delimiter: ";", from_line: 2 })
+    for (let row of rows) {
+        let extension = fixExtension(producerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
+        if (extension) {
+            if (hasKey(dictionary, extension.key, extension.fullName)) {
+                console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+            } else {
+                dictionary.push(extension);
+            }
+        }
+
+    };
+
+    console.log('Scraping Consumer CSV');
+    content = fs.readFileSync(cefConsumerCSV);
+    rows = csvParser.parse(content, { delimiter: ";", from_line: 2 })
+    for (let row of rows) {
+        let extension = fixExtension(consumerDictionaryName, row[5].replace(',', '.'), row[0], row[1], row[2], row[3], row[4]);
+        if (extension) {
+            if (hasKey(dictionary, extension.key, extension.fullName)) {
+                console.log('Duplicate entry with key "' + extension.key + '" and fullName "' + extension.fullName + '"');
+            } else {
+                dictionary.push(extension);
+            }
+        }
+
+    };
+
+
+    if (!hasKey(dictionary, 'dvcmac')) {
+        let extension = {
+            'dictionaryName': 'producer',
+            'version': '0.1',
+            'key': 'dvcmac',
+            'fullName': 'deviceMacAddress',
+            'dataType': 'MacAddress',
+            'length': undefined,
+            'description': 'Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”',
+            'normalizedFullName': 'deviceMacAddress'
+        };
+        dictionary.push(extension);
+        console.log('Added missing extension for key "' + extension.key + '"');
+    }
+
+    // dictionary with fewer columns for comparison with flexconn_devguide
+    let comparisonDictionary = [];
+    dictionary.map((element) => {
+        // if (element.dictionaryName == producerDictionaryName) {
+        comparisonDictionary.push({
+            'fullName': element.normalizedFullName,
+            'dataType': element.dataType,
+            'length': element.length,
+        });
+        // }
+    });
+    comparisonDictionary.sort(sortByFields(['fullName']));
+    let csv = new ObjectsToCsv(comparisonDictionary);
+    await csv.toDisk('docs/extension-dictionary-for-comparison.csv')
+
+    // remove normalizedFullName that was neded for comparison
+    dictionary.forEach(element => delete element.normalizedFullName);
+
+    // sort dictionary by dictionaryName (producer first), version, key, and fullName
+    dictionary.sort(sortByFields(['-dictionaryName', 'version', 'key', 'fullName']));
+
+    csv = new ObjectsToCsv(dictionary);
+    await csv.toDisk('docs/extension-dictionary.csv')
+
+    saveJson(dictionary, 'src/components/extension-dictionary.json');
+}
+
+
+async function scrapeOnline() {
     await scrapeUrl(cefImplementationStandardUrl);
     console.log('');
     await scrapeUrl(cefFlexconnDevguideUrl);
 }
 
-main();
+async function scrapeDraftCSVs() {
+    await scrapeCSV();
+}
+
+//  scrapeOnline();
+
+scrapeDraftCSVs();
+
