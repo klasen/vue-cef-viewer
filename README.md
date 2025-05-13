@@ -237,14 +237,12 @@ npm install
 Scrape CEF implementation standard and save producer and consumer extension dictionaries as JSON and CSV.
 
 ```sh
-node ./docs/scrape.js > ./docs/fixes.txt
+node ./docs/scrape.cjs > ./docs/fixes.txt
 ```
 
 #### Compare CEF Implementation Standard and Flexconn Devguide
 
 Generate a html side by side comparison of the CSV files for both documents using [diff2html-cli](https://www.npmjs.com/package/diff2html-cli).
-
-On the `spec-vs-devguide` branch:
 
 1) Scrape metadata
 2) Commit `/docs/*.csv`
