@@ -24,6 +24,7 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "axios": "^1.7.4",
     "cheerio": "^1.0.0-rc.12",
+    "diff2html-cli": "^5.2.15",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
     "gh-pages": "^6.1.1",
