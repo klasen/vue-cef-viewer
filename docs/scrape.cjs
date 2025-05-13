@@ -5,8 +5,8 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
 
-const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
-const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
+const cefImplementationStandardUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-25.1/cef-implementation-standard/Content/CEF/arcsight-extensions.htm'
+const cefFlexconnDevguideUrl = 'https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-25.1/flexconn_devguide/Content/convertFlex/Appendix_ArcSight_Built-in_Mapping_Tokens.htm'
 const producerDictionaryName = 'producer';
 const consumerDictionaryName = 'consumer';
 const devguideDictionaryName = 'devguide';
@@ -33,13 +33,9 @@ function parseExtensionFromTD(dictionaryName, $, element) {
         description = $(tds[3]).text().trim();
     } else {
         version = $(tds[0]).text().trim();
-
-        key = $(tds[1]).text().trim();
-
-        fullName = $(tds[2]).text().trim();
-
+        fullName = $(tds[1]).text().trim();
+        key = $(tds[2]).text().trim();
         dataType = $(tds[3]).text().trim();
-
         length = $(tds[4]).text().trim();
 
         // use first <p> element to skip note div
@@ -79,7 +75,7 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
     }
 
     // remove producer extensions that are actually consumer
-    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key)) || key == 'type')) {
+    if (dictionaryName == producerDictionaryName && ((version == '1.2' && /^parser|Key$/.test(key)))) {
         console.log('Remove consumer extension from ' + dictionaryName + ' dictionary: "' + key + '"')
         return;
     }
@@ -91,6 +87,18 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
 
     // fix data for specific keys
     switch (key) {
+        case 'c6a3Label':
+            if (fullName != 'deviceCustomIPv6Address3Label') {
+                fullName = 'deviceCustomIPv6Address3Label';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
+            break;
+        case 'cfp1Label':
+            if (fullName != 'deviceCustomFloatingPoint1Label') {
+                fullName = 'deviceCustomFloatingPoint1Label';
+                console.log('Fix full name for key "' + key + '": "' + origFullName + '" -> "' + fullName + '"');
+            }
+            break;
         case 'dmac':
             if (firstDmac) {
                 firstDmac = false;
@@ -197,7 +205,7 @@ function fixExtension(dictionaryName, version, key, fullName, dataType, length, 
         console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
     }
 
-    if (length.startsWith('64-bit')) {
+    if (dataType != 'Long' && length.startsWith('64-bit')) {
         dataType = 'Long';
         length = '';
         console.log('Fix data type for key "' + (key ? key : fullName) + '": "' + origDataType + '" -> "' + dataType + '"');
@@ -343,6 +351,36 @@ async function scrapeUrl(url) {
                 'length': undefined,
                 'description': 'Six colon-separated hexadecimal numbers. Example: “00:0D:60:AF:1B:61”',
                 'normalizedFullName': 'deviceMacAddress'
+            };
+            dictionary.push(extension);
+            console.log('Added missing extension for key "' + extension.key + '"');
+        }
+
+        if (!hasKey(dictionary, 'c6a2')) {
+            let extension = {
+                'dictionaryName': 'producer',
+                'version': '0.1',
+                'key': 'c6a2',
+                'fullName': 'deviceCustomIPv6Address2',
+                'dataType': 'IPv6 Address',
+                'length': undefined,
+                'description': 'One of the four IPv6 address fields available to map fields that do not apply to any other in this dictionary.',
+                'normalizedFullName': 'deviceCustomIPv6Address2'
+            };
+            dictionary.push(extension);
+            console.log('Added missing extension for key "' + extension.key + '"');
+        }
+
+        if (!hasKey(dictionary, 'c6a2Label')) {
+            let extension = {
+                'dictionaryName': 'producer',
+                'version': '0.1',
+                'key': 'c6a2Label',
+                'fullName': 'deviceCustomIPv6Address2Label',
+                'dataType': 'String',
+                'length': 1023,
+                'description': 'All custom fields have a corresponding label field. Each of these fields is a string and describes the purpose of the custom field.',
+                'normalizedFullName': 'deviceCustomIPv6Address2Label'
             };
             dictionary.push(extension);
             console.log('Added missing extension for key "' + extension.key + '"');
