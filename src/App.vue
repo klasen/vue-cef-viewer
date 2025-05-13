@@ -12,7 +12,7 @@ const message = ref('');
     <p>
       This is a small <a href="https://vuejs.org/">Vue.js</a> App to display
       <a
-        href="https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-24.1/cef-implementation-standard">CEF</a>
+        href="https://www.microfocus.com/documentation/arcsight/arcsight-smartconnectors-25.1/cef-implementation-standard">CEF</a>
       messages in a nice format. All parsing is done in JavaScript on the
       client side. No CEF data is sent to the server.
       <br />
